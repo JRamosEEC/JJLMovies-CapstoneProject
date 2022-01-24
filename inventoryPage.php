@@ -1,101 +1,5 @@
 <?php
     require (__DIR__ . "/dbQuery.php");
-
-    $inventoryData = getInventory();
-    $invCategories = getCategories();
-
-    $id = $_GET['id'] ?? '';
-    $name = $_GET['name'] ?? '';
-    $qty = $_GET['qty'] ?? '';
-    $category = $_GET['category'] ?? '';
-    $price = $_GET['price'] ?? '';
-    $action = $_GET['action'] ?? '';
-
-    $nameChecked = '';
-    $qtyChecked = '';
-    $categoryChecked = '';
-    $priceChecked = '';
-
-    if($action == 'update')
-    {
-        if(!is_numeric($name) || $name == ''){
-            $nameChecked = $name;
-        }
-        else{
-            $nameChecked = "Must be a string";
-        }
-
-        if(is_numeric($qty) || $qty == ''){
-            $qtyChecked = $qty;
-        }
-        else{
-            $qtyChecked = "Must be a number";
-        }
-
-        if(!is_numeric($category) || $category == ''){
-            $categoryChecked = $category;            
-        }
-        else{
-            $categoryChecked = "Must be a string";
-        }
-
-        if(is_numeric($price) || $price == ''){
-            $priceChecked = $price;
-        }
-        else{
-            $priceChecked = "Must be a number";
-        }
-
-        if(!is_numeric($name) && is_numeric($qty) && !is_numeric($category) && is_numeric($price) && $category != '' && $name != '')
-        {
-            updateInventory($id, $name, $qty, $category, $price);
-            header("Location: inventoryPage.php");
-            exit();
-        }
-    }
-    elseif($action == 'add')
-    {
-        if(!is_numeric($name) || $name == ''){
-            $nameChecked = $name;
-        }
-        else{
-            $nameChecked = "Must be a string";
-        }
-
-        if(is_numeric($qty) || $qty == ''){
-            $qtyChecked = $qty;
-        }
-        else{
-            $qtyChecked = "Must be a number";
-        }
-
-        if(!is_numeric($category) || $category == ''){
-            $categoryChecked = $category;            
-        }
-        else{
-            $categoryChecked = "Must be a string";
-        }
-
-        if(is_numeric($price) || $price == ''){
-            $priceChecked = $price;
-        }
-        else{
-            $priceChecked = "Must be a number";
-        }
-
-        if(!is_numeric($name) && is_numeric($qty) && !is_numeric($category) && is_numeric($price) && $category != '' && $name != '')
-        {
-            addInventory($name, $qty, $category, $price);
-            header("Location: inventoryPage.php");
-            exit();
-        }
-    }
-    elseif($action == 'delete' && $id != '')
-    {
-        delInventory($id);
-        header("Location: inventoryPage.php");
-        exit();
-    }
 ?>
 
 <!DOCTYPE html>
@@ -144,80 +48,14 @@
                     <a href="inventoryPage.php" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><p class="text-center no-margin col">Inventory</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li id='copyrights'>
-                    © Justin Ramos
+                
                 </li>
             </ul>
         </nav>
 
         <!-- Page Content -->
         <div id="content">
-            <div id="title" class="row header centerV no-marginL">
-                <nav class="transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info centerV">
-                        &#8249;
-                    </button>
-                </nav>
 
-                <div class="header center col-4">
-                    Inventory
-                </div>
-
-                <div id="spacer" class="col-4"></div>
-            </div>
-
-            <div id="invFieldsContainer" class="row no-marginL">
-                <div class="row col-6 no-marginL">
-                    <div id="fieldDesc" class="col-6">Category: </div>
-                    <div id="fieldInvCat">
-                        <select>
-                            <option value="" disabled selected hidden>Select Category</option>
-                                <option value='id'>ID</option>
-                                <option value='qty'>Quantity</option>
-                                <option value='name'>Name</option>
-                                <option value='category'>Category</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row col-6 no-margin no-pad">
-                    <div id="fieldDesc" class="col-6">Search: </div>
-                    <textarea id="invSearch" rows="1" cols="17" wrap="off" placeholder="Input Search"></textarea>
-                </div>
-            </div>
-
-            <div id="invContainer" class="row no-marginL">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php foreach($inventoryData as $key => $value): ?>
-                            <?php if($id == $value['productId'] && $qtyChecked == '') {$qtyChecked = $value['quantity'];} ?>
-                            <?php if($id == $value['productId'] && $priceChecked == '') {$priceChecked = $value['price'];} ?>
-                            <?php if($id == $value['productId'] && $nameChecked == '') {$nameChecked = $value['name'];} ?>
-                            <?php if($id == $value['productId'] && $categoryChecked == '') {$categoryChecked = $value['category'];} ?>
-                            <?php if($id != $value['productId']){echo '<tr><td>' . $value['productId'] . '</td><td>' . $value['quantity'] . '</td><td>$' . $value['price'] . '</td><td>' . $value['name'] . '</td><td>' . $value['category'] . '</td><td class="center"><a href="inventoryPage.php?id=' . $value['productId'] . '" style="text-decoration: none;"><i class="icon-pencil fa-w-10 fa-2x"></i></a></td></tr>';}else{echo '<tr><td name="idtxt">' . $value['productId'] . '</td><td><input type="text" name="qtytxt" value="' . $qtyChecked . '"></td><td><input type="text" name="pricetxt" value="' . $priceChecked . '"></td><td><input type="text" name="nametxt" value="' . $nameChecked . '"></td><td><input type="text" name="categorytxt" value="' . $categoryChecked . '"></td><td class="center"><a id="updateSubmit" href="inventoryPage.php" onclick="return updateSubmit();" style="text-decoration: none;"><i class="fas fa-check-square fa-w-10 fa-2x"></i></a></td></tr>';} ?>
-                        <?php endforeach; ?>
-
-                        <?php if($action == 'add'){echo '<tr><td name="idtxt">N/A</td><td><input type="text" name="qtytxt" value="' . $qtyChecked . '"></td><td><input type="text" name="pricetxt" value="' . $priceChecked . '"></td><td><input type="text" name="nametxt" value="' . $nameChecked . '"></td><td><input type="text" name="categorytxt" value="' . $categoryChecked . '"></td><td class="center"><a id="updateSubmit" href="inventoryPage.php" onclick="return addSubmit();" style="text-decoration: none;"><i class="fas fa-check-square fa-w-10 fa-2x"></i></a></td></tr>';} ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="invContainerButtons" class="row no-marginL">
-                <div id="spacer" class="col-9"></div>
-                <div id="invButtonAdd" class="col-1"><a href="inventoryPage.php?action=add" ><i class="fas fa-plus-square fa-3x"></i></a></div>
-                <div id="<?php if($id == ''){echo 'invButtonDelete';}else{echo 'invButtonDeleteActive';} ?>" class="col-1"><a href="<?php if($id == ''){echo '';}else{echo 'inventoryPage.php?action=delete&amp;id=' . $id;} ?>"><i class="fas fa-trash-alt fa-3x"></i></a></div>
-                <div id="spacer" class="col-1"></div>
-            </div>
         </div>
     </div>   
     
@@ -275,29 +113,6 @@
         });
 
         });
-
-        function updateSubmit() {
-            var link = document.getElementById("updateSubmit");
-
-            var id = document.getElementsByName("idtxt")[0].innerHTML;
-            var qty = document.getElementsByName("qtytxt")[0].value;
-            var name = document.getElementsByName("nametxt")[0].value;
-            var price = document.getElementsByName("pricetxt")[0].value;
-            var category = document.getElementsByName("categorytxt")[0].value;
-
-            link.setAttribute('href', 'inventoryPage.php?id=' + id + '&qty=' + qty + '&price=' + price + '&name=' + name + '&category=' + category + '&action=update');
-        }
-
-        function addSubmit() {
-            var link = document.getElementById("updateSubmit");
-
-            var qty = document.getElementsByName("qtytxt")[0].value;
-            var name = document.getElementsByName("nametxt")[0].value;
-            var price = document.getElementsByName("pricetxt")[0].value;
-            var category = document.getElementsByName("categorytxt")[0].value;
-
-            link.setAttribute('href', 'inventoryPage.php?qty=' + qty + '&price=' + price + '&name=' + name + '&category=' + category + '&action=add');
-        }
     </script>
 </body>
 
