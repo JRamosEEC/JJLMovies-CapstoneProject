@@ -39,13 +39,13 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="homePage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><p class="text-center no-margin col">Home</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="homePage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li>
-                    <a href="salesPage.php?id=None" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><p class="text-center no-margin col">Sales</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="salesPage.php?id=None" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li>
-                    <a href="inventoryPage.php" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><p class="text-center no-margin col">Inventory</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="inventoryPage.php" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li id='copyrights'>
                 

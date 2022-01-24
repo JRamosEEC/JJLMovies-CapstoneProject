@@ -14,10 +14,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <style>
+        #login{
+            font-family:"Serif";
+            font-size:"20%";
+
+        }
+        #search{
+            font-family:"Serif";
+            font-size:"5px";
+            
+
+        }
+
+    </style>
 </head>
 
 <body>
@@ -37,13 +51,13 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><p class="text-center no-margin col">Home</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li>
-                    <a href="salesPage.php?id=None" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><p class="text-center no-margin col">Sales</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="salesPage.php?id=None" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li>
-                    <a href="inventoryPage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><p class="text-center no-margin col">Inventory</p><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+                    <a href="inventoryPage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
                 <li id='copyrights'>
                     © Justin Ramos
@@ -63,7 +77,13 @@
                 <div class="header center col-4">
                     Home Feed
                 </div>
-
+                <div>
+                    <input id="search" value="Search" type="button">
+                </div>
+    </br>
+                <div>
+                    <input id="login" value="Login" type="button">
+                </div>
                 <div id="spacer" class="col-4"></div>
             </div>
         </div>
