@@ -54,10 +54,22 @@
         </nav>
 
         <!-- Page Content -->
+        
         <div id="content">
+            <div id="title" class="row header centerV no-marginL">
+                <nav class="transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info centerV">
+                        &#8249;
+                    </button>
+                </nav>
 
-        </div>
-    </div>   
+                <div class="header center col-4">
+                    Sales
+                </div>
+
+                <div id="spacer" class="col-4"></div>
+            </div>
+        </div>  
     
     <script>
         $(document).ready(function () {
