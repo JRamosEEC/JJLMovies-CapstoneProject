@@ -64,7 +64,7 @@
                 </nav>
 
                 <div class="header center col-4">
-                    Sales
+                    Inventory
                 </div>
 
                 <div id="spacer" class="col-4"></div>
