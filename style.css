@@ -26,23 +26,21 @@ th {
 #login{
     font-family: Roboto;
     font-style: normal;
-    font-size: 20px;
-    align-items: right;
-    text-align: right;
-    background :#232437;
-    color:white;
-    width: 100%;
+    font-size: 15px;
+    align-items: center;
+    text-align: center;
+    background:#232437;
+    border-style:none;
 
 }
-#search{
-    font-family: Roboto;
-    font-size: 20px;
-    line-height: 28px;
-    align-items: end;
-    text-align: end;
-    background :#232437;
-    color:white;
 
+#search{
+    position:relative;
+    font-family: Roboto;
+    font-size: 15px;
+    align-items:center;
+    text-align: center;
+    background:#232437;
 }
 
 .wrapper {
@@ -133,7 +131,6 @@ a, a:hover, a:focus, a:hover p {
 #content {
     width: 100%;
     min-height: 104px;
-    
 }
 
 #fieldDesc {

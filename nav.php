@@ -19,9 +19,6 @@
                 <li>
                     <a href="highlights.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
                 </li>
-                <li>
-                    <a href="communityPage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
                 <li id='copyrights'>
                     © Justin Ramos
                 </li>

@@ -50,12 +50,12 @@
                 Week's Hightlights
                 </div>
 
-                <div>
-                    <input id="search" value="Search" type="button" >
+                <div id="search">
+                    <input value="Search" type="button" >
                 </div>
 
-                <div>
-                    <input id="login" value="Login" type="button">
+                <div id="login">
+                    <input  value="Login" type="button">
                 </div>
 
                 <div id="spacer" class="col-4"></div>
