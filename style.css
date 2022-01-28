@@ -114,7 +114,9 @@ th {
     padding-right: 0.25rem !important;
     padding-left: 0.25rem !important;
 }
-
+#logs{
+    align-items: center;
+}
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
