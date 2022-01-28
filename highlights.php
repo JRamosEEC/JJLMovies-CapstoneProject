@@ -8,17 +8,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>This Weeks hightlights</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style.css">
-
+    
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -31,26 +33,9 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3 class="text-center">Navigation</h3>
-            </div>
-
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="homePage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
-                <li>
-                    <a href="salesPage.php?id=None" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
-                <li>
-                    <a href="inventoryPage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/inventory-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
-                <li id='copyrights'>
-                    
-                </li>
-            </ul>
-        </nav>
+    <?php 
+        include(__DIR__ . "/nav.php")
+    ?>
 
         <!-- Page Content -->
         <div id="content">
@@ -62,7 +47,15 @@
                 </nav>
 
                 <div class="header center col-4">
-                    *Title*
+                Week's Hightlights
+                </div>
+
+                <div>
+                    <input id="search" value="Search" type="button" >
+                </div>
+
+                <div>
+                    <input id="login" value="Login" type="button">
                 </div>
 
                 <div id="spacer" class="col-4"></div>

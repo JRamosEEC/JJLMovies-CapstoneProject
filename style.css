@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #D8E0F7;
+    background: url(images/background.png);
     overflow-x: hidden;
 }
 
@@ -22,6 +22,27 @@ h3 {
 th {
     background: #D8E0F7;
     border-style : hidden!important;
+}
+#login{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    align-items: right;
+    text-align: right;
+    background :#232437;
+    color:white;
+    width: 100%;
+
+}
+#search{
+    font-family: Roboto;
+    font-size: 20px;
+    line-height: 28px;
+    align-items: end;
+    text-align: end;
+    background :#232437;
+    color:white;
+
 }
 
 .wrapper {
@@ -112,6 +133,7 @@ a, a:hover, a:focus, a:hover p {
 #content {
     width: 100%;
     min-height: 104px;
+    
 }
 
 #fieldDesc {
@@ -289,7 +311,7 @@ a, a:hover, a:focus, a:hover p {
     max-width: 250px;
     min-height: 100vh;
 
-    background: #7386D5;
+    background: #3F4478;
     color: #fff;
     transition: all 0.3s;
 }
