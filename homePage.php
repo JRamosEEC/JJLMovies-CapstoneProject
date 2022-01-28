@@ -55,7 +55,7 @@
                 </div>
 
                 <div id="login">
-                    <input value="Login" type="button" href="login.php">
+                    <input value="Login" type="button" onclick="window.location.href='login.php';">
                 </div>
 
                 <div id="spacer" class="col-4"></div>
