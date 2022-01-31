@@ -7,22 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-<nav id="sidebar">
-            <div class="sidebar-header">
-                <h3 class="text-center">Navigation</h3>
-            </div>
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <a href="homePage.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/logo-icon.png"></a>
+            <h3 class="text-center">Navigation</h3>
+            
+        </div>
 
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="homePage.php" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon2.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
-                <li>
-                    <a href="highlights.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/sales-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
-                </li>
-                <li id='copyrights'>
-                    © Justin Ramos
-                </li>
-            </ul>
-</nav>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="homePage.php" class="row current-page no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/home-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+            </li>
+            <li>
+                <a href="highlights.php" class="row no-marginR"><img id='navIcon' class="text-center no-pad col" src="images/highlights-icon.png"><img id='navArrow' class="text-center col" src="images/right-arrow.png"></a>
+            </li>
+            <li id='copyrights'>
+                © Justin Ramos
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>

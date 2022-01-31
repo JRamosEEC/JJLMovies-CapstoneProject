@@ -133,6 +133,7 @@ a, a:hover, a:focus, a:hover p {
 #content {
     width: 100%;
     min-height: 104px;
+    
 }
 
 #fieldDesc {
@@ -310,12 +311,12 @@ a, a:hover, a:focus, a:hover p {
     max-width: 250px;
     min-height: 100vh;
 
-    background: #3F4478;
+    background: #373B69;
     color: #fff;
     transition: all 0.3s;
 }
 
-#sidebar .sidebar-header {
+#sidebar.sidebar-header {
     padding: 35px;
     background: #6d7fcc;
 }
