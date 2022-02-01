@@ -39,33 +39,39 @@
         <div id="content">
             <?php include(__DIR__ . "/header.php")?>
 
-            <h1>SIGN UP</h1>
+            <div id="spacer" class="col-4"></div>
 
-            <div>
-                <input type="text" placeholder="Create Username">
-            </div>
-            <div>
-                <input type="text" placeholder="Create Password">
-            </div>
-            
-            <div>
-                <input type="text" placeholder="Email">
+            <div id="signupContainer" class="col-4">
+                <h1>SIGN UP</h1>
+
+                <div>
+                    <input type="text" placeholder="Create Username">
+                </div>
+                <div>
+                    <input type="text" placeholder="Create Password">
+                </div>
+                
+                <div>
+                    <input type="text" placeholder="Email">
+                </div>
+
+                <div>
+                    <input type="text" placeholder="Birthday">
+                </div>
+
+                <div>
+                    <input type="text" placeholder="First Name">
+                </div>
+
+                <div>
+                    <input type="text" placeholder="Last Name">
+                </div>
+                <div>
+                    <input type="button" value="Create Account">
+                </div>
             </div>
 
-            <div>
-                <input type="text" placeholder="Birthday">
-            </div>
-
-            <div>
-                <input type="text" placeholder="First Name">
-            </div>
-
-            <div>
-                <input type="text" placeholder="Last Name">
-            </div>
-            <div>
-                <input type="button" value="Create Account">
-            </div>
+            <div id="spacer" class="col-4"></div>
         </div>
     </div>
 
