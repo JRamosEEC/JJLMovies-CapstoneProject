@@ -10,11 +10,6 @@ body {
     overflow-x: hidden;
 }
 
-textarea {
-    overflow: hidden;
-    resize: none;
-}
-
 h3 {
     margin: 0;
 }
@@ -42,6 +37,11 @@ h3 {
 .wrapper {
     display: flex;
     align-items: stretch;
+}
+
+.btn {
+    font-size: 2rem;
+    padding: 0.25rem;
 }
 
 .header {
@@ -154,11 +154,6 @@ a, a:hover, a:focus, a:hover p {
     background: #373B69;
     color: #fff;
     transition: all 0.3s;
-}
-
-#sidebarCollapse {
-    font-size: 2rem;
-    padding: 0.25rem;
 }
 
 #sidebar.sidebar-header {
