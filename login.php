@@ -50,7 +50,7 @@
                 
                 <div id="btnLogs">
                     <input type="button" name="loginbtn" value="Login">
-                    <input type="button" name="signupbtn" value="Create Account" onclick="window.location.href='signup.php';">
+                    <input type="button" name="signupbtn" value="Create Account" href='signup.php'>
                 </div>
             </div>
         </div>   
