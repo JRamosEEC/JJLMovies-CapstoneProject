@@ -36,7 +36,7 @@
         <?php include(__DIR__ . "/nav.php")?>
 
         <!-- Page Content -->
-        <div id="content">
+        <div id="content" class="row">
             <?php include(__DIR__ . "/header.php")?>
 
             <div id="spacer" class="col-4"></div>
