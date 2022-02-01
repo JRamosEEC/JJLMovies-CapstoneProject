@@ -10,19 +10,10 @@ body {
     overflow-x: hidden;
 }
 
-textarea {
-    overflow: hidden;
-    resize: none;
-}
-
 h3 {
     margin: 0;
 }
 
-th {
-    background: #D8E0F7;
-    border-style : hidden!important;
-}
 #login{
     font-family: Roboto;
     font-style: normal;
@@ -46,11 +37,6 @@ th {
 .wrapper {
     display: flex;
     align-items: stretch;
-}
-
-.btn {
-    font-size: 2rem;
-    padding: 0.25rem;
 }
 
 .header {
@@ -110,13 +96,6 @@ th {
     background-color: #5B6FC6 ;
 }
 
-.table * {
-    padding-right: 0.25rem !important;
-    padding-left: 0.25rem !important;
-}
-#logs{
-    align-items: center;
-}
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -136,159 +115,15 @@ a, a:hover, a:focus, a:hover p {
     
 }
 
-#fieldDesc {
-    text-align: right;
-    line-height: 200%;
-}
-
-#fieldInvCat {
-    display: flex;
-    align-items: center;
-    width: 150px;
-}
-
-#invSearch {
-    display: flex;
-    align-items: center;
-    max-height: 32px;
-    width: 165px;
-}
-
 #companyName {
     padding-top: 115px;
     font-size: 40px;
     font-weight: bold;
 }
 
-#salesFigures {
-    padding-top: 150px;
-    font-size: 35px;
-}
-
-#salesContainerL {
-    padding-top: 150px;
-}
-
-#salesContainerIcon {
-    justify-content: center;
-}
-
-#salesContainerIcon:before {
-    content : "";
-    position: absolute;
-    margin: auto;
-    left    : auto;
-    bottom  : 0;
-    height  : 1px;
-    width   : 75%;
-    border-bottom:1px solid #8E8E8E;
-}
-
-#salesHeader {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 55px;
-    width: 100%;
-}
-
-#salesPrice {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 55px;
-    width: 100%;
-}
-
-#salesDiscount {
-    font-size: 20px;
-    font-weight: bold;
-    padding-top: 55px;
-    width: 100%;
-}
-
-#salesTotals {
-    font-size: 20px;
-    padding-top: 55px;
-    width: 100%;
-}
-
-#salesBuyButtonContainer {
-    width: 100%;
-}
-
-#buyButton {
-    display: flex;
-    justify-content: center;
-}
-
-#buyButtonImg {
-    width: 275px;
-}
-
-#salesDiscountName {
-    text-align: right;
-}
-
-#salesDiscountField {
-    padding-left: 30px;
-}
-
-#invContainerSales {
-    font-size: 14px;
-    max-height: 717px;
-    overflow: auto;
-}
-
-#invContainerSales thead th {
-    position: sticky;
-    top: 0;
-}
-
-#invContainerSales * {
-    vertical-align: middle;
-}
-
-#invContainer {
-    font-size: 14px;
-    max-height: 536px;
-    padding: 50px;
-    padding-top: 0px;
-    padding-right: 0px;
-    margin-top: 35px;
-    margin-right: 50px;
-    overflow: auto;
-}
-
-#invContainer thead th {
-    position: sticky;
-    top: 0;
-}
-
-#invContainer * {
-    vertical-align: middle;
-}
-
-#invFieldsContainer {
-    padding-top: 125px;
-    width: 100%;
-}
-
 #navIcon {
     max-width: 65px;
     margin-left: 15px;
-}
-
-#salesIcon {
-    max-width: 180px;
-    max-height: 100px;
-}
-
-#invContainerButtons {
-    width: 100%;
-    padding-top: 10px;
-}
-
-#invButtonDelete * {
-    color: gray!important;
 }
 
 #navArrow {
