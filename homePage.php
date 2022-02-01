@@ -33,7 +33,7 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-    <?php include(__DIR__ . "/nav.php")?>
+        <?php include(__DIR__ . "/nav.php")?>
 
         <!-- Page Content -->
         <div id="content">

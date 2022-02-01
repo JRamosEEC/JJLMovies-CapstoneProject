@@ -33,33 +33,11 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-    <?php 
-        include(__DIR__ . "/nav.php")
-    ?>
+        <?php include(__DIR__ . "/nav.php")?>
 
         <!-- Page Content -->
         <div id="content">
-            <div id="title" class="row header centerV no-marginL">
-                <nav class="transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info centerV">
-                        &#8249;
-                    </button>
-                </nav>
-
-                <div class="header center col-4">
-                Week's Hightlights
-                </div>
-
-                <div id="search">
-                    <input value="Search" type="button" >
-                </div>
-
-                <div id="login">
-                    <input  value="Login" type="button" onclick="window.location.href='login.php';">
-                </div>
-
-                <div id="spacer" class="col-4"></div>
-            </div>
+            <?php include(__DIR__ . "/header.php")?>
         </div>
 
     </div>   
