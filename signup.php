@@ -41,7 +41,7 @@
 
             <div id="spacer" class="col-4"></div>
 
-            <div id="signupContainer" class="col-4">
+            <div id="signupContainer" class="col-4 center">
                 <h1>SIGN UP</h1>
 
                 <div>
