@@ -39,6 +39,11 @@ h3 {
     align-items: stretch;
 }
 
+.btn {
+    font-size: 2rem;
+    padding: 0.25rem;
+}
+
 .header {
     background-color: #5B6FC6 !important;
     color: white;
