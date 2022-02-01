@@ -10,6 +10,11 @@ body {
     overflow-x: hidden;
 }
 
+textarea {
+    overflow: hidden;
+    resize: none;
+}
+
 h3 {
     margin: 0;
 }
