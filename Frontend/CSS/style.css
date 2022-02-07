@@ -47,6 +47,12 @@ h3 {
     color: #FFFFFF;
 }
 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    border-color: #4d4f74;
+    background-color: #2C2D43;
+    color: #FFFFFF;
+}
+
 .header {
     background-color: #5B6FC6 !important;
     color: white;
