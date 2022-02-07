@@ -42,8 +42,9 @@ h3 {
 .btn {
     font-size: 2rem;
     padding: 0.25rem;
-    color: #2C2D43;
+    border-color: #2C2D43;
     background-color: #2C2D43;
+    color: #FFFFFF;
 }
 
 .header {
