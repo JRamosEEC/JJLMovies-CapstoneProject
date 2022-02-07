@@ -1,5 +1,5 @@
 <?php
-    require (__DIR__ . "../../Backend/dbQuery.php");
+    require (__DIR__ . "/../../Backend/dbQuery.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="/Frontend/CSS/style.css">
+    <link rel="stylesheet" href="/../CSS/style.css">
     
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -33,11 +33,11 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "../Blueprints/nav.php")?>
+        <?php include(__DIR__ . "/../Blueprints/nav.php")?>
 
         <!-- Page Content -->
         <div id="content">
-            <?php include(__DIR__ . "../Blueprints/header.php")?>
+            <?php include(__DIR__ . "/../Blueprints/header.php")?>
 
             <div id="Logs">
                 <h1 style="color:white">LOG IN</h1>

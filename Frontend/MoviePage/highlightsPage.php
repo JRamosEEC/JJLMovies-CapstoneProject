@@ -1,5 +1,5 @@
 <?php
-    require (__DIR__ . "/Backend/dbQuery.php");
+    require (__DIR__ . "/../../Backend/dbQuery.php");
 ?>
 
 <!DOCTYPE html>
