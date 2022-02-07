@@ -10,11 +10,11 @@
     </div>
 
     <div id="search" >
-        <input value="Search" type="button" >
+    <a href="" class="btn btn-primary">Search</a>
     </div>
 
     <div id="login">
-        <input value="Login" type="button" href="/Frontend/Login-Signup/loginPage.php">
+        <a href="/Frontend/Login-Signup/loginPage.php" class="btn btn-primary">Login</a>
     </div>
 
     <div id="spacer" class="col-4"></div>
