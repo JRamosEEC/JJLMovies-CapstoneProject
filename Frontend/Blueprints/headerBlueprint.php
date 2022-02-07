@@ -1,4 +1,3 @@
-
 <div id="title" class="row header centerV no-marginL">
     <nav class="transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
         <button type="button" id="sidebarCollapse" class="btn btn-info centerV">

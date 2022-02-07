@@ -1,6 +1,20 @@
 <?php
     include (__DIR__ . "/dbConnection.php");
 
+    function getAdmin() {
+        global $db;
+
+        $results = [];
+
+        $stmt = $db->prepare("SELECT * FROM adminaccounts");
+
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return ($results);
+    }
+
     // --- Entity Table --- //
     function getEntity () {
         global $db;

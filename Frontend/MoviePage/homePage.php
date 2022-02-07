@@ -1,5 +1,5 @@
 <?php
-    require (__DIR__ . "/dbQuery.php");
+    require (__DIR__ . "../../Backend/dbQuery.php");
 ?>
 
 <!DOCTYPE html>
@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This Weeks hightlights</title>
+    <title>Ramos Inventory Management</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -33,13 +33,12 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/nav.php")?>
+        <?php include(__DIR__ . "../Blueprints/nav.php")?>
 
         <!-- Page Content -->
         <div id="content">
-            <?php include(__DIR__ . "/header.php")?>
+            <?php include(__DIR__ . "../Blueprints/header.php")?>
         </div>
-
-    </div>   
+    </div>  
 </body>
 </html>
