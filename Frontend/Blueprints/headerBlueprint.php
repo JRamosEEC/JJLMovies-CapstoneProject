@@ -14,7 +14,7 @@
     </div>
 
     <div id="login">
-        <input value="Login" type="button" onclick="window.location.href='login.php';">
+        <input value="Login" type="button" href="/../Login-Signup/loginPage.php">
     </div>
 
     <div id="spacer" class="col-4"></div>
