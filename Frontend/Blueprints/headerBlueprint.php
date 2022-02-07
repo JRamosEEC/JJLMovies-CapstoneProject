@@ -1,6 +1,6 @@
 <div id="title" class="row header centerV no-marginL">
     <nav class="transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
-        <a href="" class="btn btn-primary">&#8249;</a>
+        <a href="" class="btn btn-primary" id="sidebarCollapse">&#8249;</a>
     </nav>
 
     <div class="header center col-4">
