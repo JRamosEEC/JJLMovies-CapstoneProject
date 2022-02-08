@@ -33,11 +33,11 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/../Blueprints/nav.php")?>
+        <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
 
         <!-- Page Content -->
         <div id="content">
-            <?php include(__DIR__ . "/../Blueprints/header.php")?>
+            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
             <div id="Logs">
                 <h1 style="color:white">LOG IN</h1>
@@ -53,8 +53,8 @@
                 <br>
                 
                 <div id="btnLogs">
-                    <input type="button" name="loginbtn" value="Login">
-                    <input type="button" name="signupbtn" value="Create Account" href='signup.php'>
+                    <a id="BtnLogin" href="" class="btn btn-primary">Login</a>
+                    <a id="BtnCreateAccount" href="signupPage.php" class="btn btn-primary">Create Account</a>
                 </div>
             </div>
         </div>   
