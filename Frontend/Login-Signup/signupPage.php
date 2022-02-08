@@ -42,29 +42,31 @@
             <div id="signupContainer" class="row center no-margin no-padL">
                 <h1 class="col-12 center">SIGN UP</h1>
 
-                <div class="col-6 center">
-                    <input type="text" placeholder="First Name">
-                </div>
+                <form action="" method="post" class="row">
+                    <div class="col-md-6 center">
+                        <input type="text" name="firstName">
+                    </div>
 
-                <div class="col-6 center">
-                    <input type="text" placeholder="Last Name">
-                </div>
+                    <div class="col-md-6 center">
+                        <input type="text" name="lastName">
+                    </div>
 
-                <div class="col-6 center">
-                    <input type="text" placeholder="Create Username">
-                </div>
+                    <div class="col-md-6 center">
+                        <input type="text" name="username">
+                    </div>
 
-                <div class="col-6 center">
-                    <input type="text" placeholder="Create Password">
-                </div>
+                    <div class="col-md-6 center">
+                        <input type="text" name="password">
+                    </div>
 
-                <div class="col-12 center">
-                    <input type="text" placeholder="Email">
-                </div>
+                    <div class="col-md-12 center">
+                        <input type="text" name="email">
+                    </div>
 
-                <div class="col-12 center">
-                    <input type="button" value="Create Account">
-                </div>
+                    <div class="col-md-12 center">
+                        <input type="submit" value="Create Account">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
