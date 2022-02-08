@@ -116,6 +116,10 @@ a, a:hover, a:focus, a:hover p {
     margin-top: 150px;
 }
 
+#signupField{
+    margin-top: 10px;
+}
+
 #content {
     width: 100%;
     min-height: 104px;
