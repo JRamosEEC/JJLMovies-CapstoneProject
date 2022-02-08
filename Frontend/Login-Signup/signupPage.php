@@ -43,30 +43,62 @@
                 <h1 class="col-12 center">SIGN UP</h1>
 
                 <div id="spacer" class="col-3"></div>
+                
+                <form action="" method="post" class="col-6">
+                    <div class="row">
+                        <div id="signupField" class="col-xl-6">
+                            <div class="row">
+                                <div class="col-12 center">First Name</div>
 
-                <form action="" method="post" class="row col-6">
-                    <div id="signupField" class="col-xl-6 center">
-                        <input type="text" name="firstName">
-                    </div>
+                                <div class="col-12 center">
+                                    <input type="text" name="firstName">
+                                </div>
+                            </div>
+                        </div>
 
-                    <div id="signupField" class="col-xl-6 center">
-                        <input type="text" name="lastName">
-                    </div>
+                        <div id="signupField" class="col-xl-6">
+                            <div class="row">
+                                <div class="col-12 center">Last Name</div>
 
-                    <div id="signupField" class="col-xl-6 center">
-                        <input type="text" name="username">
-                    </div>
+                                <div class="col-12 center">
+                                    <input type="text" name="lastName">
+                                </div>
+                            </div>
+                        </div>
 
-                    <div id="signupField" class="col-xl-6 center">
-                        <input type="text" name="password">
-                    </div>
+                        <div id="signupField" class="col-xl-6">
+                            <div class="row">
+                                <div class="col-12 center">Username</div>
 
-                    <div id="signupField" class="col-md-12 center">
-                        <input type="text" name="email">
-                    </div>
+                                <div class="col-12 center">
+                                    <input type="text" name="username">
+                                </div>
+                            </div>
+                        </div>
 
-                    <div id="signupField" class="col-md-12 center">
-                        <input type="submit" value="Create Account">
+                        <div id="signupField" class="col-xl-6">
+                            <div class="row">
+                                <div class="col-12 center">Password</div>
+
+                                <div class="col-12 center">
+                                    <input type="text" name="password">
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div id="signupField" class="col-md-12">
+                            <div class="row">
+                                <div class="col-12 center">Email</div>
+
+                                <div class="col-12 center">
+                                    <input type="text" name="email">
+                                </div>
+                            </div>
+                        </div>  
+                        
+                        <div id="signupField" class="col-md-12 center">
+                            <input type="submit" value="Create Account">
+                        </div>
                     </div>
                 </form>
 
