@@ -7,14 +7,12 @@
         Home Feed
     </div>
 
-    <div id="search" >
-    <input type="button" class="btn btn-primary" value="Search">
+    <div id="search" class="center headerBtn col-2">
+        <input type="button" class="btn btn-primary" value="Search">
     </div>
 
-    <div id="login">
+    <div id="login" class="center headerBtn col-2">
         <a href="/Frontend/Login-Signup/loginPage.php" class="btn btn-primary">Login</a>
     </div>
-
-    <div id="spacer" class="col-4"></div>
 </div>
             

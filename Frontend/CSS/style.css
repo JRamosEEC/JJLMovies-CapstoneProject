@@ -14,24 +14,13 @@ h3 {
     margin: 0;
 }
 
-#login{
+.headerBtn{
     font-family: Roboto;
     font-style: normal;
     font-size: 15px;
     align-items: center;
     text-align: center;
-    background:#232437;
     border-style:none;
-
-}
-
-#search{
-    position:relative;
-    font-family: Roboto;
-    font-size: 15px;
-    align-items:center;
-    text-align: center;
-    background:#232437;
 }
 
 .wrapper {
