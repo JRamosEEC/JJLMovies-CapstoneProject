@@ -36,10 +36,8 @@
         <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
 
         <!-- Page Content -->
-        <div id="content" class="row">
+        <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-
-            <div id="spacer" class="col-4"></div>
 
             <div id="signupContainer" class="col-4 ">
                 <h1>SIGN UP</h1>
@@ -70,8 +68,6 @@
                     <input type="button" value="Create Account">
                 </div>
             </div>
-
-            <div id="spacer" class="col-4"></div>
         </div>
     </div>
 
