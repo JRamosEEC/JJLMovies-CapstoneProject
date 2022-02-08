@@ -8,7 +8,7 @@
     </div>
 
     <div id="search" >
-    <a href="" class="btn btn-primary">Search</a>
+    <input type="button" class="btn btn-primary" value="Search">
     </div>
 
     <div id="login">
