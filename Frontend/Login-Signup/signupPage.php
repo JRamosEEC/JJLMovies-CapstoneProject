@@ -39,92 +39,34 @@
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-            <div id="signupContainer" class="col-4 ">
-                <h1>SIGN UP</h1>
+            <div id="signupContainer" class="row center no-margin no-padL">
+                <h1 class="col-12 center">SIGN UP</h1>
 
-                <div>
-                    <input type="text" placeholder="Create Username">
-                </div>
-                <div>
-                    <input type="text" placeholder="Create Password">
-                </div>
-                
-                <div>
-                    <input type="text" placeholder="Email">
-                </div>
-
-                <div>
-                    <input type="text" placeholder="Birthday">
-                </div>
-
-                <div>
+                <div class="col-6 center">
                     <input type="text" placeholder="First Name">
                 </div>
 
-                <div>
+                <div class="col-6 center">
                     <input type="text" placeholder="Last Name">
                 </div>
-                <div>
+
+                <div class="col-6 center">
+                    <input type="text" placeholder="Create Username">
+                </div>
+
+                <div class="col-6 center">
+                    <input type="text" placeholder="Create Password">
+                </div>
+
+                <div class="col-12 center">
+                    <input type="text" placeholder="Email">
+                </div>
+
+                <div class="col-12 center">
                     <input type="button" value="Create Account">
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-
-            var element = document.getElementById('sidebarCollapse');
-            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
-            if (width > 768){
-                if($('#sidebar').attr("class")){
-                    element.innerHTML = '&#8250;';
-                }
-                else{
-                    element.innerHTML = '&#8249;';
-                }
-            }
-            else{
-                if($('#sidebar').attr("class")){
-                    element.innerHTML = '&#8249;';
-                }
-                else{
-                    element.innerHTML = '&#8250;';
-                }
-            }
-        });
-
-        var width = $(window).width();
-        $(window).on('resize', function() {
-            if ($(this).width() !== width) {
-                width = $(this).width();
-
-                var element = document.getElementById('sidebarCollapse');
-
-                if (width < 768){
-                    if($('#sidebar').attr("class")){
-                        element.innerHTML = '&#8249;';
-                    }
-                    else{
-                        element.innerHTML = '&#8250;';
-                    }
-                }
-                else{
-                    if($('#sidebar').attr("class")){
-                        element.innerHTML = '&#8250;';
-                    }
-                    else{
-                        element.innerHTML = '&#8249;';
-                    }
-                }
-        }
-        });
-
-        });
-    </script>
 </body>
 </html>

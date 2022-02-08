@@ -112,6 +112,10 @@ a, a:hover, a:focus, a:hover p {
     transition: all 0.3s;
 }
 
+#signupContainer{
+    margin-top: 200px;
+}
+
 #content {
     width: 100%;
     min-height: 104px;
