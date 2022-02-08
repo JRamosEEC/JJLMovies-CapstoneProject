@@ -33,11 +33,17 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/navBlueprint.php");
+
+        ?>
 
         <!-- Page Content -->
         <div id="content">
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            
+            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php");  
+            ?>
+            
+            
         </div>
     </div>   
 </body>

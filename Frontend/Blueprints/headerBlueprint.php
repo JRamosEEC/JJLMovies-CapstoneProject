@@ -3,8 +3,10 @@
         <a class="btn btn-primary" id="sidebarCollapse">&#8249;</a>
     </nav>
 
-    <div class="header center col-4">
-        Home Feed
+    <div id="head1" class="header center col-4">
+    <?php $header="";
+    echo $header?>
+
     </div>
 
     <div id="search" class="center headerBtn col-2">

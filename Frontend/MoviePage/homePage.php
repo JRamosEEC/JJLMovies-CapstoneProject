@@ -1,5 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
+    $movies=getMovies();
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +25,7 @@
 </head>
 
 <body>
+
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
@@ -38,6 +40,29 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php foreach ($movies as $row): ?>
+                <tr>
+                    <td><?php echo $row['MovieTitle']; ?></td>
+                    <td><?php echo $row['DatePosted']; ?></td>
+                    <td><?php echo $row['MovieGenre']; ?></td>        
+                    <td><?php echo $row['MovieDescription']; ?></td>    
+                    <td><?php echo $row['CreatorName']; ?></td>
+                    <td><?php echo $row['CoverIMG']; ?></td>
+                    <td><?php echo $row['BannerIMG']; ?></td>        
+                    <td><?php echo $row['LikeCount']; ?></td>      
+                    <td><?php echo $row['IsApproved']; ?></td>        
+                    <td><?php echo $row['UserAccountID']; ?></td>                     
+                       
+                </tr>
+            <?php endforeach; ?>
+            <table>
+                <td>
+                    <tr>
+
+                    </tr>
+                </td>
+            </table>    
+        
         </div>
     </div>  
 </body>

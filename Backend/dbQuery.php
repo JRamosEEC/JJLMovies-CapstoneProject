@@ -182,10 +182,7 @@
             $results = "Person Added";     //if command works print out cars added
         }
 
-        //$user1 = 'Lance';
-        //$pw1 = 'Football';
-        //$email = 'lance@yahoo.com'
-        //$protectdPW = sha1($pw1 . 'secret stuff')
+
     }
 
     //--LANCE - CREATING ADD USERS NOT DONE
@@ -270,5 +267,18 @@
             $results = "Movie Added";     //if command works print out car added
         }
     
+    }
+    function getMovies() {
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY  DatePosted"); 
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+         }
+         
+         return ($results);
     }
 ?>
