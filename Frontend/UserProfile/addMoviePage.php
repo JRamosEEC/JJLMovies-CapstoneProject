@@ -37,8 +37,50 @@
 
         <!-- Page Content -->
         <div id="content">
-        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+
+            <div class="row center no-margin no-padL">
+                <div id="spacer" class="col-3"></div>
+
+                <div id="signupContainer" class="col-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Movie Title</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                        </div>
+                        <label class="form-label" for="customFile">Upload Movie Image</label>
+                        <input type="file" class="form-control" id="customFile" />
+                        <label class="form-label" for="customFile">Upload Banner Image</label>
+                        <input type="file" class="form-control" id="customFile" />
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Movie Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Genre Select</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                            <option>Action</option>
+                            <option>Horror</option>
+                            <option>Comedy</option>
+                            <option>Family</option>
+                            <option>Thriller</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary">Create Movie</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="spacer" class="col-3"></div>
+            </div>
         </div>
     </div>  
+
+
 </body>
 </html>

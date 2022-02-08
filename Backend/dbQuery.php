@@ -160,30 +160,30 @@
     }
     //--LANCE - CREATING ADD ADMIN SO WE CAN ADD OURSELVES//
 
-    function adminInsert($userName, $password, $email){
+        // function adminInsert($userName, $password, $email){
 
-        global $db;
+        //     global $db;
 
-        $results = "Not addded";        //this will display if code doesnt work
+        //     $results = "Not addded";        //this will display if code doesnt work
 
-        $stmt = $db->prepare("INSERT INTO adminaccounts SET UserName = :UserName, Password = :Password, Email = :Email");     //craeting my sql statement that will add data into the db
+        //     $stmt = $db->prepare("INSERT INTO adminaccounts SET UserName = :UserName, Password = :Password, Email = :Email");     //craeting my sql statement that will add data into the db
 
-        $binds = array(
-            ":UserName" => $UserName,
+        //     $binds = array(
+        //         ":UserName" => $UserName,
 
-            ":Password" => $Password,
+        //         ":Password" => $Password,
 
-            ":Email" => $Email,
-                    //binding my information of array to my vars
-        );
-
-
-        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-            $results = "Person Added";     //if command works print out cars added
-        }
+        //         ":Email" => $Email,
+        //                 //binding my information of array to my vars
+        //     );
 
 
-    }
+        //     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        //         $results = "Person Added";     //if command works print out cars added
+        //     }
+
+
+        // }
 
     //--LANCE - CREATING ADD USERS NOT DONE
     function signUp($Username, $Password, $Birthdate, $FirstName, $LastName, $Email){
