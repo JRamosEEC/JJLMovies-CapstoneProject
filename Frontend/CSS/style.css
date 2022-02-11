@@ -7,7 +7,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-image: url('../../images/background.png');
-    background-repeat: no-repeat;
     background-size: 100% 100%;
     color: #FFFFFF;
     overflow-x: hidden;
@@ -61,7 +60,7 @@ a, a:hover, a:focus, a:hover p {
 }
 
 .header {
-    background-color: #5B6FC6 !important;
+    background-color: #373B69 !important;
     color: white;
     font-size: 30px;
     font-weight: bold;
@@ -114,7 +113,7 @@ a, a:hover, a:focus, a:hover p {
 }
 
 .current-page{
-    background-color: #5B6FC6 ;
+    background-color: #373B69 ;
 }
 
 .largeBtn {
@@ -125,16 +124,17 @@ a, a:hover, a:focus, a:hover p {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
 }
 
-#signupContainer{
+#formContainer{
     margin-top: 150px;
 }
 
-#signupField{
-    margin-top: 10px;
+#formField{
+    margin-top: 40px;
+    font-size: 18px;
 }
 
 #content {
@@ -174,7 +174,9 @@ a, a:hover, a:focus, a:hover p {
     max-width: 250px;
     min-height: 100vh;
 
-    background: #373B69;
+    /*position: fixed;*/
+    
+    background: #3F4478;
     color: #fff;
     transition: all 0.3s;
 }

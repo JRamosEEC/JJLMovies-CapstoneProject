@@ -39,14 +39,14 @@
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-            <div id="signupContainer" class="row center no-margin no-padL">
+            <div id="formContainer" class="row center no-margin no-padL">
                 <h1 class="col-12 center">SIGN UP</h1>
 
                 <div id="spacer" class="col-3"></div>
                 
                 <form action="" method="post" class="col-6">
                     <div class="row">
-                        <div id="signupField" class="col-xl-6">
+                        <div id="formField" class="col-xl-6">
                             <div class="row">
                                 <div class="col-12 center">First Name</div>
 
@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <div id="signupField" class="col-xl-6">
+                        <div id="formField" class="col-xl-6">
                             <div class="row">
                                 <div class="col-12 center">Last Name</div>
 
@@ -66,7 +66,7 @@
                             </div>
                         </div>
 
-                        <div id="signupField" class="col-xl-6">
+                        <div id="formField" class="col-xl-6">
                             <div class="row">
                                 <div class="col-12 center">Username</div>
 
@@ -76,7 +76,7 @@
                             </div>
                         </div>
 
-                        <div id="signupField" class="col-xl-6">
+                        <div id="formField" class="col-xl-6">
                             <div class="row">
                                 <div class="col-12 center">Password</div>
 
@@ -86,7 +86,7 @@
                             </div>
                         </div>  
 
-                        <div id="signupField" class="col-md-12">
+                        <div id="formField" class="col-md-12">
                             <div class="row">
                                 <div class="col-12 center">Email</div>
 
@@ -96,7 +96,7 @@
                             </div>
                         </div>  
                         
-                        <div id="signupField" class="col-md-12 center">
+                        <div id="formField" class="col-md-12 center">
                             <input type="submit" class="largeBtn" value="Create Account">
                         </div>
                     </div>
