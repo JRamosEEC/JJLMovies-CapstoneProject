@@ -17,6 +17,21 @@ h3 {
     margin: 0;
 }
 
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 2.3em;
+    color: #FFFFFF;
+}
+
+a, a:hover, a:focus, a:hover p {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+
 .headerBtn{
     font-family: Roboto;
     font-style: normal;
@@ -102,17 +117,16 @@ h3 {
     background-color: #5B6FC6 ;
 }
 
-p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 2.3em;
-    color: #FFFFFF;
-}
-
-a, a:hover, a:focus, a:hover p {
+.largeBtn {
+    background-color: #373B69;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    transition: all 0.3s;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 #signupContainer{
