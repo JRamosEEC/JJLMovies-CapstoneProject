@@ -40,29 +40,8 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-            <?php foreach ($movies as $row): ?>
-                <tr>
-                    <td><?php echo $row['MovieTitle']; ?></td>
-                    <td><?php echo $row['DatePosted']; ?></td>
-                    <td><?php echo $row['MovieGenre']; ?></td>        
-                    <td><?php echo $row['MovieDescription']; ?></td>    
-                    <td><?php echo $row['CreatorName']; ?></td>
-                    <td><?php echo $row['CoverIMG']; ?></td>
-                    <td><?php echo $row['BannerIMG']; ?></td>        
-                    <td><?php echo $row['LikeCount']; ?></td>      
-                    <td><?php echo $row['IsApproved']; ?></td>        
-                    <td><?php echo $row['UserAccountID']; ?></td>                     
-                       
-                </tr>
-            <?php endforeach; ?>
-            <table>
-                <td>
-                    <tr>
 
-                    </tr>
-                </td>
-            </table>    
-        
+            
         </div>
     </div>  
 </body>

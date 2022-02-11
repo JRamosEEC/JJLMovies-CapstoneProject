@@ -158,6 +158,7 @@
 
         return ($results);
     }
+    
     //--LANCE - CREATING ADD ADMIN SO WE CAN ADD OURSELVES//
 
         // function adminInsert($userName, $password, $email){
@@ -186,6 +187,7 @@
         // }
 
     //--LANCE - CREATING ADD USERS NOT DONE
+
     function signUp($Username, $Password, $Birthdate, $FirstName, $LastName, $Email){
 
         global $db;
@@ -230,8 +232,7 @@
             
         $stmt->execute ();
            
-        return( $stmt->rowCount() > 0);
-            
+        return( $stmt->rowCount() > 0);  
     }
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
@@ -258,7 +259,6 @@
             ":LikeCount" => $LikeCount,
             ":IsApproved" => $IsApproved,
             ":UserAccountID" => $UserAccountID,
-           
         );
     
     
@@ -268,12 +268,14 @@
         }
     
     }
+
     function getMovies() {
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY  DatePosted"); 
+        $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY DatePosted"); 
+
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
