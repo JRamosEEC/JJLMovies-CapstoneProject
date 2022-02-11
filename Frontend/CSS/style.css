@@ -128,6 +128,10 @@ a, a:hover, a:focus, a:hover p {
     font-weight: bold;
 }
 
+#feedContainer{
+    margin-left: 50px;
+}
+
 #formContainer{
     margin-top: 150px;
 }
