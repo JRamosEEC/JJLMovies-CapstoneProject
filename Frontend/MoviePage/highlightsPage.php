@@ -1,5 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
+    $movies = getMovies();
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +40,24 @@
 
         <!-- Page Content -->
         <div id="content">
-            
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php");  
-            ?>
+        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php foreach ($movies as $row): ?>
+                <tr>
+                    <td>
+                        <div class="row pl-3 pr-2 pt-2" >
+                            <img src=<?php echo $row['CoverIMG']; ?> width=218px; length=332px>
+                            <div class="row-2 pl-3 pr-3 pt-3">
+                                Creator : <?php echo $row['CreatorName']?>
+                                <br>
+                                Movie : <?php echo $row['MovieTitle'];?>
+                                <br>
+
+                            </div>
+                        </div>
+                    </td> 
+                                            
+                </tr>
+            <?php endforeach; ?>           
             
             
         </div>
