@@ -6,7 +6,10 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: url(images/background.png);
+    background-image: url('../../images/background.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #FFFFFF;
     overflow-x: hidden;
 }
 
