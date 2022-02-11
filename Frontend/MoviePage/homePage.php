@@ -61,6 +61,7 @@
                                     <br>
                                     <p><?php echo $row['MovieDescription'];?></p>
                                 </div>
+                                <br>
                             </div>
                         </td> 
                         </br>                                         
