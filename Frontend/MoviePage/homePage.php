@@ -1,6 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $movies=getMovies();
+    $movies = getMovies();
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJL Movie Reviews</title>
+    <title>Ramos Inventory Management</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -40,9 +40,25 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php foreach ($movies as $row): ?>
+                <tr>
+                    <td>
+                        <div class="row pl-3 pr-2 pt-2" >
+                            <img src=<?php echo $row['CoverIMG']; ?> width=218px; length=332px>
+                            <div class="row-2 pl-3 pr-3 pt-3">
+                                Creator : <?php echo $row['CreatorName']?>
+                                <br>
+                                Movie : <?php echo $row['MovieTitle'];?>
+                                <br>
 
+                            </div>
+                        </div>
+                    </td> 
+                                            
+                </tr>
+            <?php endforeach; ?>           
             
         </div>
-    </div>  
+    </div>
 </body>
 </html>
