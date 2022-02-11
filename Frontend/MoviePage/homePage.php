@@ -40,24 +40,33 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-            <?php foreach ($movies as $row): ?>
-                <tr>
-                    <td>
-                        <div class="row pl-3 pr-2 pt-2" >
-                            <img src=<?php echo $row['CoverIMG']; ?> width=218px; length=332px>
-                            <div class="row-2 pl-3 pr-3 pt-3">
-                                Creator : <?php echo $row['CreatorName']?>
-                                <br>
-                                Movie : <?php echo $row['MovieTitle'];?>
-                                <br>
-
-                            </div>
-                        </div>
-                    </td> 
-                                            
-                </tr>
-            <?php endforeach; ?>           
             
+            <div id="feedContainer">
+                <?php foreach ($movies as $row): ?>
+                    <tr>
+                        <td>
+                            <div id="feedItem" class="row pl-3 pr-2 pt-3">
+                                <img src=<?php echo $row['CoverIMG']; ?> width=218px; length=332px style="margin-right:20px;">
+                                <br>
+                                <div class="col pl-3 pr-3 pt-3">
+                                    <strong>Creator</strong> : <?php echo $row['CreatorName']?>
+                                <br>
+                                    <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
+                                <br>
+                                    <strong>Rating</strong>
+                                <br>
+                                </div>
+                                <div id="detail" class="col pl-4 pr- pt-3">
+                                    <h2><strong>Description</strong></h2>
+                                    <br>
+                                    <p><?php echo $row['MovieDescription'];?></p>
+                                </div>
+                            </div>
+                        </td> 
+                        </br>                                         
+                    </tr>
+                <?php endforeach; ?>           
+            </div>
         </div>
     </div>
 </body>
