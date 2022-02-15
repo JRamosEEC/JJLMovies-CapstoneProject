@@ -46,7 +46,7 @@
                     <tr>
                         <td>
                             <div id="feedItem" class="row pl-3 pr-2 pt-3">
-                                <img src=<?php echo $row['CoverIMG']; ?> width=218px; length=332px style="margin-right:20px;">
+                                <img src=<?php echo $row['CoverIMG']; ?> width=137px; length=182px style="margin-right:20px;">
                                 <br>
                                 <div class="col pl-3 pr-3 pt-3">
                                     <strong>Creator</strong> : <?php echo $row['CreatorName']?>
