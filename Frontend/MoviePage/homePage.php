@@ -53,7 +53,7 @@
                                 <br>
                                     <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
                                 <br>
-                                    <strong>Rating</strong>
+                                    <strong>Rating :</strong>
                                 <br>
                                 </div>
                                 <div id="detail" class="col pl-4 pr- pt-3">
