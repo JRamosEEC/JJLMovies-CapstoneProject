@@ -38,31 +38,6 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
     <!-- Page Content -->
     <div id="content">
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-
-        <div id="Logs">
-            <h1 style="color:white">LOGIN</h1>
-
-            <div id="username">
-                <input type="text" name="Username" placeholder="Username">
-            </div>
-
-            <div id="pwrd">
-                <input type="password" name="Password" placeholder="Password">
-            </div>
-
-            <br>
-            
-            <div id="btnLogs">
-                <a id="BtnLogin" href="" class="btn btn-primary">Login</a>
-                <a id="BtnCreateAccount" href="signupPage.php" class="btn btn-primary">Create Account</a>
-
-
-
-            </div>
-
-
-        </div>
-
         <div id="formContainer" class="row center no-margin no-padL">
             <h1 class="col-xl-6 center">Login</h1>
 
