@@ -97,7 +97,9 @@
                         </div>  
                         
                         <div id="formField" class="col-md-12 center">
-                            <input type="submit" class="largeBtn" value="Create Account">
+                            <div id="createAcnt" class="center headerBtn col-6">
+                                <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
+                            </div>
                         </div>
                     </div>
                 </form>
