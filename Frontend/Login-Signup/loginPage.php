@@ -43,7 +43,7 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
 
             <div id="spacer" class="col-3"></div>
             
-            <form action="" method="post" class="col-3">
+            <form action="" method="post" class="col-6">
                 <div class="row">
        
                     <div id="formContainer" class="col-xl-6">
