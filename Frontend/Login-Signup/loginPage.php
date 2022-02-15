@@ -39,7 +39,7 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
     <div id="content">
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
         <div id="formContainer" class="row center no-margin no-padL">
-            <h1 class="col-xl-6 center">Login</h1>
+            <h1 class="col-xl-12 center">Login</h1>
 
             <div id="spacer" class="col-3"></div>
             
@@ -68,8 +68,11 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
 
                     
                     <div id="formContainer" class="col-xl-12 center">
+                        <div id="login" class="center headerBtn col-6">
+                            <a href="/Frontend/MoviePage/homePage.php" class="btn btn-primary">Login</a>
+                        </div>
                         
-                        <div id="login" class="center headerBtn col-2">
+                        <div id="createAcnt" class="center headerBtn col-6">
                             <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
                         </div>
                     </div>
