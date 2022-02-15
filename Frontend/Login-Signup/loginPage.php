@@ -68,7 +68,10 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
 
                     
                     <div id="formContainer" class="col-xl-12 center">
-                        <input type="submit" class="largeBtn" value="Create Account">
+                        
+                        <div id="login" class="center headerBtn col-2">
+                            <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
+                        </div>
                     </div>
                 </div>
             </form>
