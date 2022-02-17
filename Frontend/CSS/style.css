@@ -10,6 +10,7 @@ body {
     background-size: 100% 100%;
     color: #FFFFFF;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h3 {
@@ -28,8 +29,6 @@ a, a:hover, a:focus, a:hover p {
     text-decoration: none;
     transition: all 0.3s;
 }
-
-
 
 .headerBtn{
     font-family: Roboto;
@@ -144,7 +143,19 @@ p{
     background: rgba(0, 0, 0, 0.2);
 
     margin: 10px;
+    margin-bottom: 0px;
     padding: 20px;
+    padding-bottom: 0px;
+
+    overflow-y: scroll;
+    height:calc(100vh - 104px);
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#feedContainer::-webkit-scrollbar {
+    display: none;
 }
 
 #feedItem{
@@ -173,7 +184,6 @@ p{
 #content {
     width: 100%;
     min-height: 104px;
-    
 }
 
 #companyName {

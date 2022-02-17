@@ -36,6 +36,7 @@
     <!--- Elvis - Completed most of the php as of now 2/17/22 and did a large part of the frontend --->
 
     <!--- Justin I just reworked a lot of the design to more match our impression of the webpage, however it's not finished --->
+        <!-- made the inside feed container scrollable while the rest of the page is not --- The nav will stay still and the background image will pop behind the now transparent feed items --->
 
     <div class="wrapper">
         <!-- Sidebar -->
