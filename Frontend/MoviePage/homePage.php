@@ -33,6 +33,10 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
+    <!--- Elvis - Completed most of the php as of now 2/17/22 and did a large part of the frontend --->
+
+    <!--- Justin I just reworked a lot of the design to more match our impression of the webpage, however it's not finished --->
+
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
@@ -45,26 +49,36 @@
                 <?php foreach ($movies as $row): ?>
                     <tr>
                         <td>
-                            <div id="feedItem" class="row pl-3 pr-2 pt-3">
-                                <img src=<?php echo $row['CoverIMG']; ?> width=145px; length=182px style="margin-right:20px;">
-                                <br>
-                                <div class="col pl-3 pr-3 pt-3">
-                                    <strong>Creator</strong> : <?php echo $row['CreatorName']?>
-                                <br>
-                                    <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
-                                <br>
-                                    <strong>Rating :</strong>
-                                <br>
+                            <div id="feedItem" class="row no-margin no-pad">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-3 no-pad">
+                                            <img src=<?php echo $row['CoverIMG']; ?> width=145px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                                        </div>
+
+                                        <div class="col-9 no-pad">
+                                            <div class="row">
+                                                <strong>Creator</strong> : <?php echo $row['CreatorName']?>
+                                            </div>
+
+                                            <div class="row">
+                                                <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
+                                            </div>
+
+                                            <div class="row">
+                                                <strong>Rating :</strong>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div id="detail" class="col pl-4 pr- pt-3">
                                     <h2><strong>Description</strong></h2>
                                     <br>
                                     <p><?php echo $row['MovieDescription'];?></p>
                                 </div>
-                                <br>
                             </div>
-                        </td> 
-                        </br>                                         
+                        </td>                                         
                     </tr>
                 <?php endforeach; ?>           
             </div>
