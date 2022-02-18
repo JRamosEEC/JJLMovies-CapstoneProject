@@ -43,42 +43,27 @@
                 <div id="spacer" class="col-3"></div>
 
                 <div id="signupContainer" class="col-6">
-                    <form>
+                    <form action='deleteMovie.php' method="post">
+                    
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Movie Title</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
                         </div>
-                        <label class="form-label" for="customFile">Edit Movie Image</label>
+                        
+
+                        <label class="form-label" for="customFile">Movie Image</label>
                         <input type="file" class="form-control" id="customFile" />
-                        <label class="form-label" for="customFile">Edit Banner Image</label>
-                        <input type="file" class="form-control" id="customFile" />
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Edit Movie Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Genre Select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                            <option>Action</option>
-                            <option>Adventure</option>
-                            <option>Horror</option>
-                            <option>Comedy</option>
-                            <option>Family</option>
-                            <option>Thriller</option>
-                            <option>Drama</option>
-                            <option>Science Fiction</option>
-                            <option>Romance</option>
-                            <option>Western</option>
-                            <option>Crime</option>
-                            <option>Musical</option>
-                            <option>Fantasty</option>
-                            </select>
-                        </div>
+
+                        
+                        
+                        
+                        
+                        
+                       
 
 
-
-                        <div class="col-6">
-                        <button type="submit" class="btn btn-primary">Edit Movie</button>
+                        <div class="col-sm-6">
+                        <button name='deletebtn'type="submit" class="btn btn-primary">Delete Movie</button>
                         </div>
                     </form>
                 </div>
@@ -87,6 +72,20 @@
             </div>
         </div>
     </div>  
+
+    <?php
+
+       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Something posted 
+        echo "This is a test" ; 
+    
+        if (isset($_POST['btnDelete'])) {
+            echo "Your movie has been deleted " ;
+        } else {
+            // Assume btnSubmit
+        }
+    }
+    ?>
 
 
 </body>

@@ -1,5 +1,17 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
+
+
+
+
+
+    $movieTitle = filter_input(INPUT_POST, 'movieTitle');
+    $movieIMG = filter_input(INPUT_POST, 'movieIMG');
+    $movieBanner = filter_input(INPUT_POST, 'movieBanner');
+    $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
+    $movieGenre = filter_input(INPUT_POST, 'movieGenre');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,44 +55,141 @@
                 <div id="spacer" class="col-3"></div>
 
                 <div id="signupContainer" class="col-6">
-                    <form>
+                    <form action='addMoviePage.php' method='post'>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Movie Title</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                            <label  for="exampleFormControlInput1">Movie Title</label>
+                            <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
                         </div>
+
                         <label class="form-label" for="customFile">Upload Movie Image</label>
-                        <input type="file" class="form-control" id="customFile" />
+                        <input name='movieIMG' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
                         <label class="form-label" for="customFile">Upload Banner Image</label>
-                        <input type="file" class="form-control" id="customFile" />
+                        <input name='movieBanner' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
 
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Movie Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3" value="<?php echo $movieDescripton; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Genre Select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php echo $movieGenre; ?>">
                             <option>Action</option>
+                            <option>Adventure</option>
                             <option>Horror</option>
                             <option>Comedy</option>
                             <option>Family</option>
                             <option>Thriller</option>
+                            <option>Drama</option>
+                            <option>Science Fiction</option>
+                            <option>Romance</option>
+                            <option>Western</option>
+                            <option>Crime</option>
+                            <option>Musical</option>
+                            <option>Fantasty</option>
                             </select>
                         </div>
 
 
 
                         <div class="col-sm-6">
-                        <button type="submit" class="btn btn-primary">Create Movie</button>
+                        <button name='submitBtn' type="submit" class="btn btn-primary">Create Movie</buton>
                         </div>
                     </form>
                 </div>
 
                 <div id="spacer" class="col-3"></div>
+
+
+                <?php
+
+                    if(isset($_POST['submitBtn'])){
+
+
+                    
+                        // $status = $statusMsg = ''; 
+
+                        // if(isset($_POST["submit"])){ 
+
+
+                        //     $status = 'error'; 
+                            
+                        //     if(!empty($_FILES["movieIMG"]["name"])) { 
+
+                                
+                        //         $fileName = basename($_FILES["movieIMG"]["name"]); 
+
+                        //         $fileType = pathinfo($fileName, PATHINFO_EXTENSION
+                        //     ); 
+                                
+                        //         // Allow certain file formats 
+                        //         $allowTypes = array('jpg','png','jpeg','gif'); 
+                        //         if(in_array($fileType, $allowTypes)){ 
+                        //             $image = $_FILES['movieIMG']['tmp_name']; 
+                        //             $imgContent = addslashes(file_get_contents($image)); 
+                                
+                        //             // Insert image content into database 
+                        //             //  $insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
+                                    
+                        //             if($insert){ 
+                        //                 $status = 'success'; 
+                        //                 $statusMsg = "File uploaded successfully."; 
+                        //             }else{ 
+                        //                 $statusMsg = "File upload failed, please try again."; 
+                        //             }  
+                        //         }else{ 
+                        //             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+                        //         } 
+                        //     }else{ 
+                        //         $statusMsg = 'Please select an image file to upload.'; 
+                        //     } 
+                        // } 
+                        
+                        // // Display status message 
+                        // echo $statusMsg; 
+
+
+
+
+                        $error = 0;
+
+
+                        $movieTitle = filter_input(INPUT_POST, 'movieTitle');
+
+                        if(strlen($movieTitle) <= 5)
+                        {
+
+                            echo"<br>Please make the title at least 5 characters!";
+                            $error = 1;
+                        }
+                        else{
+
+                            $error = 0;
+                        }
+
+                        if($error = 0)
+                        {
+                            $results = addMovie();
+                            
+
+                            if(isPostRequest()){
+                                echo "Movie added";
+                            }
+
+
+
+                        }
+                        else{
+
+                            echo '<br>please fix errors';
+                            
+                        }
+
+                    }
+
+
+                ?>
             </div>
         </div>
     </div>  
-
-
 </body>
 </html>
