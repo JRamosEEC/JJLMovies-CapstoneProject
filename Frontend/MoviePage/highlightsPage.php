@@ -44,9 +44,13 @@
                 <?php foreach($trend as $row) :?>
                     <div class="col-xl-4" id="trends">
                         <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; >
-                        <div id="trendInfo" class="row-2">
-                            <?php echo $row['MovieTitle'];?>
-                            <div class="row-3" style="text-align:right;">  
+                        <div id="trendInfo" class="row">
+
+                            <div class="col-8">  
+                                <?php echo $row['MovieTitle'];?>
+                            </div>
+
+                            <div class="col-4" style="text-align:center;">  
                                 <?php echo $row['LikeCount']; ?>
                             </div>
                         </div>  
