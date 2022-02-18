@@ -249,14 +249,12 @@ p{
     }
 }
 #trending{
-    padding-left:18px;
+    padding-bottom:25px;
 }
 #trendImg{
-    margin-right: 20px;
-    margin-bottom:20px;
     border-width: 9px;
     border-style: solid; 
     border-color:#373B69;
-    border-bottom-width: 40px;
+   
 }
 

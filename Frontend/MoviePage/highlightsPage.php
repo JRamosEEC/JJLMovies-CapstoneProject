@@ -1,6 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $trend =getMovies();
+    $trend =getTrends();
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +44,13 @@
                     
                 <div class="col-3">
                         <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=250px height="390px"; >
-                        <?php echo $row['MovieTitle'];?>      
+                        <div class="row-3">
+                            <?php echo $row['MovieTitle'];?>   
+                            <p style="Margin: left 10px;"><?php echo $row['LikeCount']; ?></p>
+                        </div>  
+                        
+                            
+                        
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                     </div>
                 <?php endforeach ?>
