@@ -139,7 +139,7 @@ p{
     font-size:15px;
 }
 
-#itemContainer{
+#feedContainer{
     background: rgba(0, 0, 0, 0.2);
 
     margin: 10px;
@@ -154,7 +154,7 @@ p{
     scrollbar-width: none;  /* Firefox */
 }
 
-#itemContainer::-webkit-scrollbar {
+#feedContainer::-webkit-scrollbar {
     display: none;
 }
 
@@ -248,5 +248,15 @@ p{
         margin-left: 0;
     }
 }
-
+#trending{
+    padding-left:18px;
+}
+#trendImg{
+    margin-right: 20px;
+    margin-bottom:20px;
+    border-width: 9px;
+    border-style: solid; 
+    border-color:#373B69;
+    border-bottom-width: 40px;
+}
 
