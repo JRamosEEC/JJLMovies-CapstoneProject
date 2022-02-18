@@ -1,5 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
+    $trend =getMovies();
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJl Movie Reviews</title>
+    <title>JJL Movie Reviews</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -35,7 +36,19 @@
         <!-- Page Content -->
         <div id="content">   
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php"); ?>       
-        
+
+            
+            </br>
+            <div class="row no-margin no-pad" id="trending">
+                <?php foreach($trend as $row) :?>
+                    
+                <div class="col-3" id="trendImg">
+                        <img src=<?php echo $row['CoverIMG']; ?> width=250px height="390px"; >
+                        <?php echo $row['MovieTitle'];?>      
+                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                    </div>
+                <?php endforeach ?>
+            </div>
         </div>
     </div>   
 </body>
