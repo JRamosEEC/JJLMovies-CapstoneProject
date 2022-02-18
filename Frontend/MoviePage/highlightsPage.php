@@ -37,8 +37,6 @@
         <div id="content">   
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php"); ?>       
 
-            
-            </br>
             <div class="row no-margin no-pad" id="itemContainer">
             
                 <?php foreach($trend as $row) :?>
