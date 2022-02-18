@@ -139,7 +139,7 @@ p{
     font-size:15px;
 }
 
-#feedContainer{
+#itemContainer{
     background: rgba(0, 0, 0, 0.2);
 
     margin: 10px;
@@ -154,7 +154,7 @@ p{
     scrollbar-width: none;  /* Firefox */
 }
 
-#feedContainer::-webkit-scrollbar {
+#itemContainer::-webkit-scrollbar {
     display: none;
 }
 
