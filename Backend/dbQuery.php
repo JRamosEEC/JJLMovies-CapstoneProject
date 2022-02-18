@@ -139,6 +139,11 @@
          
          return ($results);
     }
+<<<<<<< HEAD
+
+    function isPostRequest() {
+        return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
+=======
     function getTrends() {
         global $db;
         
@@ -152,5 +157,6 @@
          }
          
          return ($results);
+>>>>>>> 1801229a7b32978c979c4510b84b64bb17ba98d1
     }
 ?>
