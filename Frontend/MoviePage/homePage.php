@@ -46,7 +46,7 @@
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
             
-            <div id="feedContainer">
+            <div id="itemContainer">
                 <?php foreach ($movies as $row): ?>
                     <div id="feedItem" class="row no-margin no-pad">
                         <div class="col">
