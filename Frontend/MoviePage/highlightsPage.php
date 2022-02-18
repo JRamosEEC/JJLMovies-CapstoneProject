@@ -42,8 +42,8 @@
             <div class="row no-margin no-pad" id="trending">
                 <?php foreach($trend as $row) :?>
                     
-                <div class="col-3" id="trendImg">
-                        <img src=<?php echo $row['CoverIMG']; ?> width=250px height="390px"; >
+                <div class="col-3">
+                        <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=250px height="390px"; >
                         <?php echo $row['MovieTitle'];?>      
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                     </div>
