@@ -39,20 +39,19 @@
 
             
             </br>
-            <div class="row no-margin no-pad" id="trending">
+            <div class="row no-margin no-pad" id="itemContainer">
+            
                 <?php foreach($trend as $row) :?>
-                    
-                <div class="col-3">
-                        <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=250px height="390px"; >
-                        <div class="row-3">
-                            <?php echo $row['MovieTitle'];?>   
-                            <p style="Margin: left 10px;"><?php echo $row['LikeCount']; ?></p>
+                    <div class="col-xl-4" id="trends">
+                        <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; >
+                        <div id="trendInfo" class="row-2">
+                            <?php echo $row['MovieTitle'];?>
+                            <div class="row-3" style="text-align:right;">  
+                                <?php echo $row['LikeCount']; ?>
+                            </div>
                         </div>  
-                        
-                            
-                        
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                    </div>
+                </div>
                 <?php endforeach ?>
             </div>
         </div>

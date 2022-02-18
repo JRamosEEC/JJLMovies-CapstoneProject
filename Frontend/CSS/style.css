@@ -146,7 +146,7 @@ p{
     padding: 20px;
     padding-bottom: 0px;
     overflow-y: scroll;
-    height:calc(100vh - 104px);
+    height:calc(100vh - 124px);
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -246,13 +246,14 @@ p{
         margin-left: 0;
     }
 }
-#trending{
-    padding-bottom:25px;
-}
-#trendImg{
-    border-width: 9px;
-    border-style: solid; 
+#trends{
+    border-style: solid;
     border-color:#373B69;
-   
+    border-style: solid;
+    padding:10px;
+    border-bottom:30px;
+}
+#trendInfo{
+    padding-top:10px;
 }
 
