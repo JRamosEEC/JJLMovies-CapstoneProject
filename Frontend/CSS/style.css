@@ -248,13 +248,14 @@ p{
         margin-left: 0;
     }
 }
-#trending{
-    padding-bottom:25px;
-}
-#trendImg{
-    border-width: 9px;
-    border-style: solid; 
+#trends{
+    border-style: solid;
     border-color:#373B69;
-   
+    border-style: solid;
+    padding:10px;
+    border-bottom:30px;
+}
+#trendInfo{
+    padding-top:10px;
 }
 
