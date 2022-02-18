@@ -139,8 +139,24 @@
          
          return ($results);
     }
+<<<<<<< HEAD
 
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
+=======
+    function getTrends() {
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+         }
+         
+         return ($results);
+>>>>>>> 1801229a7b32978c979c4510b84b64bb17ba98d1
     }
 ?>

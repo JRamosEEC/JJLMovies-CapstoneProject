@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramos Inventory Management</title>
+    <title>JJL Movie Reviews</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -37,7 +37,17 @@
 
         <!-- Page Content -->
         <div id="content">
-        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+
+            <div class="row no-margin">
+                <div id="itemContainer" class="col">
+
+                </div>
+
+                <div id="itemContainer" class="col">
+
+                </div>
+            </div>
         </div>
     </div> 
 </body>
