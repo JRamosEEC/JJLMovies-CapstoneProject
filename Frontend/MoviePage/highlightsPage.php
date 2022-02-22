@@ -40,7 +40,7 @@
             <div class="row no-margin no-pad" id="itemContainer">
             
                 <?php foreach($trend as $row) :?>
-                    <div class="col-xl-4" id="trends">
+                    <div class="col-xl-3" id="trends">
                         <a href="moviePage.php?id=<?php echo $row['movieID']?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
                         <div id="trendInfo" class="row">
 

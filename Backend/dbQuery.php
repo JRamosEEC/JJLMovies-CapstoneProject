@@ -186,7 +186,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = movieID"); 
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = :movieID"); 
         
         $stmt->bindvalue(':movieID', $id);
 
