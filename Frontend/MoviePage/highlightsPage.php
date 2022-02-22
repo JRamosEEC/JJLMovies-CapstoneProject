@@ -1,6 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $trend =getTrends();
+    $trend = getTrends();
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
             
                 <?php foreach($trend as $row) :?>
                     <div class="col-xl-4" id="trends">
-                        <img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; >
+                        <a href="moviePage.php?id=<?php echo $row['movieID']?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
                         <div id="trendInfo" class="row">
 
                             <div class="col-8">  
