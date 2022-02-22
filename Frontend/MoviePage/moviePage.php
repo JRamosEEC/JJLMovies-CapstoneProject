@@ -29,7 +29,8 @@
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
 
     <div class="wrapper">
         <!-- Sidebar -->
@@ -38,6 +39,7 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            
             <?php foreach($details as $row) :?>
                 <div class="row">
                     <div class="col-xl-4">
@@ -68,9 +70,11 @@
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                 </div>
                 <div id="itemContainer2">
-                    <h2>Ratings<h2>
-                        <div class="row">
-                            <input class="btn btn-primary" type="button" value="Write A Review">
+                    <h2>Reviews<h2>
+                        <div class="col-8">
+                            <input id="btnReview" class="btn btn-primary" type="button" value="Write A Review" name="btnReview" onclick="document.getElementById('txtReview').style.visibility='visible';">
+                            <input id="txtReview" type="text" style="visibility: hidden;" >
+                            
                         </div>
                     
                 </div>
