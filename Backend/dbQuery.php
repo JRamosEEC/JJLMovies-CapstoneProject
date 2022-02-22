@@ -144,13 +144,12 @@
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
     }
 
-    function editMovie($MovieID, $MovieTitle, $MovieGenre, $MovieDescription, $CoverIMG, $BannerIMG){
+    function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $CoverIMG, $BannerIMG){
         global $db; 
 
         $results = [];
 
-        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE movieID = :MovieID")
-        $stmt->bindvalue(':MovieID', $MovieID);
+        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE movieID = :MovieID");
         $stmt->bindvalue(':movieTitle', $MovieTitle);
         $stmt->bindvalue(':movieGenre', $MovieGenre);
         $stmt->bindvalue(':movieDescription', $MovieDescription); 
@@ -187,7 +186,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT movieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID  FROM movietable WHERE movieID = movieID"); 
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = movieID"); 
         
         $stmt->bindvalue(':movieID', $id);
 
