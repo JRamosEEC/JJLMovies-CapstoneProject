@@ -1,6 +1,7 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $details=getOneMovie();
+    $id=$_GET['id'] ?? -1;
+    $details=getOneMovie($id);
     
 ?>
 
@@ -38,20 +39,42 @@
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
             <?php foreach($details as $row) :?>
-                    <div class="col-xl-4" id="trends">
-                        <a href="moviePage.php?id=<?php echo $row['movieID']?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
-                        <div id="trendInfo" class="row">
-
-                            <div class="col-8">  
-                                <?php echo $row['MovieTitle'];?>
+                <div class="row">
+                    <div class="col-xl-4">
+                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
+                    </div>
+                    
+                    <div class="col-xl-8">  
+                        <div class="row" id="itemContainer2">  
+                            <div class="col">  
+                                    Title: <?php echo $row['MovieTitle'];?>
                             </div>
 
-                            <div class="col-4" style="text-align:center;">  
-                                <?php echo $row['LikeCount']; ?>
+                            <div class="col">  
+                                    Creator: <?php echo $row['CreatorName'];?>
                             </div>
-                        </div>  
+
+                            <div class="col">  
+                                    Rating: <?php echo $row['LikeCount'];?>
+                            </div>
+                        </div>
+
+                        <div class="row" id="itemContainer2">
+                                <h2 style="width:100%">Description</h2>
+
+                                <p style="width:100%"><?php echo $row['MovieDescription']; ?></p>
+                        </div>
+                    </div>               
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                 </div>
+                <div id="itemContainer2">
+                    <h2>Ratings<h2>
+                        <div class="row">
+                            <input class="btn btn-primary" type="button" value="Write A Review">
+                        </div>
+                    
+                </div>
+
                 <?php endforeach ?>
         </div>
     </div>  
