@@ -1,6 +1,7 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $details=getOneMovie();
+    $id=$_GET['movieID'];
+    $details=getOneMovie($id);
     
 ?>
 

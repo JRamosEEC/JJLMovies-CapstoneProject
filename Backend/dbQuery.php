@@ -150,12 +150,13 @@
         $results = [];
 
         $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE movieID = :MovieID")
-
+        $stmt->bindvalue(':MovieID', $MovieID);
         $stmt->bindvalue(':movieTitle', $MovieTitle);
         $stmt->bindvalue(':movieGenre', $MovieGenre);
         $stmt->bindvalue(':movieDescription', $MovieDescription); 
         $stmt->bindvalue(':CoverIMG', $CoverIMG);
         $stmt->bindvalue(':BannerIMG', $BannerIMG);
+        
 
         if($stmt->execute() && $stmt->rowCount()> 0) {
 
@@ -181,15 +182,18 @@
          
          return ($results);
     }
-    function getOneMovie(){
+    function getOneMovie($id){
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT * FROM movietable WHERE movieID LIKE movieID"); 
+        $stmt = $db->prepare("SELECT movieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID  FROM movietable WHERE movieID = movieID"); 
+        
+        $stmt->bindvalue(':movieID', $id);
+
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetch(PDO::FETCH_ASSOC);
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
         }
          
