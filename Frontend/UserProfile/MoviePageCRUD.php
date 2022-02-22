@@ -102,7 +102,9 @@
 
 
 
-                        <div class="col-sm-3">
+                        <div id="spacer" class="col-sm-3"></div>
+
+                        <div class="row">
                             <button name='submitBtn' type="submit" class="btn btn-primary"><?php echo $btnString?> </buton>
                         </div>
                     </form>
