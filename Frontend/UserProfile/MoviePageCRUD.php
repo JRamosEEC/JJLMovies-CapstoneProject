@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramos Inventory Management</title>
+    <title>JJL Movie Reviews</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -51,7 +51,7 @@
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-            <div class="row center no-margin no-padL">
+            <div id="AddEditMovie" class="row center no-margin no-padL">
                 <div id="spacer" class="col-3"></div>
 
                 <div id="signupContainer" class="col-6">
@@ -188,6 +188,45 @@
 
 
                 ?>
+            </div>
+
+            
+            <div id="DeleteMovie" class="row center no-margin no-padL">
+                <div id="spacer" class="col-3"></div>
+
+                <div id="signupContainer" class="col-6">
+                    <form action='deleteMovie.php' method="post">
+                    
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Movie Title</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                        </div>
+                        
+
+                        <label class="form-label" for="customFile">Movie Image</label>
+                        <input type="file" class="form-control" id="customFile" />
+
+                        <div class="col-sm-6">
+                            <button name='deletebtn'type="submit" class="btn btn-primary">Delete Movie</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="spacer" class="col-3"></div>
+
+                <?php
+
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        // Something posted 
+                        echo "This is a test" ; 
+                    
+                        if (isset($_POST['btnDelete'])) {
+                            echo "Your movie has been deleted " ;
+                        } else {
+                            // Assume btnSubmit
+                        }
+                    }
+                 ?>
             </div>
         </div>
     </div>  

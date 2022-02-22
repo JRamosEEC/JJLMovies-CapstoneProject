@@ -143,18 +143,55 @@
     function isPostRequest() {
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
     }
+
+    function editMovie($MovieID, $MovieTitle, $MovieGenre, $MovieDescription, $CoverIMG, $BannerIMG){
+        global $db; 
+
+        $results = [];
+
+        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE movieID = :MovieID")
+
+        $stmt->bindvalue(':movieTitle', $MovieTitle);
+        $stmt->bindvalue(':movieGenre', $MovieGenre);
+        $stmt->bindvalue(':movieDescription', $MovieDescription); 
+        $stmt->bindvalue(':CoverIMG', $CoverIMG);
+        $stmt->bindvalue(':BannerIMG', $BannerIMG);
+
+        if($stmt->execute() && $stmt->rowCount()> 0) {
+
+            $results = "Your movie has been edited!"; 
+
+        }
+
+        return ($results); 
+    }
+
     
     function getTrends() {
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
+        $stmt = $db->prepare("SELECT movieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
          }
+         
+         return ($results);
+    }
+    function getOneMovie(){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT * FROM movietable WHERE movieID LIKE movieID"); 
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                 
+        }
          
          return ($results);
     }

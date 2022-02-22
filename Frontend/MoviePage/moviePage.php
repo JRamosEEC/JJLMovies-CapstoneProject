@@ -1,5 +1,7 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
+    $details=getOneMovie();
+    
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +37,22 @@
         <!-- Page Content -->
         <div id="content">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+            <?php foreach($details as $row) :?>
+                    <div class="col-xl-4" id="trends">
+                        <a href="moviePage.php?id=<?php echo $row['movieID']?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
+                        <div id="trendInfo" class="row">
+
+                            <div class="col-8">  
+                                <?php echo $row['MovieTitle'];?>
+                            </div>
+
+                            <div class="col-4" style="text-align:center;">  
+                                <?php echo $row['LikeCount']; ?>
+                            </div>
+                        </div>  
+                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                </div>
+                <?php endforeach ?>
         </div>
     </div>  
 </body>
