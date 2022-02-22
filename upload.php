@@ -8,6 +8,8 @@
 <?php
 // Include the database configuration file
 require (__DIR__ . "/dbConfig2.ini");
+include (__DIR__ . "/dbConnection2.php");
+
 
 $statusMsg = '';
 
@@ -44,3 +46,30 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
 // Display status message
 echo $statusMsg;
 ?>
+
+
+<?php
+// Include the database configuration file
+include 'dbConnection2.php';
+
+// Get images from the database
+$query = "SELECT * FROM testimages ORDER BY uploaded_on DESC";
+
+$stmt = $db->prepare($query);
+
+$result = array();
+
+$stmt->execute();
+
+if($stmt->rowCount() > 0){
+
+    $row = $result->fetchAll(PDO::FETCH_ASSOC);
+    
+    while($row = $query->fetch_assoc()){
+        $imageURL = 'uploads/'.$row["file_name"];
+?>
+    <img src="<?php echo $imageURL; ?>" alt="" />
+<?php }
+}else{ ?>
+    <p>No image(s) found...</p>
+<?php } ?>

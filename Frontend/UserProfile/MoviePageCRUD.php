@@ -1,9 +1,20 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
+    $action = $_GET['action'] ?? '';
+    $btnString = "test";
 
+    if ($action == "add") {
+        $btnString = "Create";
+    } 
+    
+    else if ($action == "edit"){
+        $btnString = "Update";
+    }
 
-
+    else{
+        $btnString = "Delete";
+    }
 
     $movieTitle = filter_input(INPUT_POST, 'movieTitle');
     $movieIMG = filter_input(INPUT_POST, 'movieIMG');
@@ -91,8 +102,10 @@
 
 
 
-                        <div class="col-sm-6">
-                        <button name='submitBtn' type="submit" class="btn btn-primary">Create Movie</buton>
+                        <div id="spacer" class="col-sm-3"></div>
+
+                        <div class="row">
+                            <button name='submitBtn' type="submit" class="btn btn-primary"><?php echo $btnString?> </buton>
                         </div>
                     </form>
                 </div>
@@ -196,15 +209,9 @@
 
                 <div id="signupContainer" class="col-6">
                     <form action='deleteMovie.php' method="post">
-                    
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Movie Title</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title">
-                        </div>
-                        
+                        <div>movie title</div>
 
-                        <label class="form-label" for="customFile">Movie Image</label>
-                        <input type="file" class="form-control" id="customFile" />
+                        <div>movie img</div>
 
                         <div class="col-sm-6">
                             <button name='deletebtn'type="submit" class="btn btn-primary">Delete Movie</button>
