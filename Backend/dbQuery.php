@@ -158,4 +158,18 @@
          
          return ($results);
     }
+    function getOneMovie(){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT * FROM movietable WHERE movieID LIKE movieID"); 
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetch(PDO::FETCH_ASSOC);
+                 
+        }
+         
+         return ($results);
+    }
 ?>
