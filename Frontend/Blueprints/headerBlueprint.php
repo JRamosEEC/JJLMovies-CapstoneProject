@@ -3,11 +3,11 @@
 <div id="pageHeader" class="row header centerV no-marginL">
     <nav class="col-4 transparent centerV no-padL navbar-expand-lg navbar-light bg-light">
         <div class="row flex-nowrap" style="align-items: center;">
-            <div class="col" style="margin-right: 35px;">
+            <div class="col-auto no-padR">
                 <a class="btn btn-primary" id="sidebarCollapseBtnHead"><i id="sidebarCollapseBtnIcon" class="fa-solid fa-bars"></i></a>
             </div>
 
-            <a id="headerLogo" href="/Frontend/MoviePage/homePage.php" class="col"><img id='navLogo' class="text-center no-pad" src="/images/logo-icon.png"></a>
+            <a id="headerLogo" href="/Frontend/MoviePage/homePage.php" class="col-9"><img id='navLogo' class="text-center no-pad" src="/images/logo-icon.png"></a>
         </div>
     </nav>
 

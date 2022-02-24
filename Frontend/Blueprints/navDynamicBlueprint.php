@@ -2,11 +2,11 @@
 
 <nav id="sidebar">
     <div id="sidebarHeader" class="row no-margin">
-        <div class="col no-margin no-pad">
+        <div class="col-auto no-margin no-pad">
             <a id="sidebarCollapseBtnNav" class="btn btn-primary"><i id="sidebarCollapseBtnIcon" class="fa-solid fa-bars"></i></a>
         </div>
 
-        <a href="/Frontend/MoviePage/homePage.php" class="col no-margin"><img id='navLogo' class="text-center no-pad col" src="/images/logo-icon.png"></a>
+        <a href="/Frontend/MoviePage/homePage.php" class="col-9 no-margin"><img id='navLogo' class="text-center no-pad col" src="/images/logo-icon.png"></a>
     </div>
 
     <div id="spacerLine" class="row no-margin"></div>

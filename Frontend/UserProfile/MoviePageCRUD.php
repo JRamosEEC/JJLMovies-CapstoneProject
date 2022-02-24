@@ -56,7 +56,7 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
 
         <!-- Page Content -->
         <div id="content">
