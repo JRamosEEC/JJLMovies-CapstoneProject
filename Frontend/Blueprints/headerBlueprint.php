@@ -1,18 +1,17 @@
 <script src="https://kit.fontawesome.com/18ddcc2bb6.js" crossorigin="anonymous"></script>
 
-<div id="PageHeader" class="row header centerV no-marginL">
-    <nav class="col transparent centerV no-padL navbar-expand-lg navbar-light bg-light col-4">
-        <a class="btn btn-primary" id="sidebarCollapseHead"><i class="fa-solid fa-bars"></i></a>
+<div id="pageHeader" class="row header centerV no-marginL">
+    <nav class="col-4 transparent centerV no-padL navbar-expand-lg navbar-light bg-light">
+        <div class="row flex-nowrap" style="align-items: center;">
+            <div class="col" style="margin-right: 35px;">
+                <a class="btn btn-primary" id="sidebarCollapseBtnHead"><i id="sidebarCollapseBtnIcon" class="fa-solid fa-bars"></i></a>
+            </div>
+
+            <a id="headerLogo" href="/Frontend/MoviePage/homePage.php" class="col"><img id='navLogo' class="text-center no-pad" src="/images/logo-icon.png"></a>
+        </div>
     </nav>
 
-    <div id="head1" class="header center col-4">
-
-    <?php $header="";
-    echo $header?>
-
-    </div>
-
-    <div id="search" class="center headerBtn col-2">
+    <div id="search" class="center headerBtn col-6">
         <input type="button" class="btn btn-primary" value="Search">
     </div>
 
@@ -24,7 +23,7 @@
 <script>
     $(document).ready(function () {
 
-    $('#sidebarCollapseHead').on('click', function () {
+    $('#sidebarCollapseBtnHead').on('click', function () {
         $('#sidebar').toggleClass('active');
         $('#fadeLayer').toggleClass('active');
     });
