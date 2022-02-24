@@ -244,6 +244,21 @@ p{
     margin-bottom: auto;
 }
 
+#staticSidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+
+    margin-left: -250px;
+
+    position: fixed;
+    z-index: 9999;
+    
+    background-color: #373B69;
+    color: #fff;
+    transition: all 0.3s;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;
