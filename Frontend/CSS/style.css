@@ -39,11 +39,6 @@ a, a:hover, a:focus, a:hover p {
     border-style:none;
 }
 
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
-
 .btn {
     font-size: 2rem;
     padding: 0.25rem;
@@ -212,6 +207,12 @@ p{
     min-height: 104px;
 }
 
+#bodyContainer{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
 #companyName {
     padding-top: 115px;
     font-size: 40px;
@@ -235,6 +236,16 @@ p{
     margin-bottom: auto;
 }
 
+#navStaticIcon {
+    max-width: 40px;
+    max-height: 40px;
+
+    margin-left: 5px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #navArrow {
     max-width: 30px;
     max-height: 30px;
@@ -245,14 +256,12 @@ p{
 }
 
 #staticSidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
+    min-width: 50px;
+    max-width: 50px;
 
-    margin-left: -250px;
+    height: 100vh;
 
-    position: fixed;
-    z-index: 9999;
+    z-index: 9995;
     
     background-color: #373B69;
     color: #fff;
