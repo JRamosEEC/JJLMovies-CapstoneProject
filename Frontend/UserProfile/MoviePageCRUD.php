@@ -56,7 +56,7 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/../Blueprints/navBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
 
         <!-- Page Content -->
         <div id="content">
@@ -102,7 +102,9 @@
 
 
 
-                        <div class="col-sm-3">
+                        <div id="spacer" class="col-sm-3"></div>
+
+                        <div class="row">
                             <button name='submitBtn' type="submit" class="btn btn-primary"><?php echo $btnString?> </buton>
                         </div>
                     </form>
