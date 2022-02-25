@@ -61,6 +61,7 @@
         //$protectdPW = sha1($pw1)
     }
 
+
     //--Justin - Check Login for user logins
 
     function validateLogin ($userName, $password) {
@@ -179,6 +180,7 @@
          
          return ($results);
     }
+
     function getOneMovie($id){
         global $db;
         
@@ -187,6 +189,47 @@
         $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = :movieID"); 
         
         $stmt->bindvalue(':movieID', $id);
+
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+        }
+         
+         return ($results);
+    }
+
+    function addReview($userAccounID,$movieID,$ReviewDescription,$ReviewLikes){
+        
+        //craeting my add car function that will actually add to my db
+    
+    
+        global $db;
+    
+        $results = "Not addded";        //this will display if code doesnt work
+    
+        $stmt = $db->prepare("INSERT INTO reviewtable SET userAccountID = :userAccountID, movieID = :movieID, ReviewDescription = :ReviewDescription, ReviewLikes = :ReviewLikes");     //craeting my sql statement that will add data into the db
+    
+        $binds = array(
+            ":userAccountID" => $userAccountID,
+            ":movieID" => $movieID,
+            ":ReviewDescription" => $ReviewDescription,
+            ":ReviewLikes" => $ReviewLikes, //binding my information of array to my vars       
+        );
+    
+    
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+
+            $results = "Movie Added";     //if command works print out car added
+        }
+    }
+    function userPK(){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT userAccountID FROM useraccounts WHERE userAccountID= userAccountID"); 
+        
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {

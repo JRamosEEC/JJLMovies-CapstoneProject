@@ -39,11 +39,6 @@ a, a:hover, a:focus, a:hover p {
     border-style:none;
 }
 
-.wrapper {
-    display: flex;
-    align-items: stretch;
-}
-
 .btn {
     font-size: 2rem;
     padding: 0.25rem;
@@ -137,20 +132,6 @@ p{
     font-size:15px;
 }
 
-#pageHeader{
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-#spacerLine{
-    height: 1px;
-    width: 90%;
-    background-color: #2c2e42;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
 #itemContainer{
     background: rgba(0, 0, 0, 0.2);
 
@@ -212,10 +193,47 @@ p{
     min-height: 104px;
 }
 
+#bodyContainer{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
 #companyName {
     padding-top: 115px;
     font-size: 40px;
     font-weight: bold;
+}
+
+#pageHeader{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#logoContainer{
+    width: 16%;
+    min-width: 100px;
+}
+
+#headerSearchContainer{
+    width: 69%;
+}
+
+#loginContainer{
+    width: 15%;
+}
+
+#headerSearch{
+    width: 90%;
+}
+
+#spacerLine{
+    height: 1px;
+    width: 90%;
+    background-color: #2c2e42;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #navLogo {
@@ -235,6 +253,16 @@ p{
     margin-bottom: auto;
 }
 
+#navStaticIcon {
+    max-width: 40px;
+    max-height: 40px;
+
+    margin-left: 5px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #navArrow {
     max-width: 30px;
     max-height: 30px;
@@ -245,14 +273,12 @@ p{
 }
 
 #staticSidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
+    min-width: 50px;
+    max-width: 50px;
 
-    margin-left: -250px;
+    height: 100vh;
 
-    position: fixed;
-    z-index: 9999;
+    z-index: 9995;
     
     background-color: #373B69;
     color: #fff;
