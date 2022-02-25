@@ -1,7 +1,7 @@
 <script src="https://kit.fontawesome.com/18ddcc2bb6.js" crossorigin="anonymous"></script>
 
-<div id="pageHeader" class="row header centerV no-marginL">
-    <nav class="col-4 transparent centerV no-padL navbar-expand-lg navbar-light bg-light">
+<div id="pageHeader" class="row header centerV no-marginL flex-nowrap">
+    <nav id="logoContainer" class="col-auto transparent centerV no-padL navbar-expand-lg navbar-light bg-light">
         <div class="row flex-nowrap" style="align-items: center;">
             <div class="col-auto no-padR">
                 <a class="btn btn-primary" id="sidebarCollapseBtnHead"><i id="sidebarCollapseBtnIcon" class="fa-solid fa-bars"></i></a>
@@ -11,11 +11,11 @@
         </div>
     </nav>
 
-    <div id="search" class="center headerBtn col-6">
-        <input type="button" class="btn btn-primary" value="Search">
+    <div id="headerSearchContainer" class="center headerBtn col-auto">
+        <input id="headerSearch" type="text" value="Search">
     </div>
 
-    <div id="login" class="center headerBtn col-2">
+    <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">
         <a href="/Frontend/Login-Signup/loginPage.php" class="btn btn-primary">Login</a>
     </div>
 </div>

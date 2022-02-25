@@ -2,7 +2,20 @@
     require (__DIR__ . "/../../Backend/dbQuery.php");
     $id=$_GET['id'] ?? -1;
     $details=getOneMovie($id);
+    $userdetails=userPK();
+?>
+<?php 
+    foreach($userdetails as $r){
+        $userID=$r['userAccountID'];//getting the userAccount id from the accounts table
+    }
     
+    if(isPostRequest()){
+        $userAccountID=$userID;//adding user id to the review tables 
+        $movieID=$id;
+        $ReviewDescription = filter_input(INPUT_POST, 'txtReview');
+        $ReviewLikes=filter_input(INPUT_POST, 'txtRates');
+        addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes);
+    };      //adds value to function when the page posts
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +30,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../CSS/style.css">
-    
+    <script>
+        document.getElementById("btnReview").addEventListener("click", function(){
+             toggl
+             });
+    </script>
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -37,7 +54,7 @@
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
 
         <!-- Page Content -->
-        <div id="content">
+        <div id="content" method="POST">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
             
             <?php foreach($details as $row) :?>
@@ -69,15 +86,22 @@
                     </div>               
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                 </div>
-                <div id="itemContainer2">
-                    <h2>Reviews<h2>
-                        <div class="col-8">
-                            <input id="btnReview" class="btn btn-primary" type="button" value="Write A Review" name="btnReview" onclick="document.getElementById('txtReview').style.visibility='visible';">
-                            <input id="txtReview" type="text" style="visibility: hidden;" >
+                
+                    <div id="itemContainer2">
+                        <h2>Reviews<h2>
                             
-                        </div>
-                    
-                </div>
+                            <form method="post" class="col-8">
+                                <input id="btnReview" class="btn btn-primary" type="button" value="Write A Review" name="btnReview">
+
+                                <input id="txtReview" type="text" style="width:100%;">
+
+                                <input id="txtRates" type="text" style="
+                                width:100%;"
+                                >
+                            </form>
+                        
+                    </div>
+                
 
                 <?php endforeach ?>
         </div>
