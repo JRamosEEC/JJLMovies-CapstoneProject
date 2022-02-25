@@ -30,26 +30,24 @@
 
     //--LANCE - CREATING ADD USERS NOT DONE
 
-    function signUp($Username, $Password, $Birthdate, $FirstName, $LastName, $Email){
+    function signUp($Username, $Password, $FirstName, $LastName, $Email){
 
         global $db;
 
         $results = "Not addded";        //this will display if code doesnt work
 
-        $stmt = $db->prepare("INSERT INTO useraccounts SET Username = :Username, Password = :Password, Birthdate = :Birthdate, FirstName = :FirstName, LastName = :LastName, Email = :Email");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO useraccounts SET Username = :Username, Password = :Password, FirstName = :FirstName, LastName = :LastName, Email = :Email");     //craeting my sql statement that will add data into the db
 
         $binds = array(
             ":Username" => $Username,
 
             ":Password" => $Password,
 
-            ":Birthdate" => $Birthdate,
-
             ":FirstName" => $FirstName,
 
             ":LastName" => $LastName,
 
-            ":Email" => $Email,
+            ":Email" => $Email
                     //binding my information of array to my vars
         );
 

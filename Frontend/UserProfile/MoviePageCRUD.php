@@ -66,7 +66,7 @@
                 <div id="spacer" class="col-3"></div>
 
                 <div id="signupContainer" class="col-6">
-                    <form action='addMoviePage.php' method='post'>
+                    <form action='MoviePageCRUD.php' method='post'>
                         <div class="form-group">
                             <label  for="exampleFormControlInput1">Movie Title</label>
                             <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
@@ -163,6 +163,8 @@
 
 
 
+
+
                         $error = 0;
 
 
@@ -181,7 +183,13 @@
 
                         if($error = 0)
                         {
-                            $results = addMovie();
+                            $likeCount = 0;
+                            $DatePosted = NOW();
+
+                            $useraccountId = 1;
+                            $isApproved = 0;
+                            
+                            $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $movieIMG, $movieBanner, $likeCount, $isApproved, $useraccountId);
                             
 
                             if(isPostRequest()){
@@ -208,7 +216,8 @@
                 <div id="spacer" class="col-3"></div>
 
                 <div id="signupContainer" class="col-6">
-                    <form action='deleteMovie.php' method="post">
+                    <form action='MoviePageCRUD
+                    .php' method="post">
                         <div>movie title</div>
 
                         <div>movie img</div>

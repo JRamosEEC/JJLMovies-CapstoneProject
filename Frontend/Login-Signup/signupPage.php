@@ -44,7 +44,7 @@
 
                 <div id="spacer" class="col-3"></div>
                 
-                <form action="" method="post" class="col-6">
+                <form action="signupPage.php" method="post" class="col-6">
                     <div class="row">
                         <div id="formField" class="col-xl-6">
                             <div class="row">
@@ -98,7 +98,9 @@
                         
                         <div id="formField" class="col-md-12 center">
                             <div id="createAcnt" class="center headerBtn col-6">
-                                <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
+                                <!--<a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>---->
+
+                                <button name='submitBtn' type="submit" class="btn btn-primary">Create Account</buton>
                             </div>
                         </div>
                     </div>
@@ -110,3 +112,84 @@
     </div>
 </body>
 </html>
+
+
+<?php
+
+
+
+    if(isset($_POST['submitBtn'])){
+
+        $error = 1;
+
+        $error1 = 0;
+
+        $error2 = 0;
+
+        $error3 = 0;
+
+        $email = filter_input(INPUT_POST, 'email');
+
+        $username = filter_input(INPUT_POST, 'username');
+
+        $password = filter_input(INPUT_POST, 'password');
+
+        $firstName = filter_input(INPUT_POST, 'firstName');
+
+        $lastName = filter_input(INPUT_POST, 'lastName');
+
+
+        if(strlen($username <= 5)) {
+
+            echo '<br>Please make sure your username is 5 characters long';
+            $error1 = 1;
+        }
+        else{
+            $error1 = 0;
+        }
+
+
+
+        if(strlen($password <= 5)){
+
+            echo '<br>Please make sure your Password is 5 characters long';
+            $error2 = 1;
+        }
+        else{
+            $error2 = 0;
+        }
+
+
+        if($firstName == '' && $lastName == ''){
+
+
+            echo '<br>Please make sure you enter a First and Last name';
+
+
+            $error3 = 1;
+        }
+        else{
+            $error3 = 0;
+        }
+
+
+
+        if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0) 
+        {
+
+            $error = 0;
+
+            $protectedPW = hash('sha256', $password . 'secret stuff');
+
+            $results = signUp($username, $protectedPW, $firstName, $lastName, $email);
+
+            
+
+        
+        }
+        else{
+            echo "<br>Email address '$email' is considered invalid.\n";
+        }
+    }
+
+?>
