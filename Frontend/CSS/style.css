@@ -212,6 +212,7 @@ p{
 
 #logoContainer{
     width: 16%;
+    min-width: 100px;
 }
 
 #headerSearchContainer{
@@ -220,6 +221,10 @@ p{
 
 #loginContainer{
     width: 15%;
+}
+
+#headerSearch{
+    width: 90%;
 }
 
 #spacerLine{
