@@ -1,5 +1,37 @@
 <?php
-require (__DIR__ . "/../../Backend/dbQuery.php");
+require (__DIR__ . "/../../Backend/dbQuery.php"); 
+//include (__DIR__ . "/Backend\dbConnection.php");
+
+function checkLogin ($username, $password) {
+	//Connecting to database
+	$db = dbconnect();
+	//print_r($db);
+	$stmt = $db->prepare("SELECT * FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
+
+	$stmt->bindValue(':Username', $username);
+	$stmt->bindValue(':Password', $password);
+
+	$stmt->execute ();
+	$result = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+	//print_r($result);
+	if($result["Username"] == $username){
+		$_SESSION["UserAccountID"] = $result["UserAccountID"]; 
+		return true; 
+	}
+	
+	session_destroy(); 
+	
+	return false;
+	
+	
+}
+
+   
+   
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +112,32 @@ require (__DIR__ . "/../../Backend/dbQuery.php");
             </div>
 
 
+       <?php     if(isPostRequest()) {
+    //echo "String here";
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+    //encrytion
+    $new = sha256("school-salt".$password);
+    //$password = "";
+    if(checkLogin($username, $new))
+    {
+
+        //echo "<div class='error'>Succesfully logged in </div>";
+        header("Location: ./");
+
+
+    }
+    else{
+
+        $_SESSION['Login'] = false;
+        //givinh error message incase user messes up
+        echo "<div class='error'>Please enter in a valid username and password.</div>";
+    }
+
+
+}
+
+?>
         </div>   
     </div>
 </body>
