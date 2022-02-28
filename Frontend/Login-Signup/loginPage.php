@@ -2,11 +2,13 @@
 require (__DIR__ . "/../../Backend/dbQuery.php"); 
 //include (__DIR__ . "/Backend\dbConnection.php");
 
+$failed = "";
+
 function checkLogin ($username, $password) {
 //Connecting to database
     global $db; 
 //print_r($db);
-    $stmt = $db->prepare("SELECT * FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
+    $stmt = $db->prepare("SELECT useraccountid FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
 
     $stmt->bindValue(':Username', $username);
     $stmt->bindValue(':Password', hash('sha256', $password. 'secret stuff')); 
@@ -33,6 +35,47 @@ function checkLogin ($username, $password) {
 
 
 
+
+?>
+
+
+<?php if(isPostRequest()) {
+//echo "String here";
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+    $stmt = checkLogin($username, $password);
+//encrytion
+    
+
+    if($stmt > 0 ){
+        //$_SESSION["Loggedin"] = true ;
+    
+       header('Location: ../MoviePage/homePage.php');
+        
+        
+    }
+    else{
+         $failed = 'Sorry, Login failed'; 
+    }
+
+//$password = "";
+   // if(checkLogin($username, $new))
+   // {
+
+    //echo "<div class='error'>Succesfully logged in </div>";
+        //header("Location: ./");
+
+
+    //}
+    //else{
+
+    //$_SESSION['Login'] = false;
+    //givinh error message incase user messes up
+   // echo "<div class='error'>Please enter in a valid username and password.</div>";
+   // }
+
+
+}
 
 ?>
 
@@ -100,7 +143,7 @@ function checkLogin ($username, $password) {
                     
                     <div id="formContainer" class="col-xl-12 center">
                         <div id="login" class="center headerBtn col-6">
-                           <input type="submit" name="Login" class="btn btn-primary">Login</a></input>
+                           <input type="submit" name="Login" value="Login" class="btn btn-primary"></a></input>
                         </div>
                         
                         <div id="createAcnt" class="center headerBtn col-6">
@@ -114,46 +157,20 @@ function checkLogin ($username, $password) {
         </div>
 
 
-    <?php if(isPostRequest()) {
-//echo "String here";
-    $username = filter_input(INPUT_POST, 'username');
-    $password = filter_input(INPUT_POST, 'password');
-    $stmt = checkLogin($username, $password);
-//encrytion
-    
-
-    if($stmt > 0 ){
-        //$_SESSION["Loggedin"] = true ;
-
-       header('Location: homePage.php');
-
-
-    }
-    else{
-        echo 'Sorry, Login failed'; 
-    }
-
-//$password = "";
-   // if(checkLogin($username, $new))
-   // {
-
-    //echo "<div class='error'>Succesfully logged in </div>";
-        //header("Location: ./");
-
-
-    //}
-    //else{
-
-    //$_SESSION['Login'] = false;
-    //givinh error message incase user messes up
-   // echo "<div class='error'>Please enter in a valid username and password.</div>";
-   // }
-
-
-}
-
-?>
+   
     </div>   
+
+<?php 
+
+    if($failed != ""){
+     echo "<h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2>"; 
+
+    }
+
+
+   // <h2><p><font color=red>Please enter in a valid username and password.</font></p></h2>
+?> 
+
 </div>
 </body>
 </html>
