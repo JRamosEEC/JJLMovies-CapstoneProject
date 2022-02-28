@@ -199,7 +199,7 @@
          return ($results);
     }
 
-    function addReview($userAccounID,$movieID,$ReviewDescription,$ReviewLikes){
+    function addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes){
         
         //craeting my add car function that will actually add to my db
     
@@ -223,14 +223,16 @@
             $results = "Movie Added";     //if command works print out car added
         }
     }
-    function userPK(){
+    function getUser($userAccounID){
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT userAccountID FROM useraccounts WHERE userAccountID= userAccountID"); 
+        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE userAccountID = :userAccountID"); 
         
-
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
