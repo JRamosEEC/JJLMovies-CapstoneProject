@@ -1,20 +1,23 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
     $id=$_GET['id'] ?? -1;
-    $details=getOneMovie($id);
-    $userdetails=userPK();
-?>
-<?php 
-    foreach($userdetails as $r){
-        $userID=$r['userAccountID'];//getting the userAccount id from the accounts table
+    $movieDetails=getOneMovie($id);
+    $movieID=$id;
+
+    foreach($movieDetails as $r){
+        $userID=$r['UserAccountID'];//getting the userAccount id from the accounts table
     }
-    
+
+    $reviews = getReviews($id);
+    //$userdetails=getUser($userID);
+
     if(isPostRequest()){
         $userAccountID=$userID;//adding user id to the review tables 
-        $movieID=$id;
-        $ReviewDescription = filter_input(INPUT_POST, 'txtReview');
-        $ReviewLikes=filter_input(INPUT_POST, 'txtRates');
+        $ReviewDescription= filter_input(INPUT_POST, 'txtReview');;
+        $ReviewLikes= filter_input(INPUT_POST, 'txtRates');;        
         addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes);
+
+        header("Location: moviePage.php?id=" . $id);
     };      //adds value to function when the page posts
 ?>
 
@@ -30,11 +33,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../CSS/style.css">
-    <script>
-        document.getElementById("btnReview").addEventListener("click", function(){
-             toggl
-             });
-    </script>
+
+    <script src="Script/jquery-1.3.2.min.js" type="text/javascript"></script>
+
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -48,7 +49,17 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
+    <script>
+        $('#btnReview').click(function () {
+      if ($('#txtReview').is(':visible')) {
+          $('#txtReview').Hide();
+      }
+      else {
+          $('#txtReview').show();
+      }
 
+  });
+    </script>
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
@@ -57,7 +68,7 @@
         <div id="content" method="POST">
             <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
             
-            <?php foreach($details as $row) :?>
+            <?php foreach($movieDetails as $row) :?>
                 <div class="row">
                     <div class="col-xl-4">
                         <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
@@ -85,25 +96,35 @@
                         </div>
                     </div>               
                          <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                </div>
+                </div>            
+            <?php endforeach ?>
+
+            <div id="itemContainer2">
+                    
+                    <form action="moviePage.php?id=<?php echo $id;?>" method="post" class="col-8" >
+                        <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
+
+                        <input id="txtReview" type="text" style="width:100%;" name="txtReview">
+
+                        <input id="txtRates" type="text" style="
+                        width:20%;" name="txtRates"
+                        >
+                    </form>
                 
-                    <div id="itemContainer2">
-                        <h2>Reviews<h2>
-                            
-                            <form method="post" class="col-8">
-                                <input id="btnReview" class="btn btn-primary" type="button" value="Write A Review" name="btnReview">
+            
+                <?php foreach($reviews as $rev): ?>
+                        <div class="row no-margin no-pad">
 
-                                <input id="txtReview" type="text" style="width:100%;">
+                        <div id="detail" class="col pl-4 pr- pt-3">
+                                <p><?php echo $rev['ReviewDescription'];?></p>
+                            </div>
 
-                                <input id="txtRates" type="text" style="
-                                width:100%;"
-                                >
-                            </form>
-                        
-                    </div>
-                
-
-                <?php endforeach ?>
+                            <div id="detail" class="col pl-4 pr- pt-3">
+                                <p><?php echo $rev['ReviewLikes'];?></p>
+                            </div>
+                        </div>
+                <?php endforeach; ?> 
+            </div>
         </div>
     </div>  
 </body>

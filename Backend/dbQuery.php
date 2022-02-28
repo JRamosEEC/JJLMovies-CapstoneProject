@@ -148,7 +148,7 @@
 
         $results = [];
 
-        $stmt = $db->prepare("UPDATE movietable SET MovieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE MovieID = :MovieID");
+        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE movieID = :MovieID");
         $stmt->bindvalue(':movieTitle', $MovieTitle);
         $stmt->bindvalue(':movieGenre', $MovieGenre);
         $stmt->bindvalue(':movieDescription', $MovieDescription); 
@@ -171,7 +171,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
+        $stmt = $db->prepare("SELECT movieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -186,7 +186,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT *  FROM movietable WHERE MovieID = :movieID"); 
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = :movieID"); 
         
         $stmt->bindvalue(':movieID', $id);
 
@@ -208,7 +208,7 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO reviewtable SET UserAccountID = :userAccountID, MovieID = :movieID, ReviewDescription = :ReviewDescription, ReviewLikes = :ReviewLikes");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO reviewtable SET userAccountID = :userAccountID, movieID = :movieID, ReviewDescription = :ReviewDescription, ReviewLikes = :ReviewLikes");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":userAccountID" => $userAccountID,
@@ -228,7 +228,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE UserAccountID = :userAccountID"); 
+        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE userAccountID = :userAccountID"); 
         
         $binds = array(
             ":userAccountID" => $userAccountID,     
@@ -240,5 +240,24 @@
         }
          
          return ($results);
+    }
+
+    function getReviews($id){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT * FROM reviewtable WHERE movieID = :movieID ORDER BY ReviewLikes"); 
+        $binds = array(
+            ":movieID" => $id,     
+        );
+    
+    
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+
+            $results = $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return ($results);
     }
 ?>
