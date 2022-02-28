@@ -1,7 +1,18 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-?>
 
+
+       $email = filter_input(INPUT_POST, 'email');
+
+        $username = filter_input(INPUT_POST, 'username');
+
+        $password = filter_input(INPUT_POST, 'password');
+
+        $firstName = filter_input(INPUT_POST, 'firstName');
+
+        $lastName = filter_input(INPUT_POST, 'lastName');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +63,7 @@
                                 <div class="col-12 center">First Name</div>
 
                                 <div class="col-12 center">
-                                    <input type="text" name="firstName">
+                                    <input type="text" name="firstName" value="<?php echo $firstName; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -62,7 +73,7 @@
                                 <div class="col-12 center">Last Name</div>
 
                                 <div class="col-12 center">
-                                    <input type="text" name="lastName">
+                                    <input type="text" name="lastName" value="<?php echo $lastName; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -72,7 +83,7 @@
                                 <div class="col-12 center">Username</div>
 
                                 <div class="col-12 center">
-                                    <input type="text" name="username">
+                                    <input type="text" name="username" value="<?php echo $username; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -92,7 +103,7 @@
                                 <div class="col-12 center">Email</div>
 
                                 <div class="col-12 center">
-                                    <input type="text" name="email">
+                                    <input type="text" name="email"  value="<?php echo $email; ?>" />
                                 </div>
                             </div>
                         </div>  
@@ -129,6 +140,8 @@
 
         $error3 = 0;
 
+        $error4= 0;
+
         $email = filter_input(INPUT_POST, 'email');
 
         $username = filter_input(INPUT_POST, 'username');
@@ -140,20 +153,22 @@
         $lastName = filter_input(INPUT_POST, 'lastName');
 
 
-        if(strlen($username <= 5)) {
+        if(strlen($username) < 7) {
 
-            echo '<br>Please make sure your username is 5 characters long';
+            echo '<br>Please make sure your username is at least 7 characters long.';
             $error1 = 1;
         }
         else{
             $error1 = 0;
+
+            echo strlen($username);
         }
 
 
 
-        if(strlen($password <= 5)){
+        if(strlen($password) < 6){
 
-            echo '<br>Please make sure your Password is 5 characters long';
+            echo '<br>Please make sure your Password is at least 6 characters long.';
             $error2 = 1;
         }
         else{
@@ -164,7 +179,7 @@
         if($firstName == '' && $lastName == ''){
 
 
-            echo '<br>Please make sure you enter a First and Last name';
+            echo '<br>Please make sure you enter a First and Last name.';
 
 
             $error3 = 1;
@@ -173,9 +188,21 @@
             $error3 = 0;
         }
 
+        if($username == 'Fuck' || $username == 'Die' || $username == 'Bitch' || $username == 'Retard' ){
 
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0) 
+            echo '<br>Please use a family friendly username.';
+
+
+            $error4 = 1;
+        }
+        else{
+            $error4 = 0;
+        }
+
+
+
+        if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0) 
         {
 
             $error = 0;
@@ -189,7 +216,9 @@
         
         }
         else{
+
             echo "<br>Email address '$email' is considered invalid.\n";
+            
         }
     }
 
