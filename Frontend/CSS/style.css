@@ -211,17 +211,18 @@ p{
 }
 
 #logoContainer{
-    width: 16%;
+    width: 120px;
     min-width: 100px;
 }
 
 #headerSearchContainer{
-    width: 69%;
+    width: calc(100vw - 210px);
     transition: all 0.3s;
 }
 
 #loginContainer{
-    width: 15%;
+    width: 50px;
+    transition: all 0.3s;
 }
 
 #headerSearch{
@@ -405,7 +406,11 @@ p{
 
 
 @media screen and (max-width: 670px) {
-    #headerSearchContainer{
+    /*#headerSearchContainer{
         width: 40%;
     }
+
+    #loginContainer{
+        width: 30%;
+    }*/
 }

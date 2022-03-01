@@ -18,7 +18,7 @@
     </div>
 
     <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">
-        <a href="/Frontend/Login-Signup/loginPage.php" class="btn btn-primary">Login</a>
+        <a href="/Frontend/Login-Signup/loginPage.php"><img src="/images/profile-icon.png" id="trendImg" width="50px" height="50px"; ></a>
     </div>
 </div>
 
