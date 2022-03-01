@@ -15,14 +15,20 @@
     }
 
     else{
-        $btnString = "Delete";
+        $btnString = "Add Movie";
     }
 
     $movieTitle = filter_input(INPUT_POST, 'movieTitle');
-    $movieIMG = filter_input(INPUT_POST, 'movieIMG');
-    $movieBanner = filter_input(INPUT_POST, 'movieBanner');
+
+    // $movieIMG = filter_input(INPUT_POST, 'movieIMG');
+    // $movieBanner = filter_input(INPUT_POST, 'movieBanner');
+
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +82,7 @@
                             </div>
 
                             <label class="form-label" for="customFile">Upload Movie Image</label>
-                            <input name='movieIMG' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
+                            <input name='file' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
 
                             <label class="form-label" for="customFile">Upload Banner Image</label>
                             <input name='movieBanner' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
@@ -169,7 +175,54 @@
                             $error = 0;
 
 
+                            $error2 = 0;
+
+
                             $movieTitle = filter_input(INPUT_POST, 'movieTitle');
+
+
+
+                            $statusMsg = '';
+
+                            // File upload path
+                            $targetDir = "uploads/";
+                            $fileName = basename($_FILES["file"]["name"]);
+                            $targetFilePath = $targetDir . $fileName;
+                            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+                            
+                            if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
+                                // Allow certain file formats
+                                $allowTypes = array('jpg','png','jpeg','gif','pdf');
+                                if(in_array($fileType, $allowTypes)){
+                                    // Upload file to server
+                                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                                        global $db;
+                                        // Insert image file name into database
+                                        $insert = $db->query("INSERT into movietable (CoverIMG) VALUES ('".$fileName."'");
+                                        if($insert){
+                                            $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                                        }else{
+                                            $statusMsg = "File upload failed, please try again.";
+                                        } 
+                                    }else{
+                                        $statusMsg = "Sorry, there was an error uploading your file.";
+                                    }
+                                }else{
+                                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                                }
+                            }else{
+                                $statusMsg = 'Please select a file to upload.';
+                            }
+                            
+                            // Display status message
+                            echo $statusMsg;
+                            ?>
+                            
+                            
+                            <?php
+
+
+
 
                             if(strlen($movieTitle) <= 5)
                             {
@@ -182,19 +235,33 @@
                                 $error = 0;
                             }
 
-                            if($error = 0)
+
+                            if(strlen($movieDescripton) <= 15)
+                            {
+
+                                echo"<br>Please make the Description at least 15 characters!";
+                                $error2 = 1;
+                            }
+                            else{
+
+                                $error2 = 0;
+                            }
+
+                            if($error == 0 && $error2 == 0)
                             {
                                 $likeCount = 0;
-                                $DatePosted = NOW();
+                                $DatePosted = date('Y-m-d H:i:s');
 
                                 $useraccountId = 1;
                                 $isApproved = 0;
+
+                                $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $movieIMG, $movieBanner, $likeCount, $isApproved, $useraccountId);
+                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $useraccountId);
                                 
 
                                 if(isPostRequest()){
-                                    echo "Movie added";
+                                    echo "<br>Movie added";
                                 }
 
 
@@ -213,7 +280,7 @@
                 </div>
 
                 
-                <div id="DeleteMovie" class="row center no-margin no-padL">
+                <!-- <div id="DeleteMovie" class="row center no-margin no-padL">
                     <div id="spacer" class="col-3"></div>
 
                     <div id="signupContainer" class="col-6">
@@ -231,20 +298,20 @@
 
                     <div id="spacer" class="col-3"></div>
 
-                    <?php
+                    // OPENING PHP
 
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        //if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             // Something posted 
-                            echo "This is a test" ; 
+                            //echo "This is a test" ; 
                         
-                            if (isset($_POST['btnDelete'])) {
-                                echo "Your movie has been deleted " ;
-                            } else {
+                            //if (isset($_POST['btnDelete'])) {
+                                //echo "Your movie has been deleted " ;
+                            } //else {
                                 // Assume btnSubmit
                             }
                         }
-                    ?>
-                </div>
+                    // CLOSING PHP
+                </div> -->
             </div>
         </div>
     </div>  
