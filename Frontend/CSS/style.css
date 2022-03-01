@@ -187,6 +187,7 @@ input:focus::placeholder {
 }
 
 #detail{
+    width: 650px;
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -210,4 +211,27 @@ input:focus::placeholder {
     border-style:solid ;
     border-color:rgba(0, 0, 0, 0.2);
     border-right:20px;
+}
+
+@media screen and (max-width: 410px) {
+    #feedComponentMovieDetails {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #feedComponentMovieDetailsContainer{
+        display: block;
+        padding-top: 10px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #feedComponentMovieImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0px !important;
+    }
 }

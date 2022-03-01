@@ -56,27 +56,27 @@
                         <div id="feedItem" class="row no-margin no-pad">
                             <div class="col">
                                 <div class="row">
-                                    <div class="col-xl-3 no-pad">
+                                    <div id="feedComponentMovieImg" class="col-auto no-pad">
                                         <img src=<?php echo $row['CoverIMG']; ?> width=145px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                                     </div>
 
-                                    <div class="col-xl-9 no-pad">
-                                        <div class="row">
+                                    <div id="feedComponentMovieDetailsContainer" class="col-auto ml-4">
+                                        <div id="feedComponentMovieDetails" class="row">
                                             <strong>Creator</strong> : <?php echo $row['CreatorName']?>
                                         </div>
 
-                                        <div class="row">
+                                        <div id="feedComponentMovieDetails" class="row">
                                             <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
                                         </div>
 
-                                        <div class="row">
+                                        <div id="feedComponentMovieDetails" class="row">
                                             <strong>Rating :</strong>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="detail" class="col pl-4 pr- pt-3">
+                            <div id="detail" class="col no-pad p-3">
                                 <h2><strong>Description</strong></h2>
                                 <br>
                                 <p><?php echo $row['MovieDescription'];?></p>
