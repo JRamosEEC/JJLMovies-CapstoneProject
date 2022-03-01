@@ -42,7 +42,7 @@
         else{
             $error1 = 0;
 
-            echo strlen($username);
+            
         }
 
 
@@ -68,16 +68,21 @@
             $error3 = 0;
         }
 
-        if($username == 'Fuck' || $username == 'Die' || $username == 'Bitch' || $username == 'Retard' ){
+        $stmt = checkUserName($username);
 
+        if($stmt > 1){
 
-            echo '<br>Please use a family friendly username.';
+            echo '<br>This User Name is already taken please pick another one.';
+
 
 
             $error4 = 1;
+
         }
         else{
+
             $error4 = 0;
+
         }
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0) 

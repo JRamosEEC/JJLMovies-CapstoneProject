@@ -102,7 +102,7 @@
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
-    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $CoverIMG, $BannerIMG, $LikeCount, $IsApproved, $UserAccountID)  {
+    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $UserAccountID)  {
     
         //craeting my add car function that will actually add to my db
     
@@ -111,7 +111,7 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG, LikeCount = :LikeCount, IsApproved = :IsApproved, UserAccountID = :UserAccountID ");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, UserAccountID = :UserAccountID ");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":MovieTitle" => $MovieTitle,
@@ -119,8 +119,7 @@
             ":MovieGenre" => $MovieGenre,
             ":MovieDescription" => $MovieDescription, //binding my information of array to my vars       
             ":CreatorName" => $CreatorName,
-            ":CoverIMG" => $CoverIMG,
-            ":BannerIMG" => $BannerIMG,
+
             ":LikeCount" => $LikeCount,
             ":IsApproved" => $IsApproved,
             ":UserAccountID" => $UserAccountID,
@@ -291,6 +290,20 @@
         }
          
         return ($results);
+    }
+
+
+    function checkUserName($userName){
+
+        global $db;
+
+        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE Username =:UserName");
+
+        $stmt->bindValue(':Username', $userName);
+
+        $stmt->execute ();
+
+        return( $stmt->rowCount() > 0);
     }
 
     // /\ /\ /\ UserAccounts/Followers /\ /\ /\
