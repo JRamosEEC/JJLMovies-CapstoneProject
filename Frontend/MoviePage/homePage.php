@@ -61,16 +61,16 @@
                                     </div>
 
                                     <div id="feedComponentMovieDetailsContainer" class="col-auto ml-4">
-                                        <div id="feedComponentMovieDetails" class="row">
-                                            <strong>Creator</strong> : <?php echo $row['CreatorName']?>
+                                        <div id="feedComponentDetails" class="row">
+                                            <strong>Creator :</strong><div> &nbsp;<?php echo $row['CreatorName']?></div>
                                         </div>
 
-                                        <div id="feedComponentMovieDetails" class="row">
-                                            <strong>Movie</strong> : <?php echo $row['MovieTitle'];?>
+                                        <div id="feedComponentDetails" class="row">
+                                            <strong>Movie :</strong><div> &nbsp;<?php echo $row['MovieTitle'];?></div>
                                         </div>
 
-                                        <div id="feedComponentMovieDetails" class="row">
-                                            <strong>Rating :</strong>
+                                        <div id="feedComponentDetails" class="row">
+                                            <strong>Rating :</strong><div> &nbsp;</div>
                                         </div>
                                     </div>
                                 </div>

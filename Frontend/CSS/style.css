@@ -216,8 +216,17 @@ input:focus::placeholder {
     border-right:20px;
 }
 
+#feedComponentDetails {
+    height: 33.333%;
+}
+
+#feedComponentDetails * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 @media screen and (max-width: 410px) {
-    #feedComponentMovieDetails {
+    #feedComponentDetails {
         justify-content: center;
     }
 }
@@ -228,6 +237,7 @@ input:focus::placeholder {
         padding-top: 10px;
         margin-left: auto !important;
         margin-right: auto !important;
+        height: auto;
     }
 
     #feedComponentMovieImg {
