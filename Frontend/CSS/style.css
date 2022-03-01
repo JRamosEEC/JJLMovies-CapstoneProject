@@ -405,7 +405,7 @@ p{
 }
 
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 650px) {
     /*#headerSearchContainer{
         width: 40%;
     }
@@ -413,4 +413,8 @@ p{
     #loginContainer{
         width: 30%;
     }*/
+
+    #staticSidebar {
+        margin-left: -50px;
+    }
 }
