@@ -14,7 +14,7 @@
     </nav>
 
     <div id="headerSearchContainer" class="center headerBtn col-auto">
-        <input id="headerSearch" type="text" value="Search" style="width:70%">
+        <input id="headerSearch" type="text" placeholder="Search">
         
         <button type="submit"><i class="fa fa-search"></i></button>
     </div>
