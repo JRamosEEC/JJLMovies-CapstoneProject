@@ -1,4 +1,6 @@
 <?php
+    session_start(); 
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
     $email = filter_input(INPUT_POST, 'email');
@@ -220,6 +222,3 @@
     </div>
 </body>
 </html>
-
-
-

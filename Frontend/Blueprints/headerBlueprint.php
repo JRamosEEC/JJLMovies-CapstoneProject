@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../CSS/pageHeader.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/18ddcc2bb6.js" crossorigin="anonymous"></script>
 
 <div id="pageHeader" class="row header centerV no-marginL flex-nowrap">
@@ -14,7 +14,9 @@
     </nav>
 
     <div id="headerSearchContainer" class="center headerBtn col-auto">
-        <input id="headerSearch" type="text" value="Search">
+        <input id="headerSearch" type="text" placeholder="Search">
+        
+        <button type="submit"><i class="fa fa-search"></i></button>
     </div>
 
     <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">

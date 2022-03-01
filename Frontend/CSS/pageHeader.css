@@ -27,7 +27,6 @@
 
 #headerSearchContainer{
     width: calc(100vw - 210px);
-    transition: all 0.3s;
 }
 
 #loginContainer{
@@ -37,5 +36,13 @@
 
 #headerSearch{
     width: 90%;
-    transition: all 0.3s;
+
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline: none;
+
+    border-bottom: 2px solid rgb(218, 218, 240);
 }

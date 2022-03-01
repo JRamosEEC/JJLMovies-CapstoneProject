@@ -10,6 +10,9 @@ body {
     background-image: url('../../images/background.png');
     background-size: 100% 100%;
     color: #FFFFFF;
+
+    min-width: 300px;
+
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -28,6 +31,21 @@ h3 {
 h2{
     text-align: center;
     font-size:22px;
+}
+
+input{
+    color: rgb(218, 218, 240);
+
+    font-size: 25px;
+    text-align: end;
+}
+
+input::placeholder{
+    color: rgb(218, 218, 240);
+}
+
+input:focus::placeholder {
+    color: transparent;
 }
 
 
@@ -172,6 +190,7 @@ h2{
 }
 
 #detail{
+    width: 650px;
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -195,4 +214,27 @@ h2{
     border-style:solid ;
     border-color:rgba(0, 0, 0, 0.2);
     border-right:20px;
+}
+
+@media screen and (max-width: 410px) {
+    #feedComponentMovieDetails {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #feedComponentMovieDetailsContainer{
+        display: block;
+        padding-top: 10px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #feedComponentMovieImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0px !important;
+    }
 }
