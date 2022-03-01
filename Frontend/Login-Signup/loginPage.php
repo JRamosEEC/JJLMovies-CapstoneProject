@@ -1,4 +1,6 @@
 <?php
+    session_start(); 
+
     require (__DIR__ . "/../../Backend/dbQuery.php"); 
 
     $loginFailed = "";
@@ -11,29 +13,13 @@
         $stmt = validateLogin($username, $password);
         
         if($stmt > 0 ){
-            //$_SESSION["Loggedin"] = true ;
+            $_SESSION['user'] = $user_id;
         
             header('Location: ../MoviePage/homePage.php');   
         }
         else{
             $loginFailed = 'Sorry, Login failed'; 
         }
-
-        //$password = "";
-        // if(checkLogin($username, $new))
-        // {
-
-        //echo "<div class='error'>Succesfully logged in </div>";
-            //header("Location: ./");
-
-
-        //}
-        //else{
-
-        //$_SESSION['Login'] = false;
-        //givinh error message incase user messes up
-        // echo "<div class='error'>Please enter in a valid username and password.</div>";
-        // }
     }
 ?>
 

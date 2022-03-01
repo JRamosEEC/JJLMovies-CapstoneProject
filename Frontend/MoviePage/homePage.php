@@ -1,4 +1,6 @@
 <?php
+    session_start(); 
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
     $movies = getMovies();
 ?>
