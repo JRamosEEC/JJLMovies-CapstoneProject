@@ -1,24 +1,15 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
+    $email = filter_input(INPUT_POST, 'email');
 
-       $email = filter_input(INPUT_POST, 'email');
+    $username = filter_input(INPUT_POST, 'username');
 
-        $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
 
-        $password = filter_input(INPUT_POST, 'password');
+    $firstName = filter_input(INPUT_POST, 'firstName');
 
-        $firstName = filter_input(INPUT_POST, 'firstName');
-
-        $lastName = filter_input(INPUT_POST, 'lastName');
-
-?>
-
-
-
-<?php
-
-
+    $lastName = filter_input(INPUT_POST, 'lastName');
 
     if(isset($_POST['submitBtn'])){
 
@@ -68,7 +59,6 @@
 
         if($firstName == '' && $lastName == ''){
 
-
             echo '<br>Please make sure you enter a First and Last name.';
 
 
@@ -90,8 +80,6 @@
             $error4 = 0;
         }
 
-
-
         if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0) 
         {
 
@@ -102,9 +90,6 @@
             $results = signUp($username, $protectedPW, $firstName, $lastName, $email);
 
             header('Location: ../login-signup/loginPage.php');
-
-            
-
         
         }
         else{
@@ -113,7 +98,6 @@
             
         }
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -149,79 +133,83 @@
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-        <!-- Page Content -->
-        <div id="content">
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+        <div id="bodyContainer">
+            <!-- Static Sidebar -->
+            <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
 
-            <div id="formContainer" class="row center no-margin no-padL">
-                <h1 class="col-12 center">SIGN UP</h1>
+            <!-- Page Content -->
+            <div id="content">
+                <div id="formContainer" class="row center no-margin no-padL">
+                    <h1 class="col-12 center">SIGN UP</h1>
 
-                <div id="spacer" class="col-3"></div>
-                
-                <form action="signupPage.php" method="post" class="col-6">
-                    <div class="row">
-                        <div id="formField" class="col-xl-6">
-                            <div class="row">
-                                <div class="col-12 center">First Name</div>
+                    <div id="spacer" class="col-3"></div>
+                    
+                    <form action="signupPage.php" method="post" class="col-6">
+                        <div class="row">
+                            <div id="formField" class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-12 center">First Name</div>
 
-                                <div class="col-12 center">
-                                    <input type="text" name="firstName" value="<?php echo $firstName; ?>" />
+                                    <div class="col-12 center">
+                                        <input type="text" name="firstName" value="<?php echo $firstName; ?>" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="formField" class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-12 center">Last Name</div>
+
+                                    <div class="col-12 center">
+                                        <input type="text" name="lastName" value="<?php echo $lastName; ?>" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="formField" class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-12 center">Username</div>
+
+                                    <div class="col-12 center">
+                                        <input type="text" name="username" value="<?php echo $username; ?>" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="formField" class="col-xl-6">
+                                <div class="row">
+                                    <div class="col-12 center">Password</div>
+
+                                    <div class="col-12 center">
+                                        <input type="password" name="password">
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div id="formField" class="col-md-12">
+                                <div class="row">
+                                    <div class="col-12 center">Email</div>
+
+                                    <div class="col-12 center">
+                                        <input type="text" name="email"  value="<?php echo $email; ?>" />
+                                    </div>
+                                </div>
+                            </div>  
+                            
+                            <div id="formField" class="col-md-12 center">
+                                <div id="createAcnt" class="center headerBtn col-6">
+                                    <!--<a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>---->
+
+                                    <button name='submitBtn' type="submit" class="btn btn-primary">Create Account</buton>
                                 </div>
                             </div>
                         </div>
+                    </form>
 
-                        <div id="formField" class="col-xl-6">
-                            <div class="row">
-                                <div class="col-12 center">Last Name</div>
-
-                                <div class="col-12 center">
-                                    <input type="text" name="lastName" value="<?php echo $lastName; ?>" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="formField" class="col-xl-6">
-                            <div class="row">
-                                <div class="col-12 center">Username</div>
-
-                                <div class="col-12 center">
-                                    <input type="text" name="username" value="<?php echo $username; ?>" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="formField" class="col-xl-6">
-                            <div class="row">
-                                <div class="col-12 center">Password</div>
-
-                                <div class="col-12 center">
-                                    <input type="password" name="password">
-                                </div>
-                            </div>
-                        </div>  
-
-                        <div id="formField" class="col-md-12">
-                            <div class="row">
-                                <div class="col-12 center">Email</div>
-
-                                <div class="col-12 center">
-                                    <input type="text" name="email"  value="<?php echo $email; ?>" />
-                                </div>
-                            </div>
-                        </div>  
-                        
-                        <div id="formField" class="col-md-12 center">
-                            <div id="createAcnt" class="center headerBtn col-6">
-                                <!--<a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>---->
-
-                                <button name='submitBtn' type="submit" class="btn btn-primary">Create Account</buton>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <div id="spacer" class="col-3"></div>
+                    <div id="spacer" class="col-3"></div>
+                </div>
             </div>
         </div>
     </div>

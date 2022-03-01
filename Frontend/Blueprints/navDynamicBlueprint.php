@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../CSS/navDynamic.css">
+
 <div id="fadeLayer"></div>
 
 <nav id="sidebar">
@@ -23,10 +25,9 @@
 
 <script>
     $(document).ready(function () {
-
-    $('#sidebarCollapseBtnNav').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $('#fadeLayer').toggleClass('active');
-    });
+        $('#sidebarCollapseBtnNav').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $('#fadeLayer').toggleClass('active');
+        });
     });
 </script>

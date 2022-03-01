@@ -1,6 +1,6 @@
 <?php
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $trend = getTrends();
+    $trend = getTrending();
 ?>
 
 <!DOCTYPE html>
@@ -31,32 +31,36 @@
 
     <div class="wrapper">
         <!-- Sidebar -->
-        <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php");?>
+        <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-        <!-- Page Content -->
-        <div id="content">   
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php"); ?>       
-
-            <div class="row no-margin no-pad" id="itemContainer">
+        <div id="bodyContainer">
+            <!-- Static Sidebar -->
+            <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
             
-                <?php foreach($trend as $row) :?>
-                    <div class="col-xl-3" id="trends">
-                        <a href="moviePage.php?id=<?php echo $row['movieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
-                        <div id="trendInfo" class="row">
+            <!-- Page Content -->
+            <div id="content">   
+                <div class="row no-margin no-pad" id="pageContainer">
+                
+                    <?php foreach($trend as $row) :?>
+                        <div class="col-xl-3" id="trends">
+                            <a href="moviePage.php?id=<?php echo $row['movieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
+                            <div id="trendInfo" class="row">
 
-                            <div class="col-8">  
-                                <?php echo $row['MovieTitle'];?>
-                            </div>
+                                <div class="col-8">  
+                                    <?php echo $row['MovieTitle'];?>
+                                </div>
 
-                            <div class="col-4" style="text-align:center;">  
-                                <?php echo $row['LikeCount']; ?>
-                            </div>
-                        </div>  
-                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                                <div class="col-4" style="text-align:center;">  
+                                    <?php echo $row['LikeCount']; ?>
+                                </div>
+                            </div>  
+                            <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                    </div>
+                    <?php endforeach ?>
                 </div>
-                <?php endforeach ?>
             </div>
-        </div>
-    </div>   
+        </div> 
+    </div>  
 </body>
 </html>

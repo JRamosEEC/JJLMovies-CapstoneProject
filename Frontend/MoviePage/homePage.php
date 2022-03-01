@@ -41,19 +41,15 @@
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
-
-
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-
         <div id="bodyContainer">
-
             <!-- Static Sidebar -->
             <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
 
             <!-- Page Content -->
             <div id="content">    
-                <div id="itemContainer">
+                <div id="pageContainer">
                     <?php foreach ($movies as $row): ?>
                         <div id="feedItem" class="row no-margin no-pad">
                             <div class="col">

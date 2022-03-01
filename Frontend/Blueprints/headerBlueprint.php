@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../CSS/pageHeader.css">
 
 <script src="https://kit.fontawesome.com/18ddcc2bb6.js" crossorigin="anonymous"></script>
 
@@ -18,16 +18,15 @@
     </div>
 
     <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">
-        <a href="/Frontend/Login-Signup/loginPage.php"><img src="/images/profile-icon.png" id="trendImg" width="50px" height="50px"; ></a>
+        <a href="/Frontend/Login-Signup/loginPage.php"><img src="/images/profile-icon.png" width="50px" height="50px"; ></a>
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
-
-    $('#sidebarCollapseBtnHead').on('click', function () {
-        $('#sidebar').toggleClass('active');
-        $('#fadeLayer').toggleClass('active');
-    });
+        $('#sidebarCollapseBtnHead').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $('#fadeLayer').toggleClass('active');
+        });
     });
 </script>

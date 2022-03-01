@@ -1,0 +1,26 @@
+#staticSidebar {
+    min-width: 55px;
+    max-width: 55px;
+
+    height: 100vh;
+
+    z-index: 9995;
+    
+    background-color: #2e325c;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#navStaticIcon {
+    max-width: 40px;
+    max-height: 40px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+@media screen and (max-width: 650px) {
+    #staticSidebar {
+        margin-left: -50px;
+    }
+}

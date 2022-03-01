@@ -34,18 +34,22 @@
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-        <!-- Page Content -->
-        <div id="content">
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+        <div id="bodyContainer">
+            <!-- Static Sidebar -->
+            <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
 
-            <div class="row no-margin">
-                <div id="itemContainer" class="col">
+            <!-- Page Content -->
+            <div id="content">
+                <div class="row no-margin">
+                    <div id="pageContainer" class="col">
 
-                </div>
+                    </div>
 
-                <div id="itemContainer" class="col">
+                    <div id="pageContainer" class="col">
 
+                    </div>
                 </div>
             </div>
         </div>

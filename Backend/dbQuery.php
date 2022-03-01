@@ -1,34 +1,36 @@
 <?php
     include (__DIR__ . "/dbConnection.php");
+
+
+
+    // \/ \/ \/ Login/Signup \/ \/ \/
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
     
-    //--LANCE - CREATING ADD ADMIN SO WE CAN ADD OURSELVES//
+    /*LANCE - CREATING ADD ADMIN SO WE CAN ADD OURSELVES//
+        function adminInsert($userName, $password, $email){
 
-        // function adminInsert($userName, $password, $email){
+            global $db;
 
-        //     global $db;
+            $results = "Not addded"; //this will display if code doesnt work
 
-        //     $results = "Not addded";        //this will display if code doesnt work
+            $stmt = $db->prepare("INSERT INTO adminaccounts SET UserName = :UserName, Password = :Password, Email = :Email");     //craeting my sql statement that will add data into the db
 
-        //     $stmt = $db->prepare("INSERT INTO adminaccounts SET UserName = :UserName, Password = :Password, Email = :Email");     //craeting my sql statement that will add data into the db
+            $binds = array(
+                ":UserName" => $UserName,
 
-        //     $binds = array(
-        //         ":UserName" => $UserName,
+                ":Password" => $Password,
 
-        //         ":Password" => $Password,
-
-        //         ":Email" => $Email,
-        //                 //binding my information of array to my vars
-        //     );
-
-
-        //     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-        //         $results = "Person Added";     //if command works print out cars added
-        //     }
+                ":Email" => $Email,
+                //binding my information of array to my vars
+            );
 
 
-        // }
-
-    //--LANCE - CREATING ADD USERS NOT DONE
+            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+                $results = "Person Added";     //if command works print out cars added
+            }
+         }
+    --LANCE - CREATING ADD USERS NOT DONE*/
 
     function signUp($Username, $Password, $FirstName, $LastName, $Email){
 
@@ -48,32 +50,12 @@
             ":LastName" => $LastName,
 
             ":Email" => $Email
-                    //binding my information of array to my vars
+            //binding my information of array to my vars
         );
-
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $results = "Person Added";     //if command works print out cars added
         }
-
-        //$user1 = 'Lance';
-        //$pw1 = 'Football';
-        //$protectdPW = sha1($pw1)
-    }
-
-
-    //--Justin - Check Login for user logins
-
-    function validateLogin ($userName, $password) {
-        global $db;
-        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE Username =:username AND Password = :password");
-        
-        $stmt->bindValue(':username', $userName);
-        $stmt->bindValue(':password', sha1($password. "secret stuff"));
-            
-        $stmt->execute ();
-           
-        return( $stmt->rowCount() > 0);  
     }
 
     //--LANCE - CREATING CHECK LOGIN FOR ADMINS
@@ -83,12 +65,40 @@
         $stmt = $db->prepare("SELECT * FROM adminaccounts WHERE Username =:username AND Password = :password");
         
         $stmt->bindValue(':username', $userName);
-        $stmt->bindValue(':password', sha1($password. "secret stuff"));
+        $stmt->bindValue(':password', hash('sha256', $password. 'secret stuff'));
             
         $stmt->execute ();
            
         return( $stmt->rowCount() > 0);  
     }
+
+    function validateLogin ($username, $password) {
+        //Connecting to database
+        global $db; 
+
+        $stmt = $db->prepare("SELECT useraccountid FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
+
+        $stmt->bindValue(':Username', $username);
+        $stmt->bindValue(':Password', hash('sha256', $password. 'secret stuff')); 
+
+        $stmt->execute ();
+
+        return($stmt->rowcount() > 0);
+    }
+
+    // /\ /\ /\ LogIn/Signup /\ /\ /\
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+
+
+    //-
+
+
+
+    // \/ \/ \/ MovieCRUD \/ \/ \/
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
@@ -132,15 +142,11 @@
         $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY DatePosted"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
-         }
+        }
          
-         return ($results);
-    }
-
-    function isPostRequest() {
-        return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
+        return ($results);
     }
 
     function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $CoverIMG, $BannerIMG){
@@ -157,16 +163,13 @@
         
 
         if($stmt->execute() && $stmt->rowCount()> 0) {
-
             $results = "Your movie has been edited!"; 
-
         }
 
         return ($results); 
     }
 
-    
-    function getTrends() {
+    function getTrending() {
         global $db;
         
         $results = [];
@@ -174,11 +177,11 @@
         $stmt = $db->prepare("SELECT movieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
-         }
+        }
          
-         return ($results);
+        return ($results);
     }
 
     function getOneMovie($id){
@@ -192,12 +195,26 @@
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
         }
          
-         return ($results);
+        return ($results);
     }
+
+    // /\ /\ /\ MovieCRUD /\ /\ /\
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+
+
+    //-
+
+
+
+    // \/ \/ \/ ReviewCRUD \/ \/ \/
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
 
     function addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes){
         
@@ -223,24 +240,6 @@
             $results = "Movie Added";     //if command works print out car added
         }
     }
-    function getUser($userAccounID){
-        global $db;
-        
-        $results = [];
-
-        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE userAccountID = :userAccountID"); 
-        
-        $binds = array(
-            ":userAccountID" => $userAccountID,     
-        );
-
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                 
-        }
-         
-         return ($results);
-    }
 
     function getReviews($id){
         global $db;
@@ -259,5 +258,56 @@
         }
 
         return ($results);
+    }
+    
+    // /\ /\ /\ MovieCRUD /\ /\ /\
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+
+
+    //-
+
+
+
+    // \/ \/ \/ UserAccounts/Followers \/ \/ \/
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+    function getUser($userAccounID){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE userAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+        }
+         
+        return ($results);
+    }
+
+    // /\ /\ /\ UserAccounts/Followers /\ /\ /\
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+
+
+    //-
+
+
+
+    // \/ \/ \/ Misc Functions \/ \/ \/
+    //---------------------------------------------------------------
+    //---------------------------------------------------------------
+
+    function isPostRequest() {
+        return (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST');
     }
 ?>

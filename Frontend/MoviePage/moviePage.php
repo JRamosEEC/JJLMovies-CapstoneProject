@@ -49,73 +49,74 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
+
     <script>
         $('#btnReview').click(function () {
-      if ($('#txtReview').is(':visible')) {
-          $('#txtReview').Hide();
-      }
-      else {
-          $('#txtReview').show();
-      }
-
-  });
+            if ($('#txtReview').is(':visible')) {
+                $('#txtReview').Hide();
+            }
+            else {
+                $('#txtReview').show();
+            }
+        });
     </script>
+
     <div class="wrapper">
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
+        <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
-        <!-- Page Content -->
-        <div id="content" method="POST">
-            <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-            
-            <?php foreach($movieDetails as $row) :?>
-                <div class="row">
-                    <div class="col-xl-4">
-                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
-                    </div>
-                    
-                    <div class="col-xl-8">  
-                        <div class="row" id="itemContainer2">  
-                            <div class="col">  
-                                    Title: <?php echo $row['MovieTitle'];?>
-                            </div>
+        <div id="bodyContainer">
 
-                            <div class="col">  
-                                    Creator: <?php echo $row['CreatorName'];?>
-                            </div>
+            <!-- Static Sidebar -->
+            <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
 
-                            <div class="col">  
-                                    Rating: <?php echo $row['LikeCount'];?>
-                            </div>
+            <!-- Page Content -->
+            <div id="content" method="POST">
+
+                <?php foreach($movieDetails as $row) :?>
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
                         </div>
+                        
+                        <div class="col-xl-8">  
+                            <div class="row" id="itemContainer">  
+                                <div class="col">  
+                                        Title: <?php echo $row['MovieTitle'];?>
+                                </div>
 
-                        <div class="row" id="itemContainer2">
-                                <h2 style="width:100%">Description</h2>
+                                <div class="col">  
+                                        Creator: <?php echo $row['CreatorName'];?>
+                                </div>
 
-                                <p style="width:100%"><?php echo $row['MovieDescription']; ?></p>
-                        </div>
-                    </div>               
-                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                </div>            
-            <?php endforeach ?>
+                                <div class="col">  
+                                        Rating: <?php echo $row['LikeCount'];?>
+                                </div>
+                            </div>
 
-            <div id="itemContainer2">
-                    
+                            <div class="row" id="itemContainer">
+                                    <h2 style="width:100%">Description</h2>
+
+                                    <p style="width:100%"><?php echo $row['MovieDescription']; ?></p>
+                            </div>
+                        </div>               
+                            <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                    </div>            
+                <?php endforeach ?>
+
+                <div id="itemContainer">
                     <form action="moviePage.php?id=<?php echo $id;?>" method="post" class="col-8" >
                         <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
 
                         <input id="txtReview" type="text" style="width:100%;" name="txtReview">
 
-                        <input id="txtRates" type="text" style="
-                        width:20%;" name="txtRates"
-                        >
+                        <input id="txtRates" type="text" style="width:20%;" name="txtRates">
                     </form>
-                
-            
-                <?php foreach($reviews as $rev): ?>
+                         
+                    <?php foreach($reviews as $rev): ?>
                         <div class="row no-margin no-pad">
-
-                        <div id="detail" class="col pl-4 pr- pt-3">
+                            <div id="detail" class="col pl-4 pr- pt-3">
                                 <p><?php echo $rev['ReviewDescription'];?></p>
                             </div>
 
@@ -123,7 +124,9 @@
                                 <p><?php echo $rev['ReviewLikes'];?></p>
                             </div>
                         </div>
-                <?php endforeach; ?> 
+                    <?php endforeach; ?> 
+                </div>
+                
             </div>
         </div>
     </div>  
