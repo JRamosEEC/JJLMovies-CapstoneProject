@@ -99,11 +99,11 @@
 
                             
                             <div id="formContainer" class="col-xl-12 center">
-                                <div id="login" class="center headerBtn col-6">
+                                <div id="login" class="center col-6">
                                 <input type="submit" name="Login" value="Login" class="btn btn-primary"></a></input>
                                 </div>
                                 
-                                <div id="createAcnt" class="center headerBtn col-6">
+                                <div id="createAcnt" class="center col-6">
                                     <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
                                 </div>
                             </div>

@@ -36,11 +36,23 @@ h2{
 
 
 .btn {
-    font-size: 2rem;
-    padding: 0.25rem;
+    font-size: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    width: 175px;
+    height: 50px;
     border-color: #2C2D43;
     background-color: #2C2D43;
     color: #FFFFFF;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    text-align: center;
+
+    display: inline-block;
+    line-height: 47px;
+    vertical-align: middle;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
