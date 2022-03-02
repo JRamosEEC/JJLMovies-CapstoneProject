@@ -20,7 +20,7 @@
     </div>
 
     <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">
-        <a href="/Frontend/Login-Signup/loginPage.php"><img src="/images/profile-icon.png" width="50px" height="50px"; ></a>
+        <a href="/Frontend/Login-Signup/loginPage.php"><img src="<?php if(isset($_SESSION['user'])){echo "/images/profile-icon-logged-in.png";}else{echo "/images/profile-icon-logged-out.png";} ?>" width="50px" height="50px"; ></a>
     </div>
 </div>
 

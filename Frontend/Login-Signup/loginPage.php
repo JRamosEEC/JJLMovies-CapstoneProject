@@ -10,10 +10,15 @@
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
 
-        $stmt = validateLogin($username, $password);
+        $returnedAcnt = validateLogin($username, $password);
         
-        if($stmt > 0 ){
-            $_SESSION['user'] = $user_id;
+        if($returnedAcnt > 0 ){
+
+            foreach($returnedAcnt as $user){
+                $user_ID = $user['UserAccountID'];//getting the userAccount id from the accounts table
+            }
+
+            $_SESSION['user'] = $user_ID;
         
             header('Location: ../MoviePage/homePage.php');   
         }

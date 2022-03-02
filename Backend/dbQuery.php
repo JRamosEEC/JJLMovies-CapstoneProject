@@ -76,14 +76,16 @@
         //Connecting to database
         global $db; 
 
-        $stmt = $db->prepare("SELECT useraccountid FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
+        $stmt = $db->prepare("SELECT UserAccountID FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
 
         $stmt->bindValue(':Username', $username);
         $stmt->bindValue(':Password', hash('sha256', $password. 'secret stuff')); 
 
-        $stmt->execute ();
-
-        return($stmt->rowcount() > 0);
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);        
+        }
+         
+        return ($results);
     }
 
     // /\ /\ /\ LogIn/Signup /\ /\ /\
