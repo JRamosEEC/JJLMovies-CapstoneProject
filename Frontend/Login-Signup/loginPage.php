@@ -15,10 +15,15 @@
         if($returnedAcnt > 0 ){
 
             foreach($returnedAcnt as $user){
-                $user_ID = $user['UserAccountID'];//getting the userAccount id from the accounts table
+                //getting the user information from the table and storing into session variables to display on pages
+                $user_ID = $user['UserAccountID'];
+                $user_FName = $user['FirstName'];
+                $user_LName = $user['LastName'];
             }
 
             $_SESSION['user'] = $user_ID;
+            $_SESSION['FName'] = $user_FName;
+            $_SESSION['LName'] = $user_LName;
         
             header('Location: ../MoviePage/homePage.php');   
         }

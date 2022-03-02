@@ -46,7 +46,10 @@
             <div id="content">
                 <div class="row no-margin">
                     <div id="pageContainer" class="col">
+                        <?php echo $_SESSION['FName']; ?>
+                        <?php echo $_SESSION['LName']; ?>
 
+                        <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
                     </div>
 
                     <div id="pageContainer" class="col">

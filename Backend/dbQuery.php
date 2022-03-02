@@ -76,7 +76,7 @@
         //Connecting to database
         global $db; 
 
-        $stmt = $db->prepare("SELECT UserAccountID FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
+        $stmt = $db->prepare("SELECT * FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
 
         $stmt->bindValue(':Username', $username);
         $stmt->bindValue(':Password', hash('sha256', $password. 'secret stuff')); 
