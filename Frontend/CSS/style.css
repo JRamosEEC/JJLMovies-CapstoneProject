@@ -126,6 +126,16 @@ h2{
 #content {
     width: 100%;
     min-height: 104px;
+
+    height:calc(100vh - 85px);
+
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#content::-webkit-scrollbar {
+    display: none;
 }
 
 #bodyContainer{
@@ -157,14 +167,6 @@ h2{
     margin: 10px;
     padding: 20px;
     padding-bottom: 0px;
-    overflow-y: scroll;
-
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-#itemContainer::-webkit-scrollbar {
-    display: none;
 }
 
 #feedItem{
