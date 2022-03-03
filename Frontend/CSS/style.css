@@ -131,7 +131,7 @@ h2{
     width: 100%;
     min-height: 104px;
 
-    height:calc(100vh - 85px);
+    height:calc(100vh - 105px);
 
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -157,7 +157,7 @@ h2{
     padding: 20px;
     padding-bottom: 0px;
     overflow-y: scroll;
-    height:calc(100vh - 85px);
+    height:calc(100vh - 105px);
 
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
