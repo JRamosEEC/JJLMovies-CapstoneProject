@@ -37,6 +37,7 @@ h2{
 
 .wrapper{
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .btn {
