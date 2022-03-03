@@ -236,7 +236,7 @@ h2{
 
 @media (pointer:none), (pointer:coarse) {
     .wrapper{
-        height: 90vh;
+        height: 95vh;
     }
 }
 
