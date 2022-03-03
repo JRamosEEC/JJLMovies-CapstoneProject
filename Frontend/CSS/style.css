@@ -3,12 +3,6 @@
 */
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
-html{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
 body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
@@ -19,8 +13,6 @@ body {
     height: 100%;
 
     min-width: 300px;
-
-    overflow: hidden;
 }
 
 p {
@@ -40,11 +32,6 @@ h2{
 }
 
 
-
-.wrapper{
-    height: 100vh;
-    overflow: hidden;
-}
 
 .btn {
     font-size: 20px;
@@ -137,24 +124,20 @@ h2{
 #content {
     width: 100%;
     min-height: 104px;
-
-    height:calc(100vh - 85px);
-
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-#content::-webkit-scrollbar {
-    display: none;
 }
 
 #bodyContainer{
     width: 100%;
-    height:calc(100vh - 85px);
 
     display: flex;
     align-items: stretch;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#pageContainer::-webkit-scrollbar {
+    display: none;
 }
 
 #pageContainer{
@@ -163,15 +146,6 @@ h2{
     margin: 10px;
     padding: 20px;
     padding-bottom: 0px;
-    overflow-y: scroll;
-    height:calc(100vh - 105px);
-
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-#pageContainer::-webkit-scrollbar {
-    display: none;
 }
 
 #itemContainer{

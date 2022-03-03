@@ -1,10 +1,13 @@
 #pageHeader{
+    position: fixed;
     background-color: #373B69 !important;
     color: white;
     font-size: 30px;
     font-weight: bold;
     height: 85px;
     width: 100%;
+
+    z-index: 99;
 
     padding-left: 20px;
     padding-right: 20px;
