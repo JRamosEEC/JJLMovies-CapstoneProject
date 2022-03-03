@@ -35,6 +35,10 @@ h2{
 
 
 
+.wrapper{
+    height: 100vh;
+}
+
 .btn {
     font-size: 20px;
     font-family: Roboto;
@@ -229,12 +233,9 @@ h2{
 
 
 @media screen and (max-height: 800px) {
-    #content {
-        padding-bottom: 80px;
-    }
-
     #formContainer{
         margin-top: 50px;
+        padding-bottom: 80px;
     }
 }
 
