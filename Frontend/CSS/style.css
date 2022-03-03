@@ -131,7 +131,7 @@ h2{
     width: 100%;
     min-height: 104px;
 
-    height:calc(100vh - 105px);
+    height:calc(100vh - 85px);
 
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -242,6 +242,14 @@ h2{
 @media screen and (max-width: 410px) {
     #feedComponentDetails {
         justify-content: center;
+    }
+
+    #content {
+        height:calc(100vh - 115px);
+    }
+
+    #bodyContainer{
+        height:calc(100vh - 115px);
     }
 }
 
