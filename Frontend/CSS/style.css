@@ -140,6 +140,8 @@ h2{
 
 #bodyContainer{
     width: 100%;
+    height:calc(100vh - 85px);
+
     display: flex;
     align-items: stretch;
 }
@@ -227,6 +229,10 @@ h2{
 @media screen and (max-width: 410px) {
     #feedComponentDetails {
         justify-content: center;
+    }
+
+    #content {
+        padding-bottom: 100px;
     }
 }
 
