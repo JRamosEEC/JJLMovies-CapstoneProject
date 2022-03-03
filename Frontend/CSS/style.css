@@ -228,17 +228,19 @@ h2{
 
 
 
-@media screen and (max-width: 410px) {
-    #feedComponentDetails {
-        justify-content: center;
-    }
-
+@media screen and (max-height: 800px) {
     #content {
         padding-bottom: 80px;
     }
 
     #formContainer{
         margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    #feedComponentDetails {
+        justify-content: center;
     }
 }
 
