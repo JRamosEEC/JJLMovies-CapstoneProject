@@ -237,6 +237,10 @@ h2{
     #pageContainer{
         height:calc(100vh - 180px);
     }
+
+    .wrapper{
+        height: 90vh;
+    }
 }
 
 @media screen and (max-height: 800px) {
