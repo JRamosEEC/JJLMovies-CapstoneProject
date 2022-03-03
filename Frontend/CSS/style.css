@@ -235,10 +235,6 @@ h2{
 
 
 @media (pointer:none), (pointer:coarse) {
-    #pageContainer{
-        height:calc(100vh - 150px);
-    }
-
     .wrapper{
         height: 75vh;
     }
