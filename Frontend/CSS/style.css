@@ -226,13 +226,19 @@ h2{
     margin-bottom: auto;
 }
 
+
+
 @media screen and (max-width: 410px) {
     #feedComponentDetails {
         justify-content: center;
     }
 
     #content {
-        padding-bottom: 600px;
+        padding-bottom: 75px;
+    }
+
+    #formContainer{
+        margin-top: 75px;
     }
 }
 
