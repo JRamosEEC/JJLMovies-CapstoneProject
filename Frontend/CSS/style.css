@@ -237,14 +237,6 @@ h2{
         margin-top: 50px;
         padding-bottom: 80px;
     }
-
-    #content {
-        height:calc(100vh - 115px);
-    }
-
-    #bodyContainer{
-        height:calc(100vh - 115px);
-    }
 }
 
 @media screen and (max-width: 410px) {
