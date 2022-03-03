@@ -237,6 +237,19 @@ h2{
         margin-top: 50px;
         padding-bottom: 80px;
     }
+
+    #pageContainer{
+        background: rgba(0, 0, 0, 0.2);
+    
+        margin: 10px;
+        padding: 20px;
+        padding-bottom: 0px;
+        overflow-y: scroll;
+        height:calc(100vh - 125px);
+    
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 }
 
 @media screen and (max-width: 410px) {
