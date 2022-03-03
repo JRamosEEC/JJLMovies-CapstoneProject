@@ -232,14 +232,17 @@ h2{
 
 
 
+
+@media (pointer:none), (pointer:coarse) {
+    #pageContainer{
+        height:calc(100vh - 180px);
+    }
+}
+
 @media screen and (max-height: 800px) {
     #formContainer{
         margin-top: 50px;
         padding-bottom: 80px;
-    }
-
-    #pageContainer{
-        height:calc(100vh - 180px);
     }
 }
 
