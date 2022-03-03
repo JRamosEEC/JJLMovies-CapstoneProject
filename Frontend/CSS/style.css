@@ -238,6 +238,12 @@ h2{
     .wrapper{
         height: 95vh;
     }
+
+    #pageContainer{
+        background: rgba(0, 0, 0, 0.2);
+
+        padding-bottom: 50px;
+    }
 }
 
 @media screen and (max-height: 800px) {
