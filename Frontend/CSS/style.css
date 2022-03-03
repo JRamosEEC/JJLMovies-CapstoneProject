@@ -237,12 +237,6 @@ h2{
         margin-top: 50px;
         padding-bottom: 80px;
     }
-}
-
-@media screen and (max-width: 410px) {
-    #feedComponentDetails {
-        justify-content: center;
-    }
 
     #content {
         height:calc(100vh - 115px);
@@ -250,6 +244,12 @@ h2{
 
     #bodyContainer{
         height:calc(100vh - 115px);
+    }
+}
+
+@media screen and (max-width: 410px) {
+    #feedComponentDetails {
+        justify-content: center;
     }
 }
 
