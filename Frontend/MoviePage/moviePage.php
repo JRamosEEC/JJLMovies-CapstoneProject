@@ -67,6 +67,9 @@
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+        <?php 
+        
+        ?>
 
         <div id="bodyContainer">
 

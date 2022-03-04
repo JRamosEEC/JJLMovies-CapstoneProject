@@ -14,9 +14,8 @@
     </nav>
 
     <div id="headerSearchContainer" class="center headerBtn col-auto">
-        <input id="headerSearch" type="text" placeholder="Search">
-        
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <input id="headerSearch" name="headerSearch" type="text" placeholder="Search">
+        <button type="submit" name="submit" href="/Frontend/MoviePage/moviePage.php" method="post"><i class="fa fa-search"></i></button>
     </div>
 
     <div id="loginContainer" class="centerV headerBtn col-auto justify-content-end no-pad">

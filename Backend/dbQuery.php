@@ -76,6 +76,8 @@
         //Connecting to database
         global $db; 
 
+        $results = [];
+
         $stmt = $db->prepare("SELECT * FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
 
         $stmt->bindValue(':Username', $username);
@@ -222,7 +224,7 @@
 
     function addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes){
         
-        //craeting my add car function that will actually add to my db
+        //creating my add car function that will actually add to my db
     
     
         global $db;
@@ -327,5 +329,24 @@
 
     function isPostRequest() {
         return (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST');
+    }
+
+    function searchMovie($MovieTitle){
+        global $db;
+        $binds=array();
+
+        $sql = "SELECT * FROM movietable WHERE 0=0";
+
+        if($movieTitle != " "){
+            $sql .= "AND MovieTitle LIKE :MovieTitle";
+            $binds['MovieTitle'] = '%' .$MovieTitle. '%';
+        }
+        $results =array();
+        $stmt = $db->prepare($sql);
+
+        if($stmt ->execute($binds) && $stmt -> rowCount() >0){
+            $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return ($results);
     }
 ?>

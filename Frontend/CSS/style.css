@@ -121,10 +121,40 @@ h2{
 
 .profileDetails{
     width: 250px;
-    height: calc(100vh - 105px);
+    height: calc(100vh - 225px);
+
+    margin-top: 70px !important;
+    margin-left: 100px !important;
+}
+
+.profileMovies{
+    height: calc(100vh - 225px);
+
+    margin-top: 70px !important;
+    margin-right: 100px !important;
 }
 
 
+
+#profileIMG{
+    height: 230px;
+}
+
+#profileUsername{
+    height: 45px;
+
+    font-weight: bold;
+}
+
+#profileName{
+    height: 45px;
+
+    font-weight: bold;
+}
+
+#profileLogout{
+    margin-bottom: 20px;
+}
 
 #content {
     width: 100%;
