@@ -13,7 +13,6 @@
     z-index: 99;
 
     padding-left: 20px;
-    padding-right: 20px;
 }
 
 /*Class is almost defunct however still assigned may remove later if we never use text buttons in header however we may want a login button with text*/
@@ -32,7 +31,7 @@
 }
 
 #headerSearchContainer{
-    width: calc(100vw - 210px);
+    width: calc(100vw - 230px);
 }
 
 #loginContainer{

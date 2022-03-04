@@ -13,7 +13,6 @@ body {
     height: 100%;
 
     /*padding 20px right to compensate scrollbar, this is removed on mobile*/
-    padding-right: 20px;
 
     min-width: 300px;
 }
@@ -177,7 +176,7 @@ h2{
 }
 
 #detail{
-    width: 650px;
+    width: 100%;
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -228,7 +227,7 @@ h2{
     }
 }
 
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 870px) {
     #content {
         margin-left: 55px;
     }

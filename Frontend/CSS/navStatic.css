@@ -21,7 +21,7 @@
     margin-bottom: auto;
 }
 
-@media screen and (max-width: 810px) {
+@media screen and (max-width: 870px) {
     #staticSidebar {
         margin-left: -55px;
     }

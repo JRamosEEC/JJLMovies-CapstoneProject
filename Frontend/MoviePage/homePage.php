@@ -54,7 +54,7 @@
                 <div id="pageContainer">
                     <?php foreach ($movies as $row): ?>
                         <div id="feedItem" class="row no-margin no-pad">
-                            <div class="col-sm">
+                            <div class="col-md">
                                 <div class="row">
                                     <div id="feedComponentMovieImg" class="col-auto no-pad">
                                         <img src=<?php echo $row['CoverIMG']; ?> width=145px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div id="detail" class="col-sm no-pad p-3">
+                            <div id="detail" class="col-md no-pad p-3">
                                 <h2><strong>Description</strong></h2>
                                 <br>
                                 <p><?php echo $row['MovieDescription'];?></p>
