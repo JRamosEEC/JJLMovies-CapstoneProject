@@ -12,8 +12,6 @@ body {
 
     height: 100%;
 
-    /*padding 20px right to compensate scrollbar, this is removed on mobile*/
-
     min-width: 300px;
 }
 
@@ -214,9 +212,10 @@ h2{
 
 /*Device Check*/
 @media (pointer:none), (pointer:coarse) {
-    body {
-        /*Remove browser scroll bar padding for mobile devices*/
-        padding-right: 20px;
+    #content {
+        /*Remove Margin on mobile there will be no static nav and content can fit screen*/
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 
