@@ -275,18 +275,18 @@
     //---------------------------------------------------------------
     //---------------------------------------------------------------
 
-    function getUser($userAccounID){
+    function getUser($userAccountID){
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE userAccountID = :userAccountID"); 
+        $stmt = $db->prepare("SELECT * FROM useraccounts WHERE UserAccountID = :userAccountID"); 
         
         $binds = array(
             ":userAccountID" => $userAccountID,     
         );
 
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
         }
@@ -303,7 +303,7 @@
 
         $stmt->bindValue(':Username', $userName);
 
-        $stmt->execute ();
+        $stmt->execute ($binds);
 
         return( $stmt->rowCount() > 0);
     }

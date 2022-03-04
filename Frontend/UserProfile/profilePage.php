@@ -1,7 +1,17 @@
 <?php
-    session_start(); 
+    session_start();
 
     require (__DIR__ . "/../../Backend/dbQuery.php");
+
+    $userData = getUser($_SESSION['user']);
+
+    foreach($userData as $user){
+        //getting the user information from the table and storing into session variables to display on pages
+        $Username = $user['Username'];
+        $fName = $user['FirstName'];
+        $lName = $user['LastName'];
+        $profileImg = $user['ProfileImg'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,14 +55,30 @@
             <!-- Page Content -->
             <div id="content">
                 <div class="row no-margin">
-                    <div id="pageContainer" class="col">
-                        <?php echo $_SESSION['FName']; ?>
-                        <?php echo $_SESSION['LName']; ?>
+                    <div id="itemContainer" class="col-auto profileDetails"> 
+                        <div class="row"> 
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="<?php if($profileImg != NULL){ echo $profileImg; } else{echo "/images/profile-icon-logged-out.png";}?>" width="200px" height="200px"; >
+                            </div>
 
-                        <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
+                            <div class="col-12">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <?php echo $Username ?>
+                                </div>
+
+                                <div class="col-12 d-flex justify-content-center">
+                                    <?php echo $fName ?>
+                                    <?php echo $lName ?>
+                                </div>
+                                
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="pageContainer" class="col">
+                    <div id="itemContainer" class="col">
 
                     </div>
                 </div>
