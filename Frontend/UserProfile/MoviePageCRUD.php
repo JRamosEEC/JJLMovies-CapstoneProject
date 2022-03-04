@@ -75,7 +75,7 @@
                     <div id="spacer" class="col-3"></div>
 
                     <div id="signupContainer" class="col-6">
-                        <form action='MoviePageCRUD.php' method='post'>
+                        <form action='MoviePageCRUD.php' method='post' enctype="multipart/form-data">  
                             <div class="form-group">
                                 <label  for="exampleFormControlInput1">Movie Title</label>
                                 <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
@@ -85,7 +85,7 @@
                             <input name='file' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
 
                             <label class="form-label" for="customFile">Upload Banner Image</label>
-                            <input name='movieBanner' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
+                            <input name='file2' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
@@ -121,8 +121,43 @@
 
 
                     <?php
+                        
+                        
+
 
                         if(isset($_POST['submitBtn'])){
+
+                            $error3 = 0;
+
+                            $error4 = 0;
+
+
+                            $fileName2 = basename($_FILES["file2"]["name"]);
+
+
+                            $fileName = basename($_FILES["file"]["name"]);
+
+                            if(empty($fileName)){
+                            
+                                echo '<br>Please select a file to upload for your cover image!';
+
+                                $error3 = 1;
+                                
+                            }
+                            else{
+                                $error3 = 0;
+                            }
+
+                            if(empty($fileName2)){
+                            
+                                echo '<br>Please select a file to upload for your banner image!';
+
+                                $error4 = 1;
+                                
+                            }
+                            else{
+                                $error4 = 0;
+                            }
 
 
                         
@@ -186,41 +221,16 @@
 
                             // File upload path
                             $targetDir = "uploads/";
-                            $fileName = basename($_FILES["file"]["name"]);
+                            //$fileName = basename($_FILES["file"]["name"]);
+
+                            
+
+
                             $targetFilePath = $targetDir . $fileName;
                             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
                             
-                            if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
-                                // Allow certain file formats
-                                $allowTypes = array('jpg','png','jpeg','gif','pdf');
-                                if(in_array($fileType, $allowTypes)){
-                                    // Upload file to server
-                                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                        global $db;
-                                        // Insert image file name into database
-                                        $insert = $db->query("INSERT into movietable (CoverIMG) VALUES ('".$fileName."'");
-                                        if($insert){
-                                            $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                                        }else{
-                                            $statusMsg = "File upload failed, please try again.";
-                                        } 
-                                    }else{
-                                        $statusMsg = "Sorry, there was an error uploading your file.";
-                                    }
-                                }else{
-                                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-                                }
-                            }else{
-                                $statusMsg = 'Please select a file to upload.';
-                            }
-                            
-                            // Display status message
-                            echo $statusMsg;
-                            ?>
-                            
-                            
-                            <?php
-
+            
+                
 
 
 
@@ -247,8 +257,36 @@
                                 $error2 = 0;
                             }
 
-                            if($error == 0 && $error2 == 0)
+                            if($error == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0)
                             {
+
+                                if(isset($_POST["submitBtn"]) && !empty($_FILES["file"]["name"])){
+                                    // Allow certain file formats
+                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');
+                                    if(in_array($fileType, $allowTypes)){
+                                        // Upload file to server
+                                        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                                            
+                                            
+                                           
+                                            
+                                            if($insert){
+                                            }else{
+                                                $statusMsg = "File upload failed, please try again.";
+                                            } 
+                                        }else{
+                                            $statusMsg = "Sorry, there was an error uploading your file.";
+                                        }
+                                    }else{
+                                        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                                    }
+                                }else{
+                                    $statusMsg = 'Please select a file to upload.';
+                                }
+                                
+                                
+                                // Display status message
+                                echo $statusMsg;
                                 $likeCount = 0;
                                 $DatePosted = date('Y-m-d H:i:s');
 
@@ -257,11 +295,15 @@
 
                                 $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $useraccountId);
+                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $useraccountId);
+                                
+                                
                                 
 
                                 if(isPostRequest()){
+                                    
                                     echo "<br>Movie added";
+                                    
                                 }
 
 

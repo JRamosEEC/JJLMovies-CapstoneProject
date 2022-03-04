@@ -104,7 +104,7 @@
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
-    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $UserAccountID)  {
+    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $BannerIMG, $UserAccountID,)  {
     
         //craeting my add car function that will actually add to my db
     
@@ -113,7 +113,7 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, UserAccountID = :UserAccountID ");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG ,UserAccountID = :UserAccountID");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":MovieTitle" => $MovieTitle,
@@ -124,6 +124,8 @@
 
             ":LikeCount" => $LikeCount,
             ":IsApproved" => $IsApproved,
+            ":CoverIMG" => $CoverIMG,
+            ":BannerIMG" => $BannerIMG,
             ":UserAccountID" => $UserAccountID,
         );
     
@@ -143,6 +145,7 @@
         $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY DatePosted"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
         }
