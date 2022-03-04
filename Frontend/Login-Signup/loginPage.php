@@ -12,7 +12,7 @@
 
         $returnedAcnt = validateLogin($username, $password);
         
-        if($returnedAcnt > 0 ){
+        if(count($returnedAcnt)){
 
             foreach($returnedAcnt as $user){
                 //getting the user information from the table and storing into session variables to display on pages
