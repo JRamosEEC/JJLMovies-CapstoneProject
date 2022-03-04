@@ -79,7 +79,7 @@
                     </div>
 
                     <div id="itemContainer" class="col">
-
+                        <div>test text</div>
                     </div>
                 </div>
             </div>
