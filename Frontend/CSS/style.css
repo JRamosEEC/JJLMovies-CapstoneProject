@@ -12,6 +12,9 @@ body {
 
     height: 100%;
 
+    /*padding 20px right to compensate scrollbar, this is removed on mobile*/
+    padding-right: 20px;
+
     min-width: 300px;
 }
 
@@ -125,7 +128,9 @@ h2{
     width: 100%;
     min-height: 104px;
 
-    margin-left: 55px;
+    /*Margin left must have 55px more to compensate the static nav bar the margin will be equal when the static nav is placed off screen*/
+    margin-left: 130px;
+    margin-right: 75px;
 
     transition: all 0.3s;
 }
@@ -135,13 +140,6 @@ h2{
 
     display: flex;
     align-items: stretch;
-
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-#pageContainer::-webkit-scrollbar {
-    display: none;
 }
 
 #pageContainer{
@@ -215,6 +213,13 @@ h2{
 }
 
 
+/*Device Check*/
+@media (pointer:none), (pointer:coarse) {
+    body {
+        /*Remove browser scroll bar padding for mobile devices*/
+        padding-right: 20px;
+    }
+}
 
 /*Width Checks*/
 @media screen and (max-width: 410px) {
@@ -225,7 +230,7 @@ h2{
 
 @media screen and (max-width: 810px) {
     #content {
-        margin-left: 0px;
+        margin-left: 55px;
     }
 }
 
