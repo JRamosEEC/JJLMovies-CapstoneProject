@@ -125,7 +125,7 @@ h2{
     width: 100%;
     min-height: 104px;
 
-    /*Margin left must have 55px more to compensate the static nav bar the margin will be equal when the static nav is placed off screen*/
+    /*Margin left must have 55px more to compensate the static nav bar the margin will gets removed when screen shrinks and nav disappears*/
     margin-left: 130px;
     margin-right: 75px;
 
@@ -210,14 +210,6 @@ h2{
 }
 
 
-/*Device Check*/
-@media (pointer:none), (pointer:coarse) {
-    #content {
-        /*Remove Margin on mobile there will be no static nav and content can fit screen*/
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-}
 
 /*Width Checks*/
 @media screen and (max-width: 410px) {
@@ -228,7 +220,9 @@ h2{
 
 @media screen and (max-width: 870px) {
     #content {
-        margin-left: 55px;
+        /*Remove Margin on smaller screen sizes to expand content*/
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 

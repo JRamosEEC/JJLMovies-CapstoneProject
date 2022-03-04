@@ -31,6 +31,7 @@
 }
 
 #headerSearchContainer{
+    /*Add an extra 20 for browser scrollbar and remove on mobile*/
     width: calc(100vw - 230px);
 }
 
@@ -65,4 +66,12 @@
 
 #headerSearchContainer input:focus::placeholder {
     color: transparent;
+}
+
+/*Device Check*/
+@media (pointer:none), (pointer:coarse) {
+    #headerSearchContainer{
+        /*Add an extra 20 for browser scrollbar and remove on mobile*/
+        width: calc(100vw - 210px);
+    }
 }
