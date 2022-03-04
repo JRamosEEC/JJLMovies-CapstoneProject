@@ -1,4 +1,6 @@
 #staticSidebar {
+    position: fixed;
+
     min-width: 55px;
     max-width: 55px;
 

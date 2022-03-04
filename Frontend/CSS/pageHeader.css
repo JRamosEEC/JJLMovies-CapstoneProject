@@ -1,5 +1,8 @@
 #pageHeader{
-    position: fixed;
+    position: sticky;
+
+    top: 0;
+
     background-color: #373B69 !important;
     color: white;
     font-size: 30px;

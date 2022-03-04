@@ -124,6 +124,8 @@ h2{
 #content {
     width: 100%;
     min-height: 104px;
+
+    margin-left: 55px;
 }
 
 #bodyContainer{
@@ -145,7 +147,6 @@ h2{
 
     margin: 10px;
     padding: 20px;
-    padding-bottom: 0px;
 }
 
 #itemContainer{
