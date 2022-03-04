@@ -76,6 +76,8 @@
         //Connecting to database
         global $db; 
 
+        $results = [];
+
         $stmt = $db->prepare("SELECT * FROM `useraccounts` WHERE `Username` = LOWER(:Username) AND `Password` = :Password");
 
         $stmt->bindValue(':Username', $username);

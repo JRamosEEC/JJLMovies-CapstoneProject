@@ -12,7 +12,7 @@
 
         $returnedAcnt = validateLogin($username, $password);
         
-        if($returnedAcnt > 0 ){
+        if(count($returnedAcnt)){
 
             foreach($returnedAcnt as $user){
                 //getting the user information from the table and storing into session variables to display on pages
@@ -71,35 +71,35 @@
                     <div id="spacer" class="col-3"></div>
                     
                     <form action="loginPage.php" method="post" class="col-6">
-                        <div class="row">
+                        <div class="row d-flex flex-column align-items-center">
             
-                            <div id="formContainer" class="col-xl-6">
+                            <div>
                                 <div class="row">
                                     <div class="col-12 center">Username</div>
 
-                                    <div class="col-12 center">
+                                    <div class="col-12 center mb-3">
                                         <input type="text" name="username">
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="formContainer" class="col-xl-6">
+                            <div>
                                 <div class="row">
                                     <div class="col-12 center">Password</div>
 
-                                    <div class="col-12 center">
+                                    <div class="col-12 center mb-3">
                                         <input type="password" name="password">
                                     </div>
                                 </div>
                             </div>  
 
                             
-                            <div id="formContainer" class="col-xl-12 center">
-                                <div id="login" class="center col-6">
+                            <div class>
+                                <div id="login" class="center headerBtn mb-3">
                                 <input type="submit" name="Login" value="Login" class="btn btn-primary"></a></input>
                                 </div>
                                 
-                                <div id="createAcnt" class="center col-6">
+                                <div id="createAcnt" class="center headerBtn mb-3">
                                     <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
                                 </div>
                             </div>
@@ -108,13 +108,14 @@
 
                     <div id="spacer" class="col-3"></div>
                 </div>
-            </div>   
 
-            <?php 
-                if($loginFailed != ""){
-                    echo "<h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2>"; 
-                }
-            ?> 
+                <?php 
+                    if($loginFailed != ""){
+                        echo "<div class='row center'><h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2></div>"; 
+                    }
+                ?> 
+
+            </div>    
         </div>
     </div>
 </body>

@@ -57,28 +57,28 @@
                 <div class="row no-margin">
                     <div id="itemContainer" class="col-auto profileDetails"> 
                         <div class="row"> 
-                            <div class="col-12 d-flex justify-content-center">
+                            <div id="profileIMG" class="col-12 d-flex justify-content-center profileItem">
                                 <img src="<?php if($profileImg != NULL){ echo $profileImg; } else{echo "/images/profile-icon-logged-out.png";}?>" width="200px" height="200px"; >
                             </div>
 
                             <div class="col-12">
-                                <div class="col-12 d-flex justify-content-center">
+                                <div id="profileUsername" class="col-12 d-flex justify-content-center">
                                     <?php echo $Username ?>
                                 </div>
 
-                                <div class="col-12 d-flex justify-content-center">
+                                <div id="profileName" class="col-12 d-flex justify-content-center">
                                     <?php echo $fName ?>
                                     <?php echo $lName ?>
                                 </div>
                                 
-                                <div class="col-12 d-flex justify-content-center">
+                                <div id="profileLogout" class="col-12 d-flex justify-content-center">
                                     <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div id="itemContainer" class="col">
+                    <div id="itemContainer" class="col profileMovies">
                         <div>test text</div>
                     </div>
                 </div>
