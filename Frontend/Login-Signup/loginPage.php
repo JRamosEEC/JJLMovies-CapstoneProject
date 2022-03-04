@@ -71,35 +71,35 @@
                     <div id="spacer" class="col-3"></div>
                     
                     <form action="loginPage.php" method="post" class="col-6">
-                        <div class="row">
+                        <div class="row d-flex flex-column align-items-center">
             
-                            <div id="formContainer" class="col-xl-6">
+                            <div>
                                 <div class="row">
                                     <div class="col-12 center">Username</div>
 
-                                    <div class="col-12 center">
+                                    <div class="col-12 center mb-3">
                                         <input type="text" name="username">
                                     </div>
                                 </div>
                             </div>
 
-                            <div id="formContainer" class="col-xl-6">
+                            <div>
                                 <div class="row">
                                     <div class="col-12 center">Password</div>
 
-                                    <div class="col-12 center">
+                                    <div class="col-12 center mb-3">
                                         <input type="password" name="password">
                                     </div>
                                 </div>
                             </div>  
 
                             
-                            <div id="formContainer" class="col-xl-12 center">
-                                <div id="login" class="center col-6">
+                            <div class>
+                                <div id="login" class="center headerBtn mb-3">
                                 <input type="submit" name="Login" value="Login" class="btn btn-primary"></a></input>
                                 </div>
                                 
-                                <div id="createAcnt" class="center col-6">
+                                <div id="createAcnt" class="center headerBtn mb-3">
                                     <a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>
                                 </div>
                             </div>
