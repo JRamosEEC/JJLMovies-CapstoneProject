@@ -108,13 +108,14 @@
 
                     <div id="spacer" class="col-3"></div>
                 </div>
-            </div>   
 
-            <?php 
-                if($loginFailed != ""){
-                    echo "<h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2>"; 
-                }
-            ?> 
+                <?php 
+                    if($loginFailed != ""){
+                        echo "<div class='row center'><h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2></div>"; 
+                    }
+                ?> 
+
+            </div>    
         </div>
     </div>
 </body>
