@@ -312,6 +312,49 @@
 
         return( $stmt->rowCount() > 0);
     }
+    
+
+    //Followers
+    function getFollowerCount($userAccountID){
+        global $db;
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("SELECT COUNT(*) AS 'total' FROM userfollowers WHERE UserAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();
+                 
+        }
+        
+        return ($results);
+    }
+
+
+    function getFollowingCount($userAccountID){
+        global $db;
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("SELECT COUNT(*) AS 'total' FROM userfollowing WHERE UserAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();
+                 
+        }
+        
+        return ($results);
+    }
 
     // /\ /\ /\ UserAccounts/Followers /\ /\ /\
     //---------------------------------------------------------------
