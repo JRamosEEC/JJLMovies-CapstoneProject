@@ -54,7 +54,7 @@
         );
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-            $results = "Person Added";     //if command works print out cars added
+            $results = "Person Added";     //if command works print out  added
         }
     }
 
@@ -392,4 +392,33 @@
         }
         return ($results);
     }
+
+    function deleteMovie ($id) {
+        global $db;
+        
+        $results = "Data was not deleted";
+    
+        $stmt = $db->prepare("DELETE FROM `movietable` WHERE `UserAccountID` = :id");
+        
+        $stmt->bindValue(':id', $id);
+            
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            $results = 'Data Deleted';
+        }
+        
+        return ($results);
+    }
+  
+$MovieID = filter_input(INPUT_GET,'id');
+$MovieData = getMovie($MovieID); 
+
+if(isPostRequest()) {
+	//echo "THIS IS A TEST ". $FormID; 
+	//echo "this is a test ";
+	 deleteMovie($MovieID); 
+	header("Location: ./");
+		
+}
+    
+
 ?>
