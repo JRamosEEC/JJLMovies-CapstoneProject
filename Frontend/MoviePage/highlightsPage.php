@@ -46,7 +46,7 @@
                 
                     <?php foreach($trend as $row) :?>
                         <div class="col-xl-3" id="trends">
-                            <a href="moviePage.php?id=<?php echo $row['movieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
+                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
                             <div id="trendInfo" class="row">
 
                                 <div class="col-8">  
