@@ -38,7 +38,12 @@
 
         if(strlen($username) < 5) {
 
-            echo '<br>Please make sure your username is at least 5 characters long.';
+            $echo1 = '<br>Please make sure your username is at least 7 characters long.';
+
+            
+            //echo '<br>Please make sure your username is at least 7 characters long.';
+
+            
             $error1 = 1;
         }
         else{
@@ -51,7 +56,10 @@
 
         if(strlen($password) < 6){
 
-            echo '<br>Please make sure your Password is at least 6 characters long.';
+            $echo2 = '<br>Please make sure your Password is at least 6 characters long.';
+
+            //echo '<br>Please make sure your Password is at least 6 characters long.';
+
             $error2 = 1;
         }
         else{
@@ -61,7 +69,9 @@
 
         if($firstName == '' && $lastName == ''){
 
-            echo '<br>Please make sure you enter a First and Last name.';
+            $echo3 = '<br>Please make sure you enter a First and Last name.';
+
+            //echo '<br>Please make sure you enter a First and Last name.';
 
 
             $error3 = 1;
@@ -70,12 +80,15 @@
             $error3 = 0;
         }
 
+
+
         $stmt = checkUserName($username);
 
-        if($stmt > 1){
+        if($stmt > 0){
 
-            echo '<br>This User Name is already taken please pick another one.';
+            $echo4 = '<br>This User Name is already taken please pick another one.';
 
+            //echo '<br>This User Name is already taken please pick another one.';
 
 
             $error4 = 1;
@@ -87,7 +100,30 @@
 
         }
 
-        if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0) 
+        $stmt = checkEmail($email);
+
+        $error5 = 0;
+
+        if($stmt > 0){
+
+            $echo5 = '<br>This email already exists on our site.';
+
+            //echo '<br>This email already exists on our site.';
+
+
+
+            $error5 = 1;
+
+        }
+        else{
+
+            $error5 = 0;
+
+        }
+
+
+
+        if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0 && $error5 == 0) 
         {
 
             $error = 0;
@@ -99,10 +135,20 @@
             header('Location: ../login-signup/loginPage.php');
         
         }
+        elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+            $echo6 = "<br>Email address '$email' is considered invalid.\n";
+
+            //echo "<br>Email address '$email' is considered invalid.\n";
+            
+        }
         else{
 
-            echo "<br>Email address '$email' is considered invalid.\n";
-            
+            $echo7 = "<br>Please Fix Your Errors.\n";
+
+            //echo "<br>Please Fix Your Errors.\n";
+
+
         }
     }
 ?>
@@ -216,6 +262,45 @@
                     </form>
 
                     <div id="spacer" class="col-3"></div>
+
+
+
+                    <?php
+
+                        if(isset($echo1)){
+                            echo $echo1;
+                        }
+
+                        if(isset($echo2)){
+                            echo $echo2;
+                        }
+
+                        if(isset($echo3)){
+                            echo $echo3;
+                        }
+                        if(isset($echo4)){
+                            echo $echo4;
+                        }
+
+                        if(isset($echo5)){
+                            echo $echo5;
+                        }
+
+                        if(isset($echo6)){
+                            echo $echo6;
+                        }
+
+                        if(isset($echo7)){
+                            echo $echo7;
+                        }
+
+
+
+                        
+
+                    ?>
+
+                    
                 </div>
             </div>
         </div>
