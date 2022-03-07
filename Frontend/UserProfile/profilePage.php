@@ -60,7 +60,7 @@
                     <div id="itemContainer" class="col-auto profileDetails"> 
                         <div class="row"> 
                             <div id="profileIMG" class="col-12 d-flex justify-content-center profileItem">
-                                <img src="<?php if($profileImg != NULL){ echo $profileImg; } else{echo "/images/profile-icon-logged-out.png";}?>" width="200px" height="200px"; >
+                                <img src="<?php if($profileImg != NULL){ echo $profileImg; } else{echo "/images/profile-icon-logged-out.png";}?>" width="170px" height="170px"; >
                             </div>
 
                             <div class="col-12">
@@ -88,7 +88,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <br>
+                                <div id="profileaddMovie" class="col-12 d-flex justify-content-center">
+                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php" class="btn btn-primary">Create Movie</a>
+                                </div>
+                                <br>
                                 <div id="profileLogout" class="col-12 d-flex justify-content-center">
                                     <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
                                 </div>

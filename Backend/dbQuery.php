@@ -409,16 +409,9 @@
         return ($results);
     }
   
-$MovieID = filter_input(INPUT_GET,'id');
-$MovieData = getMovie($MovieID); 
 
-if(isPostRequest()) {
-	//echo "THIS IS A TEST ". $FormID; 
-	//echo "this is a test ";
-	 deleteMovie($MovieID); 
-	header("Location: ./");
 		
-}
+
     
 
 ?>
