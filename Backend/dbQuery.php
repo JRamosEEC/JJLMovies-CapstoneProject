@@ -455,8 +455,7 @@
         return ($results);
     }
   
-$MovieID = filter_input(INPUT_GET,'id');
-$MovieData = getMovie($MovieID); 
+
 
 if(isPostRequest()) {
 	//echo "THIS IS A TEST ". $FormID; 

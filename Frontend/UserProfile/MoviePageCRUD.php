@@ -141,6 +141,7 @@
 
                             header('Location: CHANGE PLEASE.php');      //creating my own button for delete once pressed the delete function runs
                         }
+
                                                 
                         
 
@@ -338,7 +339,17 @@
                         }
 
 
+
+                        if(isset($_POST['editBtn'])) { 
+
+                        }
+
+
                     ?>
+
+
+
+                        
                 </div>
 
                 
