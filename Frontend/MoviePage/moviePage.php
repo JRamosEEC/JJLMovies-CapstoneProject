@@ -13,10 +13,10 @@
     $reviews = getReviews($id);
     //$userdetails=getUser($userID);
 
-    if(isPostRequest()){
+    if(isPostRequest() && filter_input(INPUT_POST, 'txtReview') != ""){
         $userAccountID=$userID;//adding user id to the review tables 
         $ReviewDescription= filter_input(INPUT_POST, 'txtReview');;
-        $ReviewLikes= filter_input(INPUT_POST, 'txtRates');;        
+        $ReviewLikes= filter_input(INPUT_POST, 'rating');        
         addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes);
 
         header("Location: moviePage.php?id=" . $id);
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/review.css">
 
     <script src="Script/jquery-1.3.2.min.js" type="text/javascript"></script>
 
@@ -51,7 +52,6 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
-
     <script>
         $('#btnReview').click(function () {
             if ($('#txtReview').is(':visible')) {
@@ -111,14 +111,35 @@
                 <?php endforeach ?>
 
                 <div id="itemContainer">
-                    <form action="moviePage.php?id=<?php echo $id;?>" method="post" class="col-8" >
-                        <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
+                    <div class="col-6">
+                            <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
+                    </div>
+                    <form action="moviePage.php?id=<?php echo $id;?>" method="post" class="row" >
 
-                        <input id="txtReview" type="text" style="width:100%;" name="txtReview">
+                        <div class="col-12">
+                                <textarea id="txtReview" type="text" rows="6" cols="60" style="width:100%;" name="txtReview"></textarea>
+                        </div>
 
-                        <input id="txtRates" type="text" style="width:20%;" name="txtRates">
+                        <fieldset id="txtRates" name="txtRates" class="rating col-auto" >
+                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                        </fieldset>
+
+
+                        
+                        <div id="reviewSubmitContainer" class="col-auto d-flex justify-content-end" >
+                                <input id="btnReview" class="btn btn-primary" type="submit" value="Submit" name="btnReview">
+                        </div>
+
+                    
+
+
                     </form>
-                         
+                    
+                    
                     <?php foreach($reviews as $rev): ?>
                         <div class="row no-margin no-pad">
                             <div id="detail" class="col pl-4 pr- pt-3">

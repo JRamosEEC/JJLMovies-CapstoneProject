@@ -1,6 +1,6 @@
 <?php
     session_start(); 
-
+        //creating a session
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
     $action = $_GET['action'] ?? '';
@@ -18,13 +18,19 @@
         $btnString = "Add Movie";
     }
 
-    $movieTitle = filter_input(INPUT_POST, 'movieTitle');
+    $movieTitle = filter_input(INPUT_POST, 'movieTitle');       //creating my inital vars
 
     // $movieIMG = filter_input(INPUT_POST, 'movieIMG');
     // $movieBanner = filter_input(INPUT_POST, 'movieBanner');
 
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
+
+    $row = grabMovies($id);
+ 
+    $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT);        
+
+    //grabbing the ID so I can delete moviesas wlel
 
 
 
@@ -107,7 +113,7 @@
                                     <option>Western</option>
                                     <option>Crime</option>
                                     <option>Musical</option>
-                                    <option>Fantasty</option>
+                                    <option>Fantasy</option>
                                 </select>
                             </div>
 
@@ -121,11 +127,26 @@
 
 
                     <?php
-                        
+
+
+                        $row = grabMovies($id)
+
+                        if(isset($_POST['deleteBtn'])) {            //this is the function that will allow users to delete movies
+
+                            $id = filter_input(INPUT_POST, 'movieID', FILTER_VALIDATE_INT);
+
+                            deleteMovie($id);
+
+                            var_dump($id);
+
+                            header('Location: CHANGE PLEASE.php');      //creating my own button for delete once pressed the delete function runs
+                        }
+
+                                                
                         
 
 
-                        if(isset($_POST['submitBtn'])){
+                        if(isset($_POST['submitBtn'])){     //this is for submiting 
 
                             $error3 = 0;
 
@@ -262,7 +283,7 @@
 
                                 if(isset($_POST["submitBtn"]) && !empty($_FILES["file"]["name"])){
                                     // Allow certain file formats
-                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');
+                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
                                     if(in_array($fileType, $allowTypes)){
                                         // Upload file to server
                                         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
@@ -288,14 +309,14 @@
                                 // Display status message
                                 echo $statusMsg;
                                 $likeCount = 0;
-                                $DatePosted = date('Y-m-d H:i:s');
+                                $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
 
                                 $useraccountId = 1;
                                 $isApproved = 0;
 
                                 $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $useraccountId);
+                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $useraccountId);         //adds the movie
                                 
                                 
                                 
@@ -318,7 +339,17 @@
                         }
 
 
+
+                        if(isset($_POST['editBtn'])) { 
+
+                        }
+
+
                     ?>
+
+
+
+                        
                 </div>
 
                 
