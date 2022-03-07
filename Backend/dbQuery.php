@@ -54,7 +54,7 @@
         );
 
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-            $results = "Person Added";     //if command works print out cars added
+            $results = "Person Added";     //if command works print out person added
         }
     }
 
@@ -304,11 +304,29 @@
 
         global $db;
 
-        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE Username =:UserName");
+        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE username =:UserName");
 
-        $stmt->bindValue(':Username', $userName);
+        $stmt->bindValue(':UserName', $userName);
 
-        $stmt->execute ($binds);
+        //$stmt->bindValue(':email', $email);
+
+        $stmt->execute ();
+
+        return( $stmt->rowCount() > 0);
+    }
+    
+
+    function checkEmail($email){
+
+        global $db;
+
+        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE email =:email");
+
+        $stmt->bindValue(':email', $email);
+
+        //$stmt->bindValue(':email', $email);
+
+        $stmt->execute ();
 
         return( $stmt->rowCount() > 0);
     }
@@ -392,4 +410,32 @@
         }
         return ($results);
     }
+
+
+
+    function grabMovies ($id) {
+
+        global $db;
+    
+       
+       $result = [];        //creating empty array
+       
+       $stmt = $db->prepare("SELECT movieID, useraccountID, movieTitle, datePosted, movieGenre, movieDescription, creatorName, coverIMG, bannerIMG, likeCount, isApproved FROM movietable WHERE movieID=:movieID");
+    
+       $stmt->bindValue(':movieID', $id);
+      
+    
+       if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                       
+        }
+        
+        return ($result);
+    }
+
+
+
+
+    
 ?>
