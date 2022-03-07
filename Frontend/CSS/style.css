@@ -119,7 +119,7 @@ h2{
 }
 
 .profileDetails{
-    width: 250px;
+    width: 300px;
     height: calc(100vh - 225px);
 
     margin-top: 70px !important;
