@@ -7,7 +7,6 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     background-image: url('../../images/background.png');
-    background-size: 100% 100%;
     color: #FFFFFF;
 
     height: 100%;
@@ -34,11 +33,11 @@ h2{
 
 
 .btn {
-    font-size: 20px;
+    font-size: 18px;
     font-family: Roboto;
     font-style: normal;
-    width: 175px;
-    height: 50px;
+    width: 160px;
+    height: 45px;
     border-color: #2C2D43;
     background-color: #2C2D43;
     color: #FFFFFF;
@@ -49,7 +48,7 @@ h2{
     text-align: center;
 
     display: inline-block;
-    line-height: 47px;
+    line-height: 42px;
     vertical-align: middle;
 }
 
@@ -121,10 +120,46 @@ h2{
 
 .profileDetails{
     width: 250px;
-    height: calc(100vh - 105px);
+    height: calc(100vh - 225px);
+
+    margin-top: 70px !important;
+    margin-left: 100px !important;
+}
+
+.profileMovies{
+    height: calc(100vh - 225px);
+
+    margin-top: 70px !important;
+    margin-right: 100px !important;
 }
 
 
+
+#profileIMG{
+    height: 230px;
+}
+
+#profileUsername{
+    height: 45px;
+
+    font-weight: bold;
+}
+
+#profileName{
+    height: 45px;
+
+    font-weight: bold;
+}
+
+#profileFollowers{
+    margin-top: 45px;
+
+    font-weight: bold;
+}
+
+#profileLogout{
+    margin-bottom: 20px;
+}
 
 #content {
     width: 100%;

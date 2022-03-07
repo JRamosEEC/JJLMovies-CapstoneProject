@@ -106,7 +106,7 @@
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
-    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $UserAccountID)  {
+    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $BannerIMG, $UserAccountID,)  {
     
         //craeting my add car function that will actually add to my db
     
@@ -115,7 +115,7 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, UserAccountID = :UserAccountID ");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG ,UserAccountID = :UserAccountID");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":MovieTitle" => $MovieTitle,
@@ -126,6 +126,8 @@
 
             ":LikeCount" => $LikeCount,
             ":IsApproved" => $IsApproved,
+            ":CoverIMG" => $CoverIMG,
+            ":BannerIMG" => $BannerIMG,
             ":UserAccountID" => $UserAccountID,
         );
     
@@ -145,6 +147,7 @@
         $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY DatePosted"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                  
         }
@@ -221,7 +224,7 @@
 
     function addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes){
         
-        //craeting my add car function that will actually add to my db
+        //creating my add car function that will actually add to my db
     
     
         global $db;
@@ -309,6 +312,49 @@
 
         return( $stmt->rowCount() > 0);
     }
+    
+
+    //Followers
+    function getFollowerCount($userAccountID){
+        global $db;
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("SELECT COUNT(*) AS 'total' FROM userfollowers WHERE UserAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();
+                 
+        }
+        
+        return ($results);
+    }
+
+
+    function getFollowingCount($userAccountID){
+        global $db;
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("SELECT COUNT(*) AS 'total' FROM userfollowing WHERE UserAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":userAccountID" => $userAccountID,     
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();
+                 
+        }
+        
+        return ($results);
+    }
 
     // /\ /\ /\ UserAccounts/Followers /\ /\ /\
     //---------------------------------------------------------------
@@ -326,5 +372,24 @@
 
     function isPostRequest() {
         return (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST');
+    }
+
+    function searchMovie($MovieTitle){
+        global $db;
+        $binds=array();
+
+        $sql = "SELECT * FROM movietable WHERE 0=0";
+
+        if($movieTitle != " "){
+            $sql .= "AND MovieTitle LIKE :MovieTitle";
+            $binds['MovieTitle'] = '%' .$MovieTitle. '%';
+        }
+        $results =array();
+        $stmt = $db->prepare($sql);
+
+        if($stmt ->execute($binds) && $stmt -> rowCount() >0){
+            $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return ($results);
     }
 ?>

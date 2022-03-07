@@ -6,5 +6,7 @@
     unset($_SESSION['FName']);
     unset($_SESSION['LName']);
 
+    session_destroy();
+
     header("Location: ../MoviePage/homePage.php");
 ?>
