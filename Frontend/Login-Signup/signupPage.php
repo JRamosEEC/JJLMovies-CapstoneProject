@@ -36,13 +36,14 @@
         $lastName = filter_input(INPUT_POST, 'lastName');
 
 
-        if(strlen($username) < 7) {
+        if(strlen($username) < 5) {
 
             $echo1 = '<br>Please make sure your username is at least 7 characters long.';
 
             
             //echo '<br>Please make sure your username is at least 7 characters long.';
 
+            
             $error1 = 1;
         }
         else{
