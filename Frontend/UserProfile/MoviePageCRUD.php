@@ -107,7 +107,7 @@
                                     <option>Western</option>
                                     <option>Crime</option>
                                     <option>Musical</option>
-                                    <option>Fantasty</option>
+                                    <option>Fantasy</option>
                                 </select>
                             </div>
 
