@@ -64,7 +64,8 @@
                             <div class="col-sm">
                                 <div class="row">
                                     <div id="feedComponentMovieImg" class="col-auto no-pad">
-                                        <img src=<?php echo $row['CoverIMG']; ?> width=145px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                                    <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> width=200px;></a>
+                                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                                     </div>
 
                                     <div id="feedComponentMovieDetailsContainer" class="col-auto ml-4">
