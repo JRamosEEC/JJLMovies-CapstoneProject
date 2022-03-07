@@ -35,6 +35,44 @@
     width: calc(100vw - 230px);
 }
 
+#headerSearchBox{
+    position: fixed;
+    top: 85px;
+
+    padding: 40px;
+    margin-top: -1000px;
+
+    /*Add an extra 20 for browser scrollbar and remove on mobile*/
+    width: calc(40vw);
+    height: 900px;
+
+    overflow: hidden;
+
+    z-index: 10;
+
+    background-color: rgb(28, 31, 51, 0.99);
+
+    transition: all 0.3s;
+}
+
+#headerSearchBox.active{
+    margin-top: 0px;
+}
+
+#searchItem{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+#searchComponentDetails {
+    height: 33.333%;
+}
+
+#searchComponentDetails * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 #loginContainer{
     width: 50px;
     transition: all 0.3s;

@@ -146,10 +146,11 @@
 
         $stmt = $db->prepare("SELECT MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY DatePosted"); 
 
+
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                 
+                
         }
          
         return ($results);
