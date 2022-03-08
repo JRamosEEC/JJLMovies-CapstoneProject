@@ -48,7 +48,7 @@
 
     overflow: hidden;
 
-    background-color: rgb(28, 31, 51, 0.99);
+    background-color: rgba(24, 26, 43, 0.95);
 
     opacity: 0%;
 
@@ -60,6 +60,7 @@
     height: 500px;
 
     padding: 40px;
+    padding-top: 15px;
 
     opacity: 100%;
 }
