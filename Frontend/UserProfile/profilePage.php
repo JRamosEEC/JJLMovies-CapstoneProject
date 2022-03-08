@@ -16,7 +16,6 @@
         
     }
     $id = ($_SESSION['user']);
-    echo $id;
     $movies=getUserMovie($id);
 ?>
 
