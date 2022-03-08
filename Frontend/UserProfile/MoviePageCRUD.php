@@ -1,6 +1,7 @@
 <?php
+    //creating a session
     session_start(); 
-        //creating a session
+        
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
     $action = $_GET['action'] ?? '';
@@ -26,7 +27,7 @@
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
 
-    $row = grabMovies($id);
+    $row = getOneMovie($id);
  
     $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT);        
 
@@ -129,7 +130,7 @@
                     <?php
 
 
-                        $row = grabMovies($id)
+                        $row = getOneMovie($id)
 
                         if(isset($_POST['deleteBtn'])) {            //this is the function that will allow users to delete movies
 

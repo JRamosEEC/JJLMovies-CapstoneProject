@@ -210,6 +210,22 @@
         return ($results);
     }
 
+    function deleteMovie ($id) {
+        global $db;
+        
+        $results = "Data was not deleted";
+    
+        $stmt = $db->prepare("DELETE FROM `movietable` WHERE `UserAccountID` = :id");
+        
+        $stmt->bindValue(':id', $id);
+            
+        if ($stmt->execute() && $stmt->rowCount() > 0) {
+            $results = 'Data Deleted';
+        }
+        
+        return ($results);
+    }
+
     // /\ /\ /\ MovieCRUD /\ /\ /\
     //---------------------------------------------------------------
     //---------------------------------------------------------------
@@ -412,53 +428,5 @@
         }
         return ($results);
     }
-
-
-
-    function grabMovies ($id) {
-
-        global $db;
-    
-       
-       $result = [];        //creating empty array
-       
-       $stmt = $db->prepare("SELECT movieID, useraccountID, movieTitle, datePosted, movieGenre, movieDescription, creatorName, coverIMG, bannerIMG, likeCount, isApproved FROM movietable WHERE movieID=:movieID");
-    
-       $stmt->bindValue(':movieID', $id);
-      
-    
-       if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-    
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                       
-        }
-        
-        return ($result);
-    }
-
-
-
-
-    
-    function deleteMovie ($id) {
-        global $db;
-        
-        $results = "Data was not deleted";
-    
-        $stmt = $db->prepare("DELETE FROM `movietable` WHERE `UserAccountID` = :id");
-        
-        $stmt->bindValue(':id', $id);
-            
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Deleted';
-        }
-        
-        return ($results);
-    }
-  
-
-		
-
-    
 
 ?>
