@@ -254,17 +254,20 @@
             $sql .= " AND MovieTitle LIKE %:MovieTitle% ORDER BY LikeCount DESC LIMIT 8";
             
             $stmt = $db->prepare($sql);
+
             $stmt->bindValue(':MovieTitle', $MovieTitle);
         }
         else{
-            $sql .= " LIMIT 8"
+            $sql .= " LIMIT 8";
+
             $stmt = $db->prepare($sql);
         }
         
-        if($stmt ->execute($binds) && $stmt -> rowCount() >0){
+        
+        if($stmt->execute() && $stmt-> rowCount() > 0){
             $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        
+
         return ($results);
     }
 
