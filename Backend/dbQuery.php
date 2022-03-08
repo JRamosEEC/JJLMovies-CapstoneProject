@@ -183,7 +183,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 12"); 
+        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 8"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -193,14 +193,31 @@
         return ($results);
     }
 
+    function getUserMovie($id){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE UserAccountID = :UserAccountID"); 
+        
+        $stmt->bindvalue(':UserAccountID', $id);
+
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+        }
+         
+        return ($results);
+    }
     function getOneMovie($id){
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = :movieID"); 
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE MovieID = :MovieID"); 
         
-        $stmt->bindvalue(':movieID', $id);
+        $stmt->bindvalue(':MovieID', $id);
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
@@ -229,20 +246,29 @@
 
     function searchMovie($MovieTitle){
         global $db;
-        $binds=array();
+        $binds = array();
+        $results = array();
 
         $sql = "SELECT * FROM movietable WHERE 0=0";
 
-        if($movieTitle != " "){
-            $sql .= "AND MovieTitle LIKE :MovieTitle";
-            $binds['MovieTitle'] = '%' .$MovieTitle. '%';
-        }
-        $results =array();
-        $stmt = $db->prepare($sql);
+        if($MovieTitle != " "){
+            $sql .= " AND MovieTitle LIKE %:MovieTitle% ORDER BY LikeCount DESC LIMIT 8";
+            
+            $stmt = $db->prepare($sql);
 
-        if($stmt ->execute($binds) && $stmt -> rowCount() >0){
+            $stmt->bindValue(':MovieTitle', $MovieTitle);
+        }
+        else{
+            $sql .= " LIMIT 8";
+
+            $stmt = $db->prepare($sql);
+        }
+        
+        
+        if($stmt->execute() && $stmt-> rowCount() > 0){
             $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
         return ($results);
     }
 
