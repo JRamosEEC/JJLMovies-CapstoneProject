@@ -195,6 +195,8 @@ h2{
     width: 100%;
     min-height: 104px;
 
+    padding-top: 25px;
+
     /*Margin left must have 55px more to compensate the static nav bar the margin will gets removed when screen shrinks and nav disappears*/
     margin-left: 130px;
     margin-right: 75px;
@@ -225,7 +227,7 @@ h2{
 #movieitemContainer{
     background: #373B69;
     margin: 10px;
-    
+
 }
 
 #feedItem{
@@ -233,9 +235,21 @@ h2{
     font-size: 18px;
     background: rgba(0, 0, 0, 0.35);
 
+    margin-left: 100px;
+    margin-right: 100px;
     margin-bottom: 20px;
 
     padding: 10px !important;
+}
+
+#feedTitle{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#feedDescription{
+    font-size: 14px;
 }
 
 #formContainer{
@@ -248,8 +262,7 @@ h2{
 }
 
 #detail{
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    width: calc(100% - 150px);
 }
 
 #trends{
@@ -297,6 +310,11 @@ h2{
         /*Remove Margin on smaller screen sizes to expand content*/
         margin-left: 0px;
         margin-right: 0px;
+    }
+
+    #feedItem{
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 

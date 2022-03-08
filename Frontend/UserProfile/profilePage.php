@@ -108,7 +108,7 @@
                         <div class="row">
                             
                             <?php foreach($movies as $row) :?>
-                                <div id="moveItem" class="col">
+                                <div id="movieItem" class="col">
                                     <div class="col-12 d-flex justify-content-center">
                                         <img src=<?php echo $row['CoverIMG'];?> id="trendImg"; width="200px">
                                     </div>

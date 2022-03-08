@@ -51,40 +51,35 @@
 
             <!-- Page Content -->
             <div id="content">    
-                <div id="pageContainer">
-                    <?php foreach ($movies as $row): ?>
-                        <div id="feedItem" class="row no-margin no-pad">
-                            <div class="col-sm">
-                                <div class="row">
-                                    <div id="feedComponentMovieImg" class="col-auto no-pad">
-                                    <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> width=200px;></a>
-                                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                                    </div>
 
-                                    <div id="feedComponentMovieDetailsContainer" class="col-auto ml-4">
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Creator :</strong><div> &nbsp;<?php echo $row['CreatorName']?></div>
-                                        </div>
-
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Movie :</strong><div> &nbsp;<?php echo $row['MovieTitle'];?></div>
-                                        </div>
-
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Rating :</strong><div> &nbsp;</div>
-                                        </div>
-                                    </div>
+                <?php foreach ($movies as $row): ?>
+                    <div id="feedItem" class="row no-margin">
+                        <div class="col-sm-auto">
+                            <div class="row">
+                                <div id="feedComponentMovieImg" class="col-auto no-pad">
+                                <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> width=150px; height=225px;></a>
+                                        <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="detail" class="col-sm no-pad p-3">
-                                <h2><strong>Description</strong></h2>
-                                <br>
-                                <p><?php echo $row['MovieDescription'];?></p>
+                        <div id="detail" class="col-sm-auto p-3">
+
+                            <div id="feedComponentMovieDetailsContainer" class="row">
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div id="feedTitle"><?php echo $row['MovieTitle'];?></div>
+                                </div>
+                            
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div id="feedDescription">&nbsp;Creator : <?php echo $row['CreatorName']?></div>
+                                </div>
+
+                                <div id="feedDescription" class="col-12"><?php if(strlen($row['MovieDescription']) <= 295){ echo $row['MovieDescription']; } else{ echo substr($row['MovieDescription'], 0, 295) . "..."; }?></div>
                             </div>
                         </div>
-                    <?php endforeach; ?>           
-                </div>
+                    </div>
+                <?php endforeach; ?>    
+
             </div>
         </div>
     </div>
