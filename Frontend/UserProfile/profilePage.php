@@ -104,22 +104,22 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-7" id="movieitemContainer">
+                    <div class="col-xl-7" id="itemContainer">
                         <div class="row">
                             <?php foreach($movies as $row) :?>
-                                <div id="moveItem" class="col-4 row">
-                                    <div class="col-12 d-flex justify-content-center">
+                                <div id="moveItem" class="col">
+                                    <div class="col d-flex justify-content-center">
                                         <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width="150px"; height="225px"; >
                                     </div>
                                     
-                                    <div class="col-12 d-flex justify-content-center">  
-                                        <div class="row" id="itemContainer">  
-                                            <div class="col" style="font-size:13px;">  
-                                                Title: <?php echo $row['MovieTitle'];?>
+                                    <div class="col-flex justify-content-center" id="movieitemContainer" width="50%" height="50%">  
+                                        <div class="row">  
+                                            <div class="col" style="font-size:11px;">  
+                                                <?php echo $row['MovieTitle'];?>
                                             </div>
 
-                                            <div class="col" style="font-size:13px;">  
-                                                Rating: <?php echo $row['LikeCount'];?>
+                                            <div class="col-flex justify-content-right"  id="itemContainer" style="font-size:11px;">  
+                                                <?php echo $row['LikeCount'];?>
                                             </div>
                                         </div>
                                     </div>                
