@@ -121,6 +121,12 @@
                                             <div class="col-flex justify-content-center"  id="itemContainer" style="font-size:13px; padding:5px;">  
                                                 <?php echo $row['LikeCount'];?>
                                             </div>
+
+                                            <div class="col" style="font-size:13px;">  
+                                            
+                                                <a href="movieEDIT.php?action=update&movieID=<?= $row['MovieID'] ?>">Edit</a>
+
+                                            </div>
                                         </div>
                                     </div>                
                                 </div>             
