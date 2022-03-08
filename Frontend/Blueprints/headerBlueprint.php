@@ -83,19 +83,11 @@
         ajaxRequest.onreadystatechange = function() {
         
             if(ajaxRequest.readyState == 4) {
-                var ajaxDisplay = document.getElementById('ajaxDiv');
+                var ajaxDisplay = document.getElementById('headerSearchBox');
                 ajaxDisplay.innerHTML = ajaxRequest.responseText;
             }
         }
         
-        // Now get the value from user and pass it to
-        // server script.
-        var age = document.getElementById('age').value;
-        var wpm = document.getElementById('wpm').value;
-        var sex = document.getElementById('sex').value;
-        var queryString = "?age = " + age ;
-        
-        queryString +=  "&wpm = " + wpm + "&sex = " + sex;
         ajaxRequest.open("GET", "searchResults.php?searchTxt=" + $('#headerSearchBox').val(), true);
         ajaxRequest.send(null); 
     }
