@@ -25,6 +25,7 @@
     // $movieBanner = filter_input(INPUT_POST, 'movieBanner');
 
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
+    
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
 
     $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
@@ -95,7 +96,7 @@
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
-                                <textarea style='height:100px; width:100%; word-wrap: break-word;' name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3" value="<?php echo $movieDescripton; ?>"></textarea>
+                                <textarea style='height:100px; width:100%; word-wrap: break-word;' name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $movieDescripton; ?></textarea>
                             </div>
 
                             <div class="form-group">
