@@ -104,32 +104,28 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-7" id="itemContainer">
+                    <div class="col-xl-8" id="itemContainer">
                         <div class="row">
+                            
                             <?php foreach($movies as $row) :?>
                                 <div id="moveItem" class="col">
-                                    <div class="col d-flex justify-content-center">
+                                    <div class="col-12 d-flex justify-content-center">
                                         <img src=<?php echo $row['CoverIMG'];?> id="trendImg"; width="200px">
                                     </div>
                                     
-                                    <div class="col-flex justify-content-center" id="movieitemContainer">  
-                                        <div class="row">  
-                                            <div class="col justify-content-center" style="font-size:13px;">  
-                                                <?php echo $row['MovieTitle'];?>
+                                    <div class="col-12 d-flex justify-content-center">  
+                                        <div id="movieitemContainer" class="row" style="width: 200px;">  
+                                            <div class="col centerV" style="font-size:12px; font-weight: bold;">  
+                                                <div><?php echo $row['MovieTitle'];?></div>
                                             </div>
 
-                                            <div class="col-flex justify-content-center"  id="itemContainer" style="font-size:13px; padding:5px;">  
-                                                <?php echo $row['LikeCount'];?>
-                                            </div>
-
-                                            <div class="col" style="font-size:13px;">  
-                                            
-                                                <a href="movieEDIT.php?action=update&movieID=<?= $row['MovieID'] ?>">Edit</a>
-
+                                            <div class="col-auto justify-content-center" id="itemContainer" style="font-size:12px; font-weight: bold; padding:5px;">  
+                                                <div><?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";}?></div>
                                             </div>
                                         </div>
                                     </div>                
-                                </div>             
+                                </div>   
+
                             <?php endforeach ?>
                         </div>  
                     </div>

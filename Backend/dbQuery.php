@@ -214,6 +214,27 @@
          
         return ($results);
     }
+
+    function getMovieRating($id){
+        global $db;
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("SELECT CAST(AVG(Rating) AS DECIMAL(10,2)) FROM reviewtable WHERE MovieID = :movieID"); 
+        
+        $binds = array(
+            ":movieID" => $id,     
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();
+                 
+        }
+        
+        return ($results);
+    }
+
     function getOneMovie($id){
         global $db;
         
