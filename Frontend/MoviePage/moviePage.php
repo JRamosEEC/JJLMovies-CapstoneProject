@@ -16,8 +16,8 @@
     if(isPostRequest() && filter_input(INPUT_POST, 'txtReview') != ""){
         $userAccountID=$userID;//adding user id to the review tables 
         $ReviewDescription= filter_input(INPUT_POST, 'txtReview');;
-        $ReviewLikes= filter_input(INPUT_POST, 'rating');        
-        addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes);
+        $Rating= filter_input(INPUT_POST, 'rating');        
+        addReview($userAccountID,$movieID,$ReviewDescription,$Rating);
 
         header("Location: moviePage.php?id=" . $id);
     };      //adds value to function when the page posts
@@ -147,7 +147,7 @@
                             </div>
 
                             <div id="detail" class="col pl-4 pr- pt-3">
-                                <p><?php echo $rev['ReviewLikes'];?>/5</p>
+                                <p><?php echo $rev['Rating'];?>/5</p>
                             </div>
                         </div>
                     <?php endforeach; ?> 

@@ -287,7 +287,7 @@
     //---------------------------------------------------------------
     //---------------------------------------------------------------
 
-    function addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes){
+    function addReview($userAccountID,$movieID,$ReviewDescription,$Rating){
         
         //creating my add car function that will actually add to my db
     
@@ -296,13 +296,14 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO reviewtable SET userAccountID = :userAccountID, movieID = :movieID, ReviewDescription = :ReviewDescription, ReviewLikes = :ReviewLikes");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO reviewtable SET userAccountID = :userAccountID, movieID = :movieID, ReviewDescription = :ReviewDescription, Rating = :Rating, ReviewLikes = :ReviewLikes");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":userAccountID" => $userAccountID,
             ":movieID" => $movieID,
             ":ReviewDescription" => $ReviewDescription,
-            ":ReviewLikes" => $ReviewLikes, //binding my information of array to my vars       
+            ":Rating" => $Rating, //binding my information of array to my vars   
+            ":ReviewLikes" => 0,    
         );
     
     
