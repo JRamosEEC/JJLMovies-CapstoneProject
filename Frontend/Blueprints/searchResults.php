@@ -14,16 +14,16 @@
             <div class="col-sm">
                 <div class="row">
                     <div id="searchComponentMovieImg" class="col-auto no-pad">
-                        <img src="' . $row["CoverImg"] . '" width=75px;>
+                        <img src="$row[CoverIMG]" width=75px;>
                     </div>
 
                     <div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">
                         <div id="searchComponentDetails" class="row">
-                            <div style="font-size: 20px;">"' . $row["MovieTitle"] . '"</div>
+                            <div style="font-size: 20px;"><?php echo $row["MovieTitle"];?></div>
                         </div>
                     
                         <div id="searchComponentDetails" class="row">
-                            <strong>Creator :</strong><div> &nbsp;"' . $row["CreatorName"] . '"</div>
+                            <strong>Creator :</strong><div> &nbsp;<?php echo $row["CreatorName"]?></div>
                         </div>
 
                         <div id="searchComponentDetails" class="row">
