@@ -94,7 +94,8 @@
                                 </div>
                                 <br>
                                 <div id="profileaddMovie" class="col-12 d-flex justify-content-center">
-                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php" class="btn btn-primary">Create Movie</a>
+                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?id=<?php echo ($_SESSION['user']) ?>" class="btn btn-primary">Create Movie</a>
+                                    
                                 </div>
                                 <br>
                                 <div id="profileLogout" class="col-12 d-flex justify-content-center">
@@ -104,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-7" id="itemContainer">
+                    <div class="col-xl-7" id="movieitemContainer">
                         <div class="row">
                             <?php foreach($movies as $row) :?>
                                 <div id="moveItem" class="col-4 row">
@@ -114,11 +115,11 @@
                                     
                                     <div class="col-12 d-flex justify-content-center">  
                                         <div class="row" id="itemContainer">  
-                                            <div class="col">  
+                                            <div class="col" style="font-size:13px;">  
                                                 Title: <?php echo $row['MovieTitle'];?>
                                             </div>
 
-                                            <div class="col">  
+                                            <div class="col" style="font-size:13px;">  
                                                 Rating: <?php echo $row['LikeCount'];?>
                                             </div>
                                         </div>
