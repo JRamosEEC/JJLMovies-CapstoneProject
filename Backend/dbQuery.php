@@ -249,10 +249,11 @@
 
         $sql = "SELECT * FROM movietable WHERE 0=0";
 
-        if($movieTitle != " "){
-            $sql .= "AND MovieTitle LIKE :MovieTitle";
-            $binds['MovieTitle'] = '%' .$MovieTitle. '%';
+        if($MovieTitle != " "){
+            $sql .= "AND MovieTitle LIKE :MovieTitle ORDER BY LikeCount DESC LIMIT 8";
+            $binds[':MovieTitle'] = '%' .$MovieTitle. '%';
         }
+
         $results =array();
         $stmt = $db->prepare($sql);
 

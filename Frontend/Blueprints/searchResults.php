@@ -5,5 +5,11 @@
 
     $searchResults = searchMovie($searchTxt);
 
-    
+    $resultHtmlStr = "";
+
+    foreach($searchResults as $row){
+        $resultHtmlStr=$row['UserAccountID'];//getting the userAccount id from the accounts table
+    }
+
+    echo $resultHtmlStr;
 ?>

@@ -88,7 +88,7 @@
             }
         }
         
-        ajaxRequest.open("GET", "searchResults.php?searchTxt=" + $('#headerSearchBox').val(), true);
+        ajaxRequest.open("GET", "/Frontend/Blueprints/searchResults.php?searchTxt=" + "In"/*$('#headerSearchBox').val()*/, true);
         ajaxRequest.send(null); 
     }
 
