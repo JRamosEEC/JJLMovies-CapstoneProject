@@ -62,14 +62,26 @@
     });
 
     $(document).ready(function () {
+        $('#headerSearch').on('input', function () {
+            if($('#headerSearch').val().length > 0)
+            {
+                $('#headerSearchBox').addClass('active');
+            }
+        });
+    });
+
+    $(document).ready(function () {
         $('#headerSearch').on('focusin', function () {
-            $('#headerSearchBox').toggleClass('active');
+            if($('#headerSearch').val().length > 0)
+            {
+                $('#headerSearchBox').addClass('active');
+            }
         });
     });
 
     $(document).ready(function () {
         $('#headerSearch').on('focusout', function () {
-            $('#headerSearchBox').toggleClass('active');
+            $('#headerSearchBox').removeClass('active');
         });
     });
 </script>
