@@ -245,21 +245,26 @@
 
     function searchMovie($MovieTitle){
         global $db;
-        $binds=array();
+        $binds = array();
+        $results = array();
 
         $sql = "SELECT * FROM movietable WHERE 0=0";
 
         if($MovieTitle != " "){
-            $sql .= "AND MovieTitle LIKE :MovieTitle ORDER BY LikeCount DESC LIMIT 8";
-            $binds[':MovieTitle'] = '%' .$MovieTitle. '%';
+            $sql .= " AND MovieTitle LIKE %:MovieTitle% ORDER BY LikeCount DESC LIMIT 8";
+            
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':MovieTitle', $MovieTitle);
         }
-
-        $results =array();
-        $stmt = $db->prepare($sql);
-
+        else{
+            $sql .= " LIMIT 8"
+            $stmt = $db->prepare($sql);
+        }
+        
         if($stmt ->execute($binds) && $stmt -> rowCount() >0){
             $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        
         return ($results);
     }
 
