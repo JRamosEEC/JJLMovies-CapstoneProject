@@ -44,13 +44,6 @@
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
-        <?php 
-                if(isset($_POST['submit'])){
-                    $MovieTitle=filter_input(INPUT_POST,'headerSearch');
-                    $movieSearch=searchMovie($MovieTitle);
-                }
-        
-        ?>
 
         <div id="bodyContainer">
             <!-- Static Sidebar -->

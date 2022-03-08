@@ -54,32 +54,78 @@
 </div>
 
 <script>
+    function ajaxFunction() {
+        var ajaxRequest;  // The variable that makes Ajax possible!
+        
+        try {        
+            // Opera 8.0+, Firefox, Safari
+            ajaxRequest = new XMLHttpRequest();
+        } catch (e) {
+            
+            // Internet Explorer Browsers
+            try {
+                ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                
+                try {
+                    ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    // Something went wrong
+                    alert("Your browser broke!");
+                    return false;
+                }
+            }
+        }
+        
+        // Create a function that will receive data
+        // sent from the server and will update
+        // div section in the same page.
+        ajaxRequest.onreadystatechange = function() {
+        
+            if(ajaxRequest.readyState == 4) {
+                var ajaxDisplay = document.getElementById('headerSearchBox');
+                ajaxDisplay.innerHTML = ajaxRequest.responseText;
+            }
+        }
+        
+        ajaxRequest.open("GET", "searchResults.php?searchTxt=" + $('#headerSearchBox').val(), true);
+        ajaxRequest.send(null); 
+    }
+
+
+
     $(document).ready(function () {
+        //Sideabar and fade layer view functionality
         $('#sidebarCollapseBtnHead').on('click', function () {
             $('#sidebar').toggleClass('active');
             $('#fadeLayer').toggleClass('active');
         });
-    });
 
-    $(document).ready(function () {
+        $('#fadeLayer').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('#fadeLayer').removeClass('active');
+        });
+
+        //Headersearch box view functionality
         $('#headerSearch').on('input', function () {
             if($('#headerSearch').val().length > 0)
             {
                 $('#headerSearchBox').addClass('active');
+                
+                ajaxFunction();
+            }
+            else{
+                $('#headerSearchBox').removeClass('active');
             }
         });
-    });
 
-    $(document).ready(function () {
         $('#headerSearch').on('focusin', function () {
             if($('#headerSearch').val().length > 0)
             {
                 $('#headerSearchBox').addClass('active');
             }
         });
-    });
 
-    $(document).ready(function () {
         $('#headerSearch').on('focusout', function () {
             $('#headerSearchBox').removeClass('active');
         });

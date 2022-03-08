@@ -182,7 +182,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 12"); 
+        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 8"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
