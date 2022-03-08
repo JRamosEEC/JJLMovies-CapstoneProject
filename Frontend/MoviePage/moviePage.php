@@ -147,7 +147,7 @@
                             </div>
 
                             <div id="detail" class="col pl-4 pr- pt-3">
-                                <p><?php echo $rev['ReviewLikes'];?></p>
+                                <p><?php echo $rev['ReviewLikes'];?>/5</p>
                             </div>
                         </div>
                     <?php endforeach; ?> 

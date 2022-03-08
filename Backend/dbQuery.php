@@ -256,19 +256,20 @@
         $sql = "SELECT * FROM movietable WHERE 0=0";
 
         if($MovieTitle != " "){
-            $sql .= " AND MovieTitle LIKE %:MovieTitle% ORDER BY LikeCount DESC LIMIT 8";
+            $sql .= " AND MovieTitle LIKE :MovieTitle ORDER BY LikeCount DESC LIMIT 8";
             
             $stmt = $db->prepare($sql);
 
-            $stmt->bindValue(':MovieTitle', $MovieTitle);
+            $stmt->bindValue(':MovieTitle', "%" . $MovieTitle . "%");
         }
         else{
             $sql .= " LIMIT 8";
 
+            $stmt->bindValue(':MovieTitle', "ZZZZZZZZZZZ");
             $stmt = $db->prepare($sql);
         }
         
-        
+
         if($stmt->execute() && $stmt-> rowCount() > 0){
             $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
         }
