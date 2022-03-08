@@ -37,26 +37,29 @@
 
 #headerSearchBox{
     position: fixed;
+
     top: 85px;
 
     padding: 40px;
-    margin-top: -1000px;
 
     /*Add an extra 20 for browser scrollbar and remove on mobile*/
     width: calc(40vw);
-    height: 900px;
+    height: 0px;
 
     overflow: hidden;
 
-    z-index: 10;
-
     background-color: rgb(28, 31, 51, 0.99);
 
+    opacity: 0%;
+
     transition: all 0.3s;
+    transition: opacity 0.15s;
 }
 
 #headerSearchBox.active{
-    margin-top: 0px;
+    height: 500px;
+
+    opacity: 100%;
 }
 
 #searchItem{

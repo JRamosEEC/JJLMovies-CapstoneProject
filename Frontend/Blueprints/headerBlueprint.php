@@ -18,33 +18,33 @@
         <button type="submit" name="submit" href="/Frontend/MoviePage/moviePage.php" method="post"><i class="fa fa-search"></i></button>
 
         <div id="headerSearchBox">
-                    <?php foreach ($movies as $row): ?>
-                        <div id="searchItem" class="row no-margin no-pad">
-                            <div class="col-sm">
-                                <div class="row">
-                                    <div id="searchComponentMovieImg" class="col-auto no-pad">
-                                        <img src=<?php echo $row['CoverIMG']; ?> width=75px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                                    </div>
+            <?php foreach ($movies as $row): ?>
+                <div id="searchItem" class="row no-margin no-pad">
+                    <div class="col-sm">
+                        <div class="row">
+                            <div id="searchComponentMovieImg" class="col-auto no-pad">
+                                <img src=<?php echo $row['CoverIMG']; ?> width=75px;> <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                            </div>
 
-                                    <div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">
-                                        <div id="searchComponentDetails" class="row">
-                                            <div style="font-size: 20px;"><?php echo $row['MovieTitle'];?></div>
-                                        </div>
-                                    
-                                        <div id="searchComponentDetails" class="row">
-                                            <strong>Creator :</strong><div> &nbsp;<?php echo $row['CreatorName']?></div>
-                                        </div>
+                            <div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">
+                                <div id="searchComponentDetails" class="row">
+                                    <div style="font-size: 20px;"><?php echo $row['MovieTitle'];?></div>
+                                </div>
+                            
+                                <div id="searchComponentDetails" class="row">
+                                    <strong>Creator :</strong><div> &nbsp;<?php echo $row['CreatorName']?></div>
+                                </div>
 
-                                        <div id="searchComponentDetails" class="row">
-                                            <strong>Rating :</strong><div> &nbsp;</div>
-                                        </div>
-                                    </div>
+                                <div id="searchComponentDetails" class="row">
+                                    <strong>Rating :</strong><div> &nbsp;</div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div id="spacerLine" class="row no-margin" style="margin-top: 10px !important; margin-bottom: 5px !important;"></div>
-                    <?php endforeach; ?>
+                <div id="spacerLine" class="row no-margin" style="margin-top: 10px !important; margin-bottom: 5px !important;"></div>
+            <?php endforeach; ?>
         </div>
     </div>
 
@@ -62,7 +62,13 @@
     });
 
     $(document).ready(function () {
-        $('#headerSearch').on('focus', function () {
+        $('#headerSearch').on('focusin', function () {
+            $('#headerSearchBox').toggleClass('active');
+        });
+    });
+
+    $(document).ready(function () {
+        $('#headerSearch').on('focusout', function () {
             $('#headerSearchBox').toggleClass('active');
         });
     });
