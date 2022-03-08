@@ -109,16 +109,16 @@
                             <?php foreach($movies as $row) :?>
                                 <div id="moveItem" class="col">
                                     <div class="col d-flex justify-content-center">
-                                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width="150px"; height="225px"; >
+                                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg"; width="200px">
                                     </div>
                                     
-                                    <div class="col-flex justify-content-center" id="movieitemContainer" width="50%" height="50%">  
+                                    <div class="col-flex justify-content-center" id="movieitemContainer">  
                                         <div class="row">  
-                                            <div class="col" style="font-size:11px;">  
+                                            <div class="col justify-content-center" style="font-size:13px;">  
                                                 <?php echo $row['MovieTitle'];?>
                                             </div>
 
-                                            <div class="col-flex justify-content-right"  id="itemContainer" style="font-size:11px;">  
+                                            <div class="col-flex justify-content-center"  id="itemContainer" style="font-size:13px; padding:5px;">  
                                                 <?php echo $row['LikeCount'];?>
                                             </div>
                                         </div>
