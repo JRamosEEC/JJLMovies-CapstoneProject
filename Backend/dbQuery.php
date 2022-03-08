@@ -192,14 +192,31 @@
         return ($results);
     }
 
+    function getUserMovie($id){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE UserAccountID = :UserAccountID"); 
+        
+        $stmt->bindvalue(':UserAccountID', $id);
+
+
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 
+        }
+         
+        return ($results);
+    }
     function getOneMovie($id){
         global $db;
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT *  FROM movietable WHERE movieID = :movieID"); 
+        $stmt = $db->prepare("SELECT *  FROM movietable WHERE MovieID = :MovieID"); 
         
-        $stmt->bindvalue(':movieID', $id);
+        $stmt->bindvalue(':MovieID', $id);
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
