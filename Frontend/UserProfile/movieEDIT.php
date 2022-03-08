@@ -27,8 +27,9 @@
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
 
-    $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
-
+    $row = getOneMovie($id);
+ 
+    $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT);        
 
     //grabbing the ID so I can delete moviesas wlel
 
@@ -79,28 +80,21 @@
             <div id="content">        
                 <div id="AddEditMovie" class="row center no-margin no-padL">
                     <div id="spacer" class="col-3"></div>
+                    
 
                     <div id="signupContainer" class="col-6">
-                        <form action='MoviePageCRUD.php' method='post' enctype="multipart/form-data">  
+
+                        
+                        <form action='movieEDIT.php' method='post' enctype="multipart/form-data">  
+                        <input type="hidden" name="movieID" value="<?= $id;?>">
                             <div class="form-group">
                                 <label  for="exampleFormControlInput1">Movie Title</label>
                                 <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
                             </div>
 
-                            <label class="form-label" for="customFile">Upload Movie Image</label>
-                            <input name='file' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
-
-                            <label class="form-label" for="customFile">Upload Banner Image</label>
-                            <input name='file2' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
-
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
-                                <textarea style='height:100px; width:100%; word-wrap: break-word;' name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3" value="<?php echo $movieDescripton; ?>"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Movie Trailer</label>
-                                <textarea name='movieTrailer' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Enter In A YouTube Link!"></textarea>
+                                <textarea name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3" value="<?php echo $movieDescripton; ?>"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -123,15 +117,39 @@
                             </div>
 
                             <div class="row">
-                                <button name='submitBtn' type="submit" class="btn btn-primary"><?php echo $btnString?> </buton>
+                                <button name='deleteBtn' type="submit" class="btn btn-primary">Delete Movie</buton>
+
+                        
+                            
+                                <button name='submitBtn' type="submit" class="btn btn-primary">Edit Movie</buton>
                             </div>
+
+
                         </form>
+
+                        <h2><br>When you edit your movie, your like count will be reset along with needing to be approved once more!<br><br>For any drastic changes needed please contact support @ JJLHelp@gmail.com
                     </div>
 
                     <div id="spacer" class="col-3"></div>
 
 
                     <?php
+
+                        $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT); 
+
+
+                        $row = getOneMovie($id);
+
+                        if(isset($_POST['deleteBtn'])) {            //this is the function that will allow users to delete movies
+
+                            $id = filter_input(INPUT_POST, 'movieID', FILTER_VALIDATE_INT);
+
+                            deleteMovie($id);
+
+                        
+
+                            header('Location: CHANGE PLEASE.php');      //creating my own button for delete once pressed the delete function runs
+                        }
 
                                                 
                         
@@ -257,8 +275,7 @@
                                 $error = 0;
                             }
 
-                            $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
-                            
+
                             if(strlen($movieDescripton) <= 15)
                             {
 
@@ -300,29 +317,18 @@
                                 
                                 // Display status message
                                 echo $statusMsg;
+
                                 $likeCount = 0;
+
                                 $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
+
+                                $useraccountId = 1;
                                 
-                                $_SESSION['user'] = $user_ID;
-
-                                if(count($returnedAcnt)){
-
-                                    foreach($returnedAcnt as $creator){
-                                        //getting the user information from the table and storing into session variables to display on pages
-                                        $creatorName = $creator['userName'];
-                                    }
-
-                                    $_SESSION['creator'] = $creatorName;
-                        
-                    
-                                }
-
-                        
                                 $isApproved = 0;
 
-                                // $creatorName = 'Lance';
+                                $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer. $user_ID);         //adds the movie
+                                $results = updateMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $useraccountId);         //adds the movie
                                 
                                 
                                 
@@ -330,9 +336,9 @@
                                 if(isPostRequest()){
                                     
                                     echo "<br>Movie added";
+                                    
 
-
-                        
+                                    header('Location: sellerMenu.php');
                                     
                                 }
 
@@ -397,5 +403,6 @@
             </div>
         </div>
     </div>  
+    
 </body>
 </html>
