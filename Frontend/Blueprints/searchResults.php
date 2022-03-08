@@ -11,5 +11,5 @@
         $resultHtmlStr=$row['UserAccountID'];//getting the userAccount id from the accounts table
     }
 
-    echo $resultHtmlStr;
+    echo $searchTxt;
 ?>
