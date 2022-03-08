@@ -61,7 +61,7 @@
             <!-- Page Content -->
             <div id="content">
                 <div class="row no-margin">
-                    <div id="itemContainer" class="col-auto profileDetails"> 
+                    <div id="itemContainer" class="col-xl-3"> 
                         <div class="row"> 
                             <div id="profileIMG" class="col-12 d-flex justify-content-center profileItem">
                                 <img src="<?php if($profileImg != NULL){ echo $profileImg; } else{echo "/images/profile-icon-logged-out.png";}?>" width="170px" height="170px"; >
@@ -104,18 +104,24 @@
                         </div>
                     </div>
 
-                    <div id="itemContainer" class="col profileMovies">
+                    <div class="col-xl-7" id="itemContainer">
                         <?php foreach($movies as $row) :?>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-xl-4" id="itemContainer">
                                     <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
                                 </div>
                                 
-                                <div class="col-8">  
+                                <div class="col-xl-8">  
                                     <div class="row" id="itemContainer">  
                                         <div class="col">  
                                                 Title: <?php echo $row['MovieTitle'];?>
                                         </div>
+
+                                        <div class="col">  
+                                                Rating: <?php echo $row['LikeCount'];?>
+                                        </div>
+                                    </div>
+                    
                                 </div>               
                                     <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                             </div>            
@@ -124,6 +130,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
+</div> 
 </body>
 </html>
