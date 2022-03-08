@@ -105,27 +105,29 @@
                     </div>
 
                     <div class="col-xl-7" id="itemContainer">
-                        <?php foreach($movies as $row) :?>
-                            <div class="row">
-                                <div class="col-xl-4" id="itemContainer">
-                                    <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
-                                </div>
-                                
-                                <div class="col-xl-8">  
-                                    <div class="row" id="itemContainer">  
-                                        <div class="col">  
-                                                Title: <?php echo $row['MovieTitle'];?>
+                        <div class="row">
+                            <?php foreach($movies as $row) :?>
+                                <div class="col-4">
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width="150px"; height="225px"; >
                                         </div>
+                                        
+                                        <div class="col-12 d-flex justify-content-center">  
+                                            <div class="row" id="itemContainer">  
+                                                <div class="col">  
+                                                        Title: <?php echo $row['MovieTitle'];?>
+                                                </div>
 
-                                        <div class="col">  
-                                                Rating: <?php echo $row['LikeCount'];?>
-                                        </div>
-                                    </div>
-                    
-                                </div>               
-                                    <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                            </div>            
-                        <?php endforeach ?>
+                                                <div class="col">  
+                                                        Rating: <?php echo $row['LikeCount'];?>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>               
+                                </div>             
+                            <?php endforeach ?>
+                        </div>  
                     </div>
                 </div>
             </div>
