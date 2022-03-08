@@ -6,14 +6,18 @@
     $userData = getUser($_SESSION['user']);
     $userFollowers = getFollowerCount($_SESSION['user']);
     $userFollowing = getFollowingCount($_SESSION['user']);
-
+    
     foreach($userData as $user){
         //getting the user information from the table and storing into session variables to display on pages
         $Username = $user['Username'];
         $fName = $user['FirstName'];
         $lName = $user['LastName'];
         $profileImg = $user['ProfileImg'];
+        
     }
+    $id = ($_SESSION['user']);
+    echo $id;
+    $movies=getUserMovie($id);
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +105,21 @@
                     </div>
 
                     <div id="itemContainer" class="col profileMovies">
-                        <div>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</div>
+                        <?php foreach($movies as $row) :?>
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
+                                </div>
+                                
+                                <div class="col-8">  
+                                    <div class="row" id="itemContainer">  
+                                        <div class="col">  
+                                                Title: <?php echo $row['MovieTitle'];?>
+                                        </div>
+                                </div>               
+                                    <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
+                            </div>            
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
