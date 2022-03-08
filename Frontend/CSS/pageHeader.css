@@ -40,7 +40,7 @@
 
     top: 85px;
 
-    padding: 40px;
+    padding: 0px;
 
     /*Add an extra 20 for browser scrollbar and remove on mobile*/
     width: calc(40vw);
@@ -58,6 +58,8 @@
 
 #headerSearchBox.active{
     height: 500px;
+
+    padding: 40px;
 
     opacity: 100%;
 }
