@@ -107,24 +107,22 @@
                     <div class="col-xl-7" id="itemContainer">
                         <div class="row">
                             <?php foreach($movies as $row) :?>
-                                <div class="col-4">
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-center">
-                                            <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width="150px"; height="225px"; >
-                                        </div>
-                                        
-                                        <div class="col-12 d-flex justify-content-center">  
-                                            <div class="row" id="itemContainer">  
-                                                <div class="col">  
-                                                        Title: <?php echo $row['MovieTitle'];?>
-                                                </div>
-
-                                                <div class="col">  
-                                                        Rating: <?php echo $row['LikeCount'];?>
-                                                </div>
+                                <div id="moveItem" class="col-4 row">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width="150px"; height="225px"; >
+                                    </div>
+                                    
+                                    <div class="col-12 d-flex justify-content-center">  
+                                        <div class="row" id="itemContainer">  
+                                            <div class="col">  
+                                                Title: <?php echo $row['MovieTitle'];?>
                                             </div>
-                                        </div>   
-                                    </div>               
+
+                                            <div class="col">  
+                                                Rating: <?php echo $row['LikeCount'];?>
+                                            </div>
+                                        </div>
+                                    </div>                
                                 </div>             
                             <?php endforeach ?>
                         </div>  
