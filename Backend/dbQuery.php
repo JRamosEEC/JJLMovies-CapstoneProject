@@ -158,17 +158,21 @@
         return ($results);
     }
 
-    function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $CoverIMG, $BannerIMG){
+    function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $DatePosted, $LikeCount, $CreatorName, $IsApproved){
         global $db; 
 
         $results = [];
 
-        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG WHERE ovieID = :MovieID");
-        $stmt->bindvalue(':movieTitle', $MovieTitle);
-        $stmt->bindvalue(':movieGenre', $MovieGenre);
-        $stmt->bindvalue(':movieDescription', $MovieDescription); 
-        $stmt->bindvalue(':CoverIMG', $CoverIMG);
-        $stmt->bindvalue(':BannerIMG', $BannerIMG);
+        $stmt = $db->prepare("UPDATE movietable SET movieTitle = :MovieTitle, DatePosted = :DatePosted, CreatorName =:CreatorName, LikeCount = :LikeCount, IsApproved =:IsApproved, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, UserAccountID = :UserAccountID WHERE MovieID = :MovieID");
+        $stmt->bindvalue(':MovieTitle', $MovieTitle);
+        $stmt->bindvalue(':MovieGenre', $MovieGenre);
+        $stmt->bindvalue(':MovieDescription', $MovieDescription); 
+        $stmt->bindvalue(':DatePosted', $DatePosted);
+        $stmt->bindvalue(':LikeCount', $LikeCount); 
+        $stmt->bindvalue(':CreatorName', $CreatorName); 
+        $stmt->bindvalue(':IsApproved', $IsApproved); 
+        $stmt->bindvalue(':UserAccountID', $UserAccountID); 
+
         
 
         if($stmt->execute() && $stmt->rowCount()> 0) {
@@ -436,6 +440,28 @@
         }
         
         return ($results);
+    }
+
+
+    function grabMovies ($id) {
+
+        global $db;
+    
+       
+       $result = [];        //creating empty array
+       
+       $stmt = $db->prepare("SELECT movieID, UserAccountID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, BannerIMG, LikeCount, IsApproved, movieTrailer FROM movieTable WHERE movieID=:movieID");
+    
+       $stmt->bindValue(':movieID', $id);
+      
+    
+       if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                       
+        }
+        
+        return ($result);
     }
 
     // /\ /\ /\ UserAccounts/Followers /\ /\ /\

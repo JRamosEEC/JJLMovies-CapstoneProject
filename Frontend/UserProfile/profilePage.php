@@ -122,6 +122,12 @@
                                             <div class="col" style="font-size:13px;">  
                                                 Rating: <?php echo $row['LikeCount'];?>
                                             </div>
+
+                                            <div class="col" style="font-size:13px;">  
+                                            
+                                                <a href="movieEDIT.php?action=update&movieID=<?= $row['MovieID'] ?>">Edit</a>
+
+                                            </div>
                                         </div>
                                     </div>                
                                 </div>             

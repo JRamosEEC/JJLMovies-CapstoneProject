@@ -27,10 +27,21 @@
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
 
-    $row = getOneMovie($id);
- 
     $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT);        
 
+
+    $row = grabMovies($id);
+
+    $id = filter_input(INPUT_GET, 'movieID', FILTER_VALIDATE_FLOAT);
+
+
+    $movieTitle = $row['MovieTitle'];
+
+    $movieDescripton = $row['MovieDescription'];
+
+    $movieGenre = $row['MovieGenre'];
+ 
+   
     //grabbing the ID so I can delete moviesas wlel
 
 
@@ -89,17 +100,17 @@
                         <input type="hidden" name="movieID" value="<?= $id;?>">
                             <div class="form-group">
                                 <label  for="exampleFormControlInput1">Movie Title</label>
-                                <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
+                                <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?=$movieTitle; ?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
-                                <textarea name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3" value="<?php echo $movieDescripton; ?>"></textarea>
+                                <textarea name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $movieDescripton; ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Genre Select</label>
-                                <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php echo $movieGenre; ?>">
+                                <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?=$movieGenre; ?>">
                                     <option>Action</option>
                                     <option>Adventure</option>
                                     <option>Horror</option>
@@ -157,37 +168,12 @@
 
                         if(isset($_POST['submitBtn'])){     //this is for submiting 
 
-                            $error3 = 0;
-
-                            $error4 = 0;
 
 
-                            $fileName2 = basename($_FILES["file2"]["name"]);
 
+                           
 
-                            $fileName = basename($_FILES["file"]["name"]);
-
-                            if(empty($fileName)){
-                            
-                                echo '<br>Please select a file to upload for your cover image!';
-
-                                $error3 = 1;
-                                
-                            }
-                            else{
-                                $error3 = 0;
-                            }
-
-                            if(empty($fileName2)){
-                            
-                                echo '<br>Please select a file to upload for your banner image!';
-
-                                $error4 = 1;
-                                
-                            }
-                            else{
-                                $error4 = 0;
-                            }
+        
 
 
                         
@@ -250,14 +236,12 @@
                             $statusMsg = '';
 
                             // File upload path
-                            $targetDir = "uploads/";
-                            //$fileName = basename($_FILES["file"]["name"]);
+                           
 
                             
 
 
-                            $targetFilePath = $targetDir . $fileName;
-                            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+                    
                             
             
                 
@@ -287,36 +271,12 @@
                                 $error2 = 0;
                             }
 
-                            if($error == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0)
+                            if($error == 0 && $error2 == 0)
                             {
 
-                                if(isset($_POST["submitBtn"]) && !empty($_FILES["file"]["name"])){
-                                    // Allow certain file formats
-                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
-                                    if(in_array($fileType, $allowTypes)){
-                                        // Upload file to server
-                                        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                            
-                                            
-                                           
-                                            
-                                            if($insert){
-                                            }else{
-                                                $statusMsg = "File upload failed, please try again.";
-                                            } 
-                                        }else{
-                                            $statusMsg = "Sorry, there was an error uploading your file.";
-                                        }
-                                    }else{
-                                        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-                                    }
-                                }else{
-                                    $statusMsg = 'Please select a file to upload.';
-                                }
                                 
                                 
-                                // Display status message
-                                echo $statusMsg;
+                        
 
                                 $likeCount = 0;
 
@@ -328,7 +288,7 @@
 
                                 $creatorName = 'Lance';
                                 
-                                $results = updateMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $useraccountId);         //adds the movie
+                                $results = updateMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $useraccountId);         //adds the movie
                                 
                                 
                                 
@@ -338,7 +298,7 @@
                                     echo "<br>Movie added";
                                     
 
-                                    header('Location: sellerMenu.php');
+                                    header('Location: profilePage.php');
                                     
                                 }
 
