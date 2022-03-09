@@ -94,15 +94,24 @@
         });
 
         $('#headerSearch').on('focusin', function () {
+
+            $('#headerSearchContainer').addClass('active');
+            $('#logoContainer').addClass('active');
+
             if($('#headerSearch').val().length > 0)
             {
                 $('#headerSearchBox').addClass('active');
+                
                 ajaxFunction();
             }
         });
 
         $('#headerSearch').on('focusout', function () {
+            
             $('#headerSearchBox').removeClass('active');
+
+            $('#headerSearchContainer').removeClass('active');
+            $('#logoContainer').removeClass('active');
         });
     });
 </script>
