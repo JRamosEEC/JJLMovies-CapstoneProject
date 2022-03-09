@@ -148,7 +148,7 @@
 /*Screen size that static nav disappears on search box active expand search to take up entire top bar*/
 @media screen and (max-width: 870px) {
     #headerSearchContainer.active{
-        width: calc(100vw - 10px);
+        width: calc(100vw - 35px);
         padding-left: 0px;
     }
 
