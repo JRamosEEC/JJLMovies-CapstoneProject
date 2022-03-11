@@ -104,13 +104,13 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-8" id="itemContainer">
+                    <div class="col-xl-8" id="itemContainer profileMovieContainer">
                         <div class="row">
                             
                             <?php foreach($movies as $row) :?>
-                                <div id="movieItem" class="col">
+                                <div id="movieItem" class="col-auto">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg"; width="200px">
+                                        <img src='../../uploads/<?php echo $row['CoverIMG'];?>'' id="trendImg"; width="200px">
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-center">  
