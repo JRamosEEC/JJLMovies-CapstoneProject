@@ -233,8 +233,7 @@
                             $statusMsg = '';
 
                             // File upload path
-                            $targetDir = "uploads/";
-                            //$fileName = basename($_FILES["file"]["name"]);
+                            $targetDir = "../../uploads/";
 
                             
 
@@ -284,10 +283,10 @@
                                             
                                            
                                             
-                                            if($insert){
-                                            }else{
-                                                $statusMsg = "File upload failed, please try again.";
-                                            } 
+                                            //if($insert){
+                                            //}else{
+                                            //    $statusMsg = "File upload failed, please try again.";
+                                            //} 
                                         }else{
                                             $statusMsg = "Sorry, there was an error uploading your file.";
                                         }
