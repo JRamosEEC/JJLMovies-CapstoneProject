@@ -321,7 +321,7 @@
 
                                 // $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer. $_SESSION['user']);         //adds the movie
+                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
                                 
                                 
                                 
