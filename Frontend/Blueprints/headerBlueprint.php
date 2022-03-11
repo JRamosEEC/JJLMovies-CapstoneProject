@@ -17,7 +17,6 @@
 
     <div id="headerSearchContainer" class="center headerBtn col-auto">
         <input id="headerSearch" name="headerSearch" type="text" placeholder="Search">
-        <button type="submit" name="submit" href="/Frontend/MoviePage/moviePage.php" method="post"><i class="fa fa-search"></i></button>
 
         <div id="headerSearchBox">
             

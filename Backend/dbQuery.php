@@ -140,7 +140,7 @@
         }
     
     }
-
+    //grabbing movies from db - jacob 
     function getMovies() {
         global $db;
         
@@ -158,6 +158,7 @@
         return ($results);
     }
 
+    //jacob - Edit Movie function 
     function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $DatePosted, $LikeCount, $CreatorName, $IsApproved){
         global $db; 
 
@@ -253,6 +254,7 @@
         return ($results);
     }
 
+    //delete movie function 
     function deleteMovie ($id) {
         global $db;
         
@@ -269,6 +271,7 @@
         return ($results);
     }
 
+    //justins search function
     function searchMovie($MovieTitle){
         global $db;
         $binds = array();
@@ -304,7 +307,9 @@
 
 
 
-    //-
+
+    //-------------------------------------------------------
+
 
 
 
@@ -444,7 +449,7 @@
         return ($results);
     }
 
-
+    //justin should be able to get this done !!DO NOT DELETE!!
     function getFollowingCount($userAccountID){
         global $db;
         
@@ -493,7 +498,7 @@
 
 
 
-    //-
+    //-----------------------------------------------------------
 
 
 
