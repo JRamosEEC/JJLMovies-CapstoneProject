@@ -233,7 +233,7 @@
                             $statusMsg = '';
 
                             // File upload path
-                            $targetDir = "uploads/";
+                            $targetDir = "/uploads/";
                             //$fileName = basename($_FILES["file"]["name"]);
 
                             
