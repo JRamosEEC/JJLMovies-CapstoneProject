@@ -225,7 +225,7 @@ h2{
     padding: 20px;
 }
 
-#profileMovieContainer{
+.profileMovieContainer{
     overflow: hidden;
 }
 

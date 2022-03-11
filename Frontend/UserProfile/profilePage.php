@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-8" id="itemContainer profileMovieContainer">
+                    <div class="col-xl-8 profileMovieContainer" id="itemContainer">
                         <div class="row">
                             
                             <?php foreach($movies as $row) :?>
