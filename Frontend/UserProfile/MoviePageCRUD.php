@@ -1,6 +1,14 @@
 <?php
     //creating a session
     session_start(); 
+
+    if($_SESSION["loggedIn"] == false) {
+
+        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+    
+    
+    }
+    
         
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
@@ -107,6 +115,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Genre Select</label>
                                 <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php echo $movieGenre; ?>">
+                                <!--Movie options-->
                                     <option>Action</option>
                                     <option>Adventure</option>
                                     <option>Horror</option>
@@ -114,7 +123,7 @@
                                     <option>Family</option>
                                     <option>Thriller</option>
                                     <option>Drama</option>
-                                    <option>Science Fiction</option>
+                                    <option>Science Fiction</option> <!--Change to sci-fi?-->
                                     <option>Romance</option>
                                     <option>Western</option>
                                     <option>Crime</option>

@@ -1,6 +1,13 @@
 <?php
     session_start();
 
+    if($_SESSION["loggedIn"] == false) {
+
+        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+    
+    
+    }
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
     $userData = getUser($_SESSION['user']);

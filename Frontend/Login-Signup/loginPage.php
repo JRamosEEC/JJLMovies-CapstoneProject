@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+
+    $_SESSION["loggedIn"] = false;
+
     require (__DIR__ . "/../../Backend/dbQuery.php"); 
 
     $loginFailed = "";
@@ -20,6 +23,8 @@
             }
 
             $_SESSION['user'] = $user_ID;
+
+            $_SESSION["loggedIn"] = true;
         
             header('Location: ../MoviePage/homePage.php');   
         }

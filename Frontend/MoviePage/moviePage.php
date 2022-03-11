@@ -1,6 +1,8 @@
 <?php
     session_start(); 
 
+    
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
     $id=$_GET['id'] ?? -1;
     $movieDetails=getOneMovie($id);
