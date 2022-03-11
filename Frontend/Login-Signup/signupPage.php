@@ -35,7 +35,7 @@
 
         $lastName = filter_input(INPUT_POST, 'lastName');
 
-
+        //username must be more then 5 characters long 
         if(strlen($username) < 5) {
 
             $echo1 = '<br>Please make sure your username is at least 7 characters long.';
@@ -81,7 +81,7 @@
         }
 
 
-
+//make sure username is not already picked !NO DUPS!
         $stmt = checkUserName($username);
 
         if($stmt > 0){
@@ -122,7 +122,7 @@
         }
 
 
-
+//make sure password is encrpyted using !sha256!
         if(filter_var($email, FILTER_VALIDATE_EMAIL) && $error1 == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0 && $error5 == 0) 
         {
 
@@ -266,6 +266,7 @@
 
 
                     <?php
+                    //from up top 
 
                         if(isset($echo1)){
                             echo $echo1;
@@ -294,7 +295,7 @@
                             echo $echo7;
                         }
 
-
+                        //made more echos to make it easier echo1-7
 
                         
 
