@@ -310,7 +310,7 @@
 
                                     foreach($returnedAcnt as $creator){
                                         //getting the user information from the table and storing into session variables to display on pages
-                                        $creatorName = $creator['userName'];
+                                        $creatorName = $creator['Username'];
                                     }
 
                                     $_SESSION['creator'] = $creatorName;
