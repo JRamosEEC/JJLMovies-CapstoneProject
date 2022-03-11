@@ -107,6 +107,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Genre Select</label>
                                 <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php echo $movieGenre; ?>">
+                                <!--Movie options-->
                                     <option>Action</option>
                                     <option>Adventure</option>
                                     <option>Horror</option>
@@ -114,7 +115,7 @@
                                     <option>Family</option>
                                     <option>Thriller</option>
                                     <option>Drama</option>
-                                    <option>Science Fiction</option>
+                                    <option>Science Fiction</option> <!--Change to sci-fi?-->
                                     <option>Romance</option>
                                     <option>Western</option>
                                     <option>Crime</option>
@@ -135,10 +136,8 @@
                     <?php
 
                                                 
-                        
-
-
-                        if(isset($_POST['submitBtn'])){     //this is for submiting 
+                    
+                        if(isset($_POST['submitBtn'])){     //this is for submiting the movie
 
                             $error3 = 0;
 
@@ -233,7 +232,7 @@
                             $statusMsg = '';
 
                             // File upload path
-                            $targetDir = "../../uploads/";
+                            $targetDir = "../../uploads/";  //justin changed the path
 
                             
 
