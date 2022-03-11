@@ -304,7 +304,7 @@
                                 $likeCount = 0;
                                 $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
                                 
-                                $_SESSION['user'] = $user_ID;
+                                $returnedAcnt = getUser($_SESSION['user']);
 
                                 if(count($returnedAcnt)){
 
@@ -314,8 +314,6 @@
                                     }
 
                                     $_SESSION['creator'] = $creatorName;
-                        
-                    
                                 }
 
                         
