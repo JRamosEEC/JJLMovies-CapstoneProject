@@ -233,8 +233,7 @@
                             $statusMsg = '';
 
                             // File upload path
-                            $targetDir = "uploads/";
-                            //$fileName = basename($_FILES["file"]["name"]);
+                            $targetDir = "../../uploads/";
 
                             
 
@@ -284,10 +283,10 @@
                                             
                                            
                                             
-                                            if($insert){
-                                            }else{
-                                                $statusMsg = "File upload failed, please try again.";
-                                            } 
+                                            //if($insert){
+                                            //}else{
+                                            //    $statusMsg = "File upload failed, please try again.";
+                                            //} 
                                         }else{
                                             $statusMsg = "Sorry, there was an error uploading your file.";
                                         }
@@ -304,18 +303,16 @@
                                 $likeCount = 0;
                                 $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
                                 
-                                $_SESSION['user'] = $user_ID;
+                                $returnedAcnt = getUser($_SESSION['user']);
 
                                 if(count($returnedAcnt)){
 
                                     foreach($returnedAcnt as $creator){
                                         //getting the user information from the table and storing into session variables to display on pages
-                                        $creatorName = $creator['userName'];
+                                        $creatorName = $creator['Username'];
                                     }
 
                                     $_SESSION['creator'] = $creatorName;
-                        
-                    
                                 }
 
                         
@@ -323,7 +320,7 @@
 
                                 // $creatorName = 'Lance';
                                 
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer. $user_ID);         //adds the movie
+                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
                                 
                                 
                                 
