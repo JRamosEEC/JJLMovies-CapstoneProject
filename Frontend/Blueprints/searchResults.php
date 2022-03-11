@@ -6,7 +6,8 @@
     $searchResults = searchMovie($searchTxt);
 
     $resultHtmlStr = "";
-
+?>
+<?php
     foreach ($searchResults as $row)
     {
         $resultHtmlStr .= '<div id="searchItem" class="row no-margin no-pad">';
@@ -15,7 +16,7 @@
         $resultHtmlStr .= '<div id="searchComponentMovieImg" class="col-auto no-pad">';
         $resultHtmlStr .= '<img src="' . $row["CoverIMG"] . '" width=75px;>';
         $resultHtmlStr .= '</div>';
-
+        
         $resultHtmlStr .= '<div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">';
         $resultHtmlStr .= '<div id="searchComponentDetails" class="row">';
         $resultHtmlStr .= '<div style="font-size: 20px;">' . $row["MovieTitle"] . '</div>';
@@ -38,3 +39,4 @@
 
     echo $resultHtmlStr;
 ?>
+
