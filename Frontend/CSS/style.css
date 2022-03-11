@@ -224,6 +224,15 @@ h2{
     margin: 10px;
     padding: 20px;
 }
+
+#profileMovieContainer{
+    overflow: hidden;
+}
+
+#movieItem{
+    width: 25%;
+}
+
 #movieitemContainer{
     background: #373B69;
     margin: 10px;
