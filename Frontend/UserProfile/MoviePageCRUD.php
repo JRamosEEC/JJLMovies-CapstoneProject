@@ -119,7 +119,7 @@
                             </div>
 
                             <div class="row">
-                                <button name='submitBtn' type="submit" class="btn btn-primary"><?php echo $btnString?> </buton>
+                                <button name='<?php if($btnString == "Update"){echo "editBtn";}else{echo "submitBtn";}?>' type="submit" class="btn btn-primary"><?php echo $btnString?></buton>
                             </div>
                         </form>
                     </div>
