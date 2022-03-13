@@ -41,13 +41,14 @@
             <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
             
             <!-- Page Content -->
-            <div id="content">   
-                <div class="row no-margin no-pad" id="pageContainer">
+            <div class="row no-margin no-pad" id="content">   
+                
                 
                     <?php foreach($trend as $row) :?>
-                        <div class="col-xl-3" id="trends">
-                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width=275px height="390px"; ></a>
-                            <div id="trendInfo" class="row">
+                        <div style="position:relative; top:35px;"class="col-sm-3" id="trends">
+                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width=175px height="290px"; ></a>
+
+                            <div style="position:relative; width:460px;" id="trendInfo" class="row">
 
                                 <div class="col-8">  
                                     <?php echo $row['MovieTitle'];?>
@@ -58,9 +59,9 @@
                                 </div>
                             </div>  
                             <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                    </div>
+                        </div>
                     <?php endforeach ?>
-                </div>
+                
             </div>
         </div> 
     </div>  
