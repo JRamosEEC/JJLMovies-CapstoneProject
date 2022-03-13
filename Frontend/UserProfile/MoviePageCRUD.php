@@ -16,7 +16,7 @@
         $btnString = "Create";
     } 
     
-    else if ($action == "edit" && movieID != ' '){
+    else if ($action == "edit" && $movieID != ' '){
         $btnString = "Update";
     }
 
