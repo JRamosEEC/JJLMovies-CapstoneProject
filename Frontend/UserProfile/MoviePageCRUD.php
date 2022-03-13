@@ -2,24 +2,21 @@
     //creating a session
     session_start(); 
 
-    if($_SESSION["loggedIn"] == false) {
-
-        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
-    
-    
-    }
-    
-        
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
+    if($_SESSION["loggedIn"] == false) {
+        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+    }  
+
     $action = $_GET['action'] ?? '';
-    $btnString = "test";
+    $movieID = $_GET['id'] ?? '';
+    $btnString = "Something went wrong"; //Default value just in case something potentially fails
 
     if ($action == "add") {
         $btnString = "Create";
     } 
     
-    else if ($action == "edit"){
+    else if ($action == "edit" && movieID != ' '){
         $btnString = "Update";
     }
 
@@ -30,20 +27,12 @@
     $movieTitle = filter_input(INPUT_POST, 'movieTitle');       //creating my inital vars
 
     // $movieIMG = filter_input(INPUT_POST, 'movieIMG');
-    // $movieBanner = filter_input(INPUT_POST, 'movieBanner');
 
     $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
     
     $movieGenre = filter_input(INPUT_POST, 'movieGenre');
 
     $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
-
-
-    //grabbing the ID so I can delete moviesas wlel
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -98,9 +87,6 @@
 
                             <label class="form-label" for="customFile">Upload Movie Image</label>
                             <input name='file' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
-
-                            <label class="form-label" for="customFile">Upload Banner Image</label>
-                            <input name='file2' type="file" class="form-control" id="customFile" value="<?php echo $movieBanner; ?>" />
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
@@ -202,7 +188,6 @@
 
                             if($error == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0)
                             {
-
                                 if(!empty($_FILES["file"]["name"])){
                                     
                                     // Allow certain file formats
@@ -212,16 +197,22 @@
                                         
                                         // Upload file to server
                                         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                                            $likeCount = 0;
+                                            $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
                                             
+                                            $returnedAcnt = getUser($_SESSION['user']);
+
+                                            if(count($returnedAcnt)){
+
+                                                foreach($returnedAcnt as $creator){
+                                                    //getting the user information from the table and storing into session variables to display on pages
+                                                    $creatorName = $creator['Username'];
+                                                }
+                                            }
+                                    
+                                            $isApproved = 0;
                                             
-                                            
-                                            //if($insert)
-                                            //{
-                                            //}
-                                            //else
-                                            //{
-                                            //    $statusMsg = "File upload failed, please try again.";
-                                            //} 
+                                            $statusMsg = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
                                         }
                                         else
                                         {
@@ -236,44 +227,15 @@
                                 else
                                 {
                                     $statusMsg = 'Please select a file to upload.';
-                                }
-                                
-                                // Display status message
-                                echo $statusMsg;
-                                $likeCount = 0;
-                                $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
-                                
-                                $returnedAcnt = getUser($_SESSION['user']);
-
-                                if(count($returnedAcnt)){
-
-                                    foreach($returnedAcnt as $creator){
-                                        //getting the user information from the table and storing into session variables to display on pages
-                                        $creatorName = $creator['Username'];
-                                    }
-
-                                    $_SESSION['creator'] = $creatorName;
-                                }
-
-                        
-                                $isApproved = 0;
-
-                                // $creatorName = 'Lance';
-                                
-                                $results = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
-                                
-                                
-                                
-
-                                if(isPostRequest()){
-                                    
-                                    echo "<br>Movie added";
-                                }
+                                }       
                             }
                             else
                             {
                                 echo '<br>please fix errors';
                             }
+
+                            // Display status message
+                            echo $statusMsg;
                         }
 
                         if(isset($_POST['editBtn'])) { 

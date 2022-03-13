@@ -139,6 +139,7 @@
             $results = "Movie Added";     //if command works print out car added
         }
     
+        return $results;
     }
     //grabbing movies from db - jacob 
     function getMovies() {
