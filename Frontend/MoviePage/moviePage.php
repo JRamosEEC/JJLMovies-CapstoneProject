@@ -80,7 +80,7 @@
                 <?php foreach($movieDetails as $row) :?>
                     <div class="row">
                         <div class="col-xl-4">
-                            <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
+                            <img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg" width=275px height="390px"; >
                         </div>
                         
                         <div class="col-xl-8">  

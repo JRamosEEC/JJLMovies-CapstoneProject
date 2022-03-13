@@ -117,19 +117,21 @@
                             <?php foreach($movies as $row) :?>
                                 <div id="movieItem" class="col-auto">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <img src='../../uploads/<?php echo $row['CoverIMG'];?>'' id="trendImg"; width="200px">
+                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>'' id="trendImg"; width="200px"></a>
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-center">  
-                                        <div id="movieitemContainer" class="row" style="width: 200px;">  
-                                            <div class="col centerV" style="font-size:12px; font-weight: bold;">  
-                                                <div><?php echo $row['MovieTitle'];?></div>
-                                            </div>
+                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
+                                            <div id="movieitemContainer" class="row">  
+                                                <div class="col centerV">  
+                                                    <div><?php echo $row['MovieTitle'];?></div>
+                                                </div>
 
-                                            <div class="col-auto justify-content-center" id="itemContainer" style="font-size:12px; font-weight: bold; padding:5px;">  
-                                                <div><?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";}?></div>
+                                                <div class="col-auto justify-content-center" id="itemContainer" style="padding:5px; margin:6px;">  
+                                                    <div><?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";}?></div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>                
                                 </div>   
 
