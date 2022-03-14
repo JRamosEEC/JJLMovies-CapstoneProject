@@ -114,7 +114,7 @@
                     <div class="col-6">
                             <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview" onClick="return showForm()">
                     </div>
-                    <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row" style="display:none">
+                    <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row">
 
                         <div class="col-12">
                                 <textarea id="txtReview" type="text" rows="6" cols="60" style="width:100%;" name="txtReview"></textarea>
