@@ -226,6 +226,8 @@ h2{
 }
 
 .profileMovieContainer{
+    height: 834px;
+
     overflow: hidden;
 }
 

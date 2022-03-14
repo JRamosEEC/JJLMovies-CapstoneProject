@@ -133,14 +133,14 @@
 
                                     <div class="row d-flex justify-content-center">
                                         <a href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>">
-                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 10px; font-size: 16px;">  
+                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 25px; font-size: 16px;">  
                                                 <div class="col centerV">  
                                                     <div>Edit</div>
                                                 </div>
                                             </div>
                                         </a>
 
-                                        <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 10px;">  
+                                        <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 25px;">  
                                             <div class="col centerV">  
                                                 <div>Edit</div>
                                             </div>
