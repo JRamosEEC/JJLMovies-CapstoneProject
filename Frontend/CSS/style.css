@@ -231,6 +231,18 @@ h2{
     overflow: hidden;
 }
 
+#PrevPage{
+    position: absolute;
+
+    left: 10px;
+}
+
+#NextPage{
+    position: absolute;
+
+    right: 10px;
+}
+
 #movieItem{
     width: 25%;
 }

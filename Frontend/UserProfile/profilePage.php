@@ -149,6 +149,10 @@
                                 </div>   
 
                             <?php endforeach ?>
+
+                            <a id="PrevPage" class="btn btn-primary"><img id='ProfileArrowL' class="text-center no-pad" src="/images/logo-icon.png"></a>
+
+                            <a id="NextPage" class="btn btn-primary"><img id='ProfileArrowR' class="text-center no-pad" src="/images/logo-icon.png"></a>
                         </div>  
                     </div>
                 </div>
