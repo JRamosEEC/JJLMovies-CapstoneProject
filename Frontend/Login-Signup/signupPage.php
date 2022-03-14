@@ -47,9 +47,9 @@
             $error1 = 1;
         }
         else{
+
             $error1 = 0;
 
-            
         }
 
 

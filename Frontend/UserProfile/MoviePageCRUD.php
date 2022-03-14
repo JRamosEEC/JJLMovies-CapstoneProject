@@ -41,8 +41,8 @@
             $movieTitle = $row['MovieTitle']; //creating my inital vars
             $movieDescripton = $row['MovieDescription'];
             $movieGenre = $row['MovieGenre'];
-            $movieIMG = $row['MovieIMG'];
-            //$movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
+            $movieIMG = $row['CoverIMG'];
+            $movieTrailer = $row['movieTrailer'];
         }
     }
 
@@ -57,7 +57,7 @@
         $movieTitle = filter_input(INPUT_POST, 'movieTitle');       //creating my inital vars
         $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
         $movieGenre = filter_input(INPUT_POST, 'movieGenre');
-        //$movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
+        $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
     }
 ?>
 
@@ -125,7 +125,7 @@
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Trailer</label>
-                                <textarea name='movieTrailer' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Enter In A YouTube Link!"><?php echo $movieDescripton; ?></textarea>
+                                <textarea name='movieTrailer' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Enter In A YouTube Link!"><?php echo $movieTrailer; ?></textarea>
                             </div>
 
                             <div class="form-group">
@@ -201,7 +201,7 @@
                                 $error2 = 0;
                             }
 
-                            if($error == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0)
+                            if($error == 0 && $error2 == 0 && $error3 == 0)
                             {
                                 if(!empty($_FILES["file"]["name"])){
                                     
@@ -228,6 +228,8 @@
                                             $isApproved = 0;
                                             
                                             $statusMsg = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
+
+                                            header('Location: ../UserProfile/profilePage.php');
                                         }
                                         else
                                         {
@@ -263,10 +265,12 @@
                             // File upload path
                             $targetDir = "../../uploads/";
 
+                            $fileName = basename($_FILES["file"]["name"]);
+
                             $targetFilePath = $targetDir . $fileName;
                             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
-                            $fileName = basename($_FILES["file"]["name"]);
+                           
 
                             if(empty($fileName))
                             {
@@ -296,7 +300,7 @@
                                 $error2 = 0;
                             }
 
-                            if($error == 0 && $error2 == 0 && $error3 == 0 && $error4 == 0)
+                            if($error == 0 && $error2 == 0 && $error3 == 0)
                             {
                                 if(!empty($_FILES["file"]["name"])){
                                     
@@ -320,6 +324,12 @@
                                             $isApproved = 0;
                                             
                                             $statusMsg = editMovie($movieTitle, $movieGenre, $movieDescripton, $isApproved, $fileName, $movieTrailer, $_SESSION['user'], $movieID);         //adds the movie
+
+
+
+
+
+
                                         }
                                         else
                                         {

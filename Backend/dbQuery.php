@@ -147,7 +147,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, BannerIMG, LikeCount, IsApproved, UserAccountID FROM movietable ORDER BY DatePosted"); 
+        $stmt = $db->prepare("SELECT MovieID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, BannerIMG, LikeCount, IsApproved, MovieTrailer, UserAccountID FROM movietable ORDER BY DatePosted DESC"); 
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
@@ -165,12 +165,13 @@
         
         $results = [];
 
-        $stmt = $db->prepare("UPDATE movietable SET MovieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, IsApproved = :IsApproved, CoverIMG = :CoverIMG WHERE UserAccountID = :UserAccountID AND MovieID = :MovieID");
+        $stmt = $db->prepare("UPDATE movietable SET MovieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, IsApproved = :IsApproved, CoverIMG = :CoverIMG, MovieTrailer = :MovieTrailer WHERE UserAccountID = :UserAccountID AND MovieID = :MovieID");
         $stmt->bindvalue(':MovieTitle', $MovieTitle);
         $stmt->bindvalue(':MovieGenre', $MovieGenre);
         $stmt->bindvalue(':MovieDescription', $MovieDescription); 
         $stmt->bindvalue(':IsApproved', $IsApproved);
         $stmt->bindvalue(':CoverIMG', $CoverIMG);
+        $stmt->bindvalue(':MovieTrailer', $MovieTrailer);
         $stmt->bindvalue(':UserAccountID', $UserAccountID);
         $stmt->bindvalue(':MovieID', $MovieID); 
 

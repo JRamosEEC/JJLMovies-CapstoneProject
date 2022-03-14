@@ -2,7 +2,7 @@
     session_start(); 
 
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $movies = getMovies();
+    $movies = getMovies();    
 ?>
 
 <!DOCTYPE html>
@@ -66,15 +66,38 @@
                         <div id="detail" class="col-sm-auto p-3">
 
                             <div id="feedComponentMovieDetailsContainer" class="row">
-                                <div id="feedComponentDetails" class="col-12">
-                                    <div id="feedTitle"><?php echo $row['MovieTitle'];?></div>
-                                </div>
-                            
-                                <div id="feedComponentDetails" class="col-12">
-                                    <div id="feedDescription">&nbsp;Creator : <?php echo $row['CreatorName']?></div>
+                                <div id="feedComponentDetails" class="col-6">
+                                    <div id="feedTitle"><b><?php echo $row['MovieTitle'];?></b></div>    
                                 </div>
 
+                                <div style="color:yellow" class='col-6 d-flex justify-content-end'>
+                                    <?php
+
+                                        if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";};
+
+                                    ?>
+                                </div>
+                            
+                            
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div style="color:yellow;" id="feedDescription">&nbsp;Creator : <?php echo $row['CreatorName']?></div>
+                                </div>
+
+                                <br>
+
                                 <div id="feedDescription" class="col-12"><?php if(strlen($row['MovieDescription']) <= 295){ echo $row['MovieDescription']; } else{ echo substr($row['MovieDescription'], 0, 295) . "..."; }?></div>
+
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                         
+
+
+
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div id="feedDescription">Date Posted: <?php echo substr($row['DatePosted'], 0, 10)?></div>
+                                </div>
                             </div>
                         </div>
                     </div>
