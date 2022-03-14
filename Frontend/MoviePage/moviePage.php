@@ -55,10 +55,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
     <script>
-        
-        document.getElementbyId('btnReview').addEventListener("click",(e)){
-            document.getElementById('reviewForm').style.display('show');
-        };
+        function showForm(){
+            document.getElementById(reviewForm).style.display = "none";
+            return false;
+        }
     </script>
 
     <div class="wrapper">
@@ -112,9 +112,9 @@
 
                 <div id="itemContainer">
                     <div class="col-6">
-                            <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
+                            <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview" onClick="return showForm()">
                     </div>
-                    <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row" >
+                    <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row">
 
                         <div class="col-12">
                                 <textarea id="txtReview" type="text" rows="6" cols="60" style="width:100%;" name="txtReview"></textarea>

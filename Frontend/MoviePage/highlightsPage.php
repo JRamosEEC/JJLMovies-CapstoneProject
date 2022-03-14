@@ -45,18 +45,19 @@
                 
                 
                     <?php foreach($trend as $row) :?>
-                        <div style="position:relative; top:35px;"class="col-sm-3" id="trends">
-                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width=175px height="290px"; ></a>
+                        <div class="col-sm-3" id="trends">
+                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width="265px" height="385px"; ></a>
 
-                            <div style="position:relative; width:460px;" id="trendInfo" class="row">
+                            <div id="trendInfo" class="row">
 
-                                <div class="col-8">  
+                                <div class="col-9">  
                                     <?php echo $row['MovieTitle'];?>
                                 </div>
-
-                                <div class="col-4" style="text-align:center;">  
-                                    <?php echo $row['LikeCount']; ?>
+                                
+                                <div class="col-3" id="likecount" style="text-align:center;">
+                                    <?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID']);}else{echo "N/A";}?>
                                 </div>
+
                             </div>  
                             <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                         </div>
