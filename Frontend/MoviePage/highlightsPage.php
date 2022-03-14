@@ -53,10 +53,11 @@
                                 <div class="col-9">  
                                     <?php echo $row['MovieTitle'];?>
                                 </div>
-
-                                <div class="col-3" id="likecount" style="text-align:center;">  
-                                    <?php echo $row['LikeCount']; ?>
+                                
+                                <div class="col-3" id="likecount" style="text-align:center;">
+                                    <?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID']);}else{echo "N/A";}?>
                                 </div>
+
                             </div>  
                             <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                         </div>

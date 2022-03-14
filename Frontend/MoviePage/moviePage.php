@@ -80,7 +80,7 @@
                 <?php foreach($movieDetails as $row) :?>
                     <div class="row">
                         <div class="col-xl-4">
-                            <img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg" width="auto" height="auto"; >
+                            <img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg" width=275px height="390px"; >
                         </div>
                         
                         <div class="col-xl-8">  
@@ -127,6 +127,8 @@
                             <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
                             <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
                         </fieldset>
+
+
                         
                         <div id="reviewSubmitContainer" class="col-auto d-flex justify-content-end" >
                                 <input id="btnReview" class="btn btn-primary" type="submit" value="Submit" name="btnReview">
