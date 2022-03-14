@@ -2,10 +2,7 @@
     session_start();
 
     if($_SESSION["loggedIn"] == false) {
-
         header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
-    
-    
     }
 
     require (__DIR__ . "/../../Backend/dbQuery.php");
@@ -19,9 +16,9 @@
         $Username = $user['Username'];
         $fName = $user['FirstName'];
         $lName = $user['LastName'];
-        $profileImg = $user['ProfileImg'];
-        
+        $profileImg = $user['ProfileImg']; 
     }
+
     $id = ($_SESSION['user']);
     $movies=getUserMovie($id);
 ?>
@@ -100,7 +97,7 @@
                                 </div>
                                 <br>
                                 <div id="profileaddMovie" class="col-12 d-flex justify-content-center">
-                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?id=<?php echo ($_SESSION['user']) ?>" class="btn btn-primary">Create Movie</a>
+                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?action=add" class="btn btn-primary">Create Movie</a>
                                     
                                 </div>
                                 <br>
