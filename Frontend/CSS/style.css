@@ -283,9 +283,14 @@ h2{
 #trends{
     border-style: solid;
     border-color:#373B69;
+    border-width:auto 6px;
     border-style: solid;
-    padding:10px;
-    border-bottom:30px;
+    margin-right:auto 5px;
+}
+#likecount{
+    background-color: #2C2D43;
+    padding-right:5px;
+    
 }
 
 #trendInfo{
