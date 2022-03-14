@@ -39,9 +39,9 @@
 
         foreach($movieDetails as $row){
             $movieTitle = $row['MovieTitle']; //creating my inital vars
-            // $movieIMG = filter_input(INPUT_POST, 'movieIMG');
             $movieDescripton = $row['MovieDescription'];
             $movieGenre = $row['MovieGenre'];
+            $movieIMG = $row['MovieIMG'];
             //$movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
         }
     }
@@ -55,10 +55,9 @@
     if(isset($_POST['editBtn']) || isset($_POST['submitBtn']))
     { 
         $movieTitle = filter_input(INPUT_POST, 'movieTitle');       //creating my inital vars
-        $movieIMG = basename($_FILES["file"]["name"]);
         $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
         $movieGenre = filter_input(INPUT_POST, 'movieGenre');
-        $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
+        //$movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
     }
 ?>
 
@@ -117,7 +116,7 @@
                             </div>
 
                             <label class="form-label" for="customFile">Upload Movie Image</label>
-                            <input name='file' type="file" class="form-control" id="customFile" value="<?php echo $movieIMG; ?>" />
+                            <input name='file' type="file" class="form-control" id="customFile" value="" />
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
@@ -254,16 +253,12 @@
                             echo $statusMsg;
                         }
 
-                        if(isset($_POST['editBtn'])) { 
+                        if(isset($_POST['editBtn'])){ //this is for submiting 
                             $error = 0;
                             $error2 = 0;
                             $error3 = 0;
-                            $error4 = 0;
 
                             $statusMsg = '';
-
-                            $movieTitle = filter_input(INPUT_POST, 'movieTitle');
-                            $movieDescripton = filter_input(INPUT_POST, 'movieDescripton');
 
                             // File upload path
                             $targetDir = "../../uploads/";
@@ -271,7 +266,6 @@
                             $targetFilePath = $targetDir . $fileName;
                             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
-                            $fileName2 = basename($_FILES["file2"]["name"]);
                             $fileName = basename($_FILES["file"]["name"]);
 
                             if(empty($fileName))
@@ -282,16 +276,6 @@
                             }
                             else{
                                 $error3 = 0;
-                            }
-
-                            if(empty($fileName2))
-                            {
-                                echo '<br>Please select a file to upload for your banner image!';
-
-                                $error4 = 1;
-                            }
-                            else{
-                                $error4 = 0;
                             }
 
                             if(strlen($movieTitle) <= 2)
@@ -323,9 +307,6 @@
                                         
                                         // Upload file to server
                                         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                            $likeCount = 0;
-                                            $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
-                                            
                                             $returnedAcnt = getUser($_SESSION['user']);
 
                                             if(count($returnedAcnt)){
@@ -338,7 +319,7 @@
                                     
                                             $isApproved = 0;
                                             
-                                            $statusMsg = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
+                                            $statusMsg = editMovie($movieTitle, $movieGenre, $movieDescripton, $isApproved, $fileName, $movieTrailer, $_SESSION['user'], $movieID);         //adds the movie
                                         }
                                         else
                                         {

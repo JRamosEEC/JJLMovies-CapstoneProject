@@ -107,7 +107,7 @@
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
-    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $BannerIMG, $MovieTrailer, $UserAccountID,)  {
+    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $BannerIMG, $MovieTrailer, $UserAccountID)  {
     
         //craeting my add car function that will actually add to my db
     
@@ -160,20 +160,19 @@
     }
 
     //jacob - Edit Movie function 
-    function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $DatePosted, $LikeCount, $CreatorName, $IsApproved){
+    function editMovie($MovieTitle, $MovieGenre, $MovieDescription, $IsApproved, $CoverIMG, $MovieTrailer, $UserAccountID, $MovieID){
         global $db; 
-
+        
         $results = [];
 
-        $stmt = $db->prepare("UPDATE movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, CreatorName =:CreatorName, LikeCount = :LikeCount, IsApproved =:IsApproved, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, UserAccountID = :UserAccountID WHERE MovieID = :MovieID");
+        $stmt = $db->prepare("UPDATE movietable SET MovieTitle = :MovieTitle, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, IsApproved = :IsApproved, CoverIMG = :CoverIMG WHERE UserAccountID = :UserAccountID AND MovieID = :MovieID");
         $stmt->bindvalue(':MovieTitle', $MovieTitle);
         $stmt->bindvalue(':MovieGenre', $MovieGenre);
         $stmt->bindvalue(':MovieDescription', $MovieDescription); 
-        $stmt->bindvalue(':DatePosted', $DatePosted);
-        $stmt->bindvalue(':LikeCount', $LikeCount); 
-        $stmt->bindvalue(':CreatorName', $CreatorName); 
-        $stmt->bindvalue(':IsApproved', $IsApproved); 
-        $stmt->bindvalue(':UserAccountID', $UserAccountID); 
+        $stmt->bindvalue(':IsApproved', $IsApproved);
+        $stmt->bindvalue(':CoverIMG', $CoverIMG);
+        $stmt->bindvalue(':UserAccountID', $UserAccountID);
+        $stmt->bindvalue(':MovieID', $MovieID); 
 
         
 
