@@ -113,7 +113,7 @@
                             <?php foreach($movies as $row) :?>
                                 <div id="movieItem" class="col-auto">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>'' id="trendImg"; width=200px; height=300px;></a>
+                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg"; width=200px; height=300px;></a>
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-center">  
@@ -130,18 +130,20 @@
                                         </a>
                                     </div>
 
-                                    <div class="row d-flex justify-content-center">
-                                        <a href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>">
-                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 25px; font-size: 16px;">  
-                                                <div class="col centerV">  
-                                                    <div>Edit</div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="row" style="width: 200px;">
+                                            <a class="col-auto no-pad" href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>" style="width: 80%; padding-right: 5px;">
+                                                <div id="movieitemContainer" class="col-auto d-flex justify-content-center editBtn" style="width: 100% !important; height: 36px; margin: 0px; margin-bottom: 25px; font-size: 16px;">  
+                                                    <div class="centerV">  
+                                                        <div>Edit</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
 
-                                        <div id="movieitemContainer" class="col-auto d-flex justify-content-center" style="width: 95px; height: 36px; margin-top: 0px; margin-bottom: 25px;">  
-                                            <div class="col centerV">  
-                                                <div>Edit</div>
+                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 25px;">  
+                                                <div class="col-auto d-flex justify-content-center align-items-center">  
+                                                    <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
