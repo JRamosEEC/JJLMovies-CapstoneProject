@@ -132,8 +132,7 @@
 
             $results = signUp($username, $protectedPW, $firstName, $lastName, $email);
 
-            header('Location: ../login-signup/loginPage.php');
-        
+            header('Location: ../Login-Signup/loginPage.php');
         }
         elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 
@@ -253,8 +252,6 @@
                             
                             <div id="formField" class="col-md-12 center">
                                 <div id="createAcnt" class="center headerBtn col-6">
-                                    <!--<a href="/Frontend/Login-Signup/signupPage.php" class="btn btn-primary">Create Account</a>---->
-
                                     <button name='submitBtn' type="submit" class="btn btn-primary">Create Account</buton>
                                 </div>
                             </div>
@@ -294,14 +291,7 @@
                         if(isset($echo7)){
                             echo $echo7;
                         }
-
-                        //made more echos to make it easier echo1-7
-
-                        
-
-                    ?>
-
-                    
+                    ?>         
                 </div>
             </div>
         </div>
