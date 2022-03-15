@@ -29,7 +29,7 @@
 </div>
 
 <script>
-    function ajaxFunction() {
+    function searchRequest() {
         var ajaxRequest;  // The variable that makes Ajax possible!
         
         try {        
@@ -87,7 +87,7 @@
             {
                 $('#headerSearchBox').addClass('active');
                 
-                ajaxFunction();
+                searchRequest();
             }
             else{
                 $('#headerSearchBox').removeClass('active');
@@ -103,7 +103,7 @@
             {
                 $('#headerSearchBox').addClass('active');
                 
-                ajaxFunction();
+                searchRequest();
             }
         });
 

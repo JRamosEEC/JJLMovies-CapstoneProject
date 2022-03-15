@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-
     $_SESSION["loggedIn"] = false;
 
     require (__DIR__ . "/../../Backend/dbQuery.php"); 
@@ -20,15 +19,18 @@
             foreach($returnedAcnt as $user){
                 //getting the user information from the table and storing into session variables to display on pages
                 $user_ID = $user['UserAccountID'];
+                $username = $user['Username'];
             }
 
             $_SESSION['user'] = $user_ID;
+            $_SESSION['Username'] = $username;
 
             $_SESSION["loggedIn"] = true;
         
             header('Location: ../MoviePage/homePage.php');   
         }
         else{
+            $_SESSION["loggedIn"] = false;
             $loginFailed = 'Sorry, Login failed'; //does not allow user to enter the other pages until logged in 
         }
     }

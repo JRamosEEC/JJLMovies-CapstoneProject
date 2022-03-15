@@ -455,7 +455,6 @@
         return ($results);
     }
 
-    //justin should be able to get this done !!DO NOT DELETE!!
     function getFollowingCount($userAccountID){
         global $db;
         
@@ -476,26 +475,26 @@
         return ($results);
     }
 
-
-    function grabMovies ($id) {
-
+    function followUser($followingAccountID, $followingUsername, $followerAccountID, $followerUsername){
         global $db;
-    
-       
-       $result = [];        //creating empty array
-       
-       $stmt = $db->prepare("SELECT movieID, UserAccountID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, LikeCount, IsApproved, movieTrailer FROM movieTable WHERE movieID=:movieID");
-    
-       $stmt->bindValue(':movieID', $id);
-      
-    
-       if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-    
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                       
+        
+        //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
+        $results = 0;
+
+        $stmt = $db->prepare("INSERT INTO userfollowers SET FollowerAccountID = :followerAccountID, UserAccountID = :followingAccountID, Username = :followerUsername"); 
+        
+        $binds = array(
+            ":followerAccountID" => $followerAccountID,
+            ":followingAccountID" => $followingAccountID,
+            ":followerUsername" => $followingUsername,   
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = 'Success';
+                 
         }
         
-        return ($result);
+        return ($results);
     }
 
     // /\ /\ /\ UserAccounts/Followers /\ /\ /\

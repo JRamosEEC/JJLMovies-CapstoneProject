@@ -42,4 +42,3 @@
 
     echo $resultHtmlStr;
 ?>
-

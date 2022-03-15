@@ -5,6 +5,10 @@
     unset($_SESSION['user']);
     unset($_SESSION['FName']);
     unset($_SESSION['LName']);
+    unset($_SESSION['profileName']);
+    unset($_SESSION['profileID']);
+
+    $_SESSION["loggedIn"] = false;
 
     session_destroy();
 
