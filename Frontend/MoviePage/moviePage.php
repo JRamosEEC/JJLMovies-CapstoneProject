@@ -1,13 +1,16 @@
 <?php
     session_start(); 
 
-    
-
     require (__DIR__ . "/../../Backend/dbQuery.php");
+
     $id=$_GET['id'] ?? -1;
+
     $movieDetails=getOneMovie($id);
+
     $movieID=$id;
+
     $getAvgReview=getMovieRating($id);
+    
     foreach($movieDetails as $r){
         $userID=$r['UserAccountID'];//getting the userAccount id from the accounts table
     }

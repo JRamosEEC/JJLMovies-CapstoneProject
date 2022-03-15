@@ -128,7 +128,8 @@
                                 <div id="profileLogout" class="col-12 d-flex justify-content-center align-items-center">
                                     <?php if($profileType == 'Personal'){ echo '<a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>';}
                                         else if (isFollowing($_SESSION["user"], $_SESSION["profileID"])){echo '<a id="unfollowBtn" class="btn btn-primary">Unfollow User</a>';}
-                                        else {echo '<a id="followBtn" class="btn btn-primary">Follow User</a>';} ?>
+                                        else {echo '<a id="followBtn" class="btn btn-primary">Follow User</a>';} 
+                                    ?>
                                 </div>
                             </div>
                         </div>
