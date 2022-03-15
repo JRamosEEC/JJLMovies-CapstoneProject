@@ -95,13 +95,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div id="profileaddMovie" class="col-12 d-flex justify-content-center">
+                                
+                                <div id="profileAddMovie" class="col-12 d-flex justify-content-center align-items-end">
                                     <a href="/Frontend/UserProfile/MoviePageCRUD.php?action=add" class="btn btn-primary">Create Movie</a>
-                                    
                                 </div>
-                                <br>
-                                <div id="profileLogout" class="col-12 d-flex justify-content-center">
+                                
+                                <div id="profileLogout" class="col-12 d-flex justify-content-center align-items-center">
                                     <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
                                 </div>
                             </div>
@@ -150,9 +149,10 @@
 
                             <?php endforeach ?>
 
-                            <a id="PrevPage" class="btn btn-primary"><img id='ProfileArrowL' class="text-center no-pad" src="/images/logo-icon.png"></a>
+                            <a id="PrevPage" class="btn btn-primary"><</a>
 
-                            <a id="NextPage" class="btn btn-primary"><img id='ProfileArrowR' class="text-center no-pad" src="/images/logo-icon.png"></a>
+                            <a id="NextPage" class="btn btn-primary">></a>
+                        
                         </div>  
                     </div>
                 </div>
@@ -162,3 +162,15 @@
 </div> 
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('#PrevPage').on('click', function () {
+            
+        });
+
+        $('#NextPage').on('click', function () {
+            
+        });
+    });
+</script>

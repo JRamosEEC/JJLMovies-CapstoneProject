@@ -187,8 +187,12 @@ h2{
     font-weight: bold;
 }
 
+#profileAddMovie{
+    height: 187px;
+}
+
 #profileLogout{
-    margin-bottom: 20px;
+    height: 187px;
 }
 
 #content {
@@ -234,13 +238,29 @@ h2{
 #PrevPage{
     position: absolute;
 
-    left: 10px;
+    width: 30px !important;
+    height: 75px !important;
+
+    line-height: 70px !important;
+
+    padding: 0;
+
+    left: 0px;
+    top: 376px;
 }
 
 #NextPage{
     position: absolute;
 
-    right: 10px;
+    width: 30px !important;
+    height: 75px !important;
+
+    line-height: 70px !important;
+
+    padding: 0;
+
+    right: 0px;
+    top: 376px;
 }
 
 #movieItem{
