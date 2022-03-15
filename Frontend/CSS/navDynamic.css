@@ -73,6 +73,11 @@
     background: #fff;
 }
 
+#sidebar ul li a:hover p {
+    color: black;
+}
+
+
 #navLogo {
     max-width: 70px;
     max-height: 70px;

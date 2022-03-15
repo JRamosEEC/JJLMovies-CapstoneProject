@@ -21,6 +21,11 @@
     margin-bottom: auto;
 }
 
+#staticSidebar ul li a:hover {
+    background: #fff;
+}
+
+
 @media screen and (max-width: 870px) {
     #staticSidebar {
         margin-left: -55px;
