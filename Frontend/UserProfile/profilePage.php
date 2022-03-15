@@ -79,7 +79,6 @@
                                     <?php echo $fName ?>
                                     <?php echo $lName ?>
                                 </div>
-
                                 <!---<div id="profileFollowers" class="col-12 d-flex justify-content-center">
                                     <div class="row" style="width: 100%;">
                                         <div class="col-6">
@@ -94,9 +93,7 @@
                                             <div class="row d-flex justify-content-center"><?php echo $userFollowing ?></div>
                                         </div>
                                     </div>
-                                </div>-->
-
-                                
+                                </div>-->                       
                                 <div id="profileAddMovie" class="col-12 d-flex justify-content-center align-items-end">
                                     <a href="/Frontend/UserProfile/MoviePageCRUD.php?action=add" class="btn btn-primary">Create Movie</a>
                                 </div>

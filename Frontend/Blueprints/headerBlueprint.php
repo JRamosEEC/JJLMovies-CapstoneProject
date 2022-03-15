@@ -107,12 +107,12 @@
             }
         });
 
-        $('#headerSearch').on('focusout', function () {
+        /*$('#headerSearch').on('focusout', function () {
             
             $('#headerSearchBox').removeClass('active');
 
             $('#headerSearchContainer').removeClass('active');
             $('#logoContainer').removeClass('active');
-        });
+        });*/
     });
 </script>
