@@ -1,16 +1,37 @@
 <?php
     session_start();
 
-    if($_SESSION["loggedIn"] == false) {
-        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
-    }
-
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
-    $userData = getUser($_SESSION['user']);
-    $userFollowers = getFollowerCount($_SESSION['user']);
-    $userFollowing = getFollowingCount($_SESSION['user']);
+    $username = $_GET['username'] ?? '';
+
+    $userID = checkUserName($username);
+
+    $profileType = 'Personal';
+
+
+    if ($userID != NULL)
+    {
+        $userData = getUser($userID);
+        $userFollowers = getFollowerCount($userID);
+        $userFollowing = getFollowingCount($userID);
+
+        $profileType = 'Other';
+    }
+    else
+    {
+        if($_SESSION["loggedIn"] == false) {
+            header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+        }
+
+        $userID = $_SESSION['user'];
+        $profileType = 'Personal';
+    }
     
+    $userData = getUser($userID);
+    $userFollowers = getFollowerCount($userID);
+    $userFollowing = getFollowingCount($userID);
+
     foreach($userData as $user){
         //getting the user information from the table and storing into session variables to display on pages
         $Username = $user['Username'];
@@ -19,8 +40,7 @@
         $profileImg = $user['ProfileImg']; 
     }
 
-    $id = ($_SESSION['user']);
-    $movies=getUserMovie($id);
+    $movies=getUserMovie($userID);
 ?>
 
 <!DOCTYPE html>
@@ -95,13 +115,14 @@
                                         </div>
                                     </div>
                                 </div> 
-                                                     
+
                                 <div id="profileAddMovie" class="col-12 d-flex justify-content-center align-items-end">
-                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?action=add" class="btn btn-primary">Create Movie</a>
+                                    <?php if($profileType == 'Personal'){ echo "<a href='/Frontend/UserProfile/MoviePageCRUD.php?action=add' class='btn btn-primary'>Create Movie</a>";} ?>
                                 </div>
                                 
                                 <div id="profileLogout" class="col-12 d-flex justify-content-center align-items-center">
-                                    <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
+                                    <?php if($profileType == 'Personal'){ echo '<a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>';}
+                                        else{echo '<a href="" class="btn btn-primary">Follow User</a>';} ?>
                                 </div>
                             </div>
                         </div>

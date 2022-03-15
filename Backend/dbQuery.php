@@ -401,15 +401,19 @@
 
         global $db;
 
-        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE username =:UserName");
+        $stmt = $db->prepare("SELECT UserAccountID FROM useraccounts WHERE Username =:UserName");
 
-        $stmt->bindValue(':UserName', $userName);
 
-        //$stmt->bindValue(':email', $email);
+        $binds = array(
+            ":UserName" => $userName,     
+        );
 
-        $stmt->execute ();
-
-        return( $stmt->rowCount() > 0);
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();      
+        }
+        else {$results = NULL;}
+        
+        return ($results);
     }
     
 
@@ -417,15 +421,17 @@
 
         global $db;
 
-        $stmt = $db->prepare("SELECT useraccountID FROM useraccounts WHERE email =:email");
+        $stmt = $db->prepare("SELECT UserAccountID FROM useraccounts WHERE Email =:email");
 
-        $stmt->bindValue(':email', $email);
+        $binds = array(
+            ":email" => $email,     
+        );
 
-        //$stmt->bindValue(':email', $email);
-
-        $stmt->execute ();
-
-        return( $stmt->rowCount() > 0);
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = $stmt->fetchColumn();      
+        }
+        
+        return ($results);
     }
     
 
@@ -443,8 +449,7 @@
         );
 
         if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
-            $results = $stmt->fetchColumn();
-                 
+            $results = $stmt->fetchColumn();      
         }
         
         return ($results);
