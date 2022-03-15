@@ -107,7 +107,7 @@
 
     //--LANCE - ADDING A ADD MOVIE FUNCTION
 
-    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $BannerIMG, $MovieTrailer, $UserAccountID)  {
+    function addMovie ($MovieTitle, $DatePosted, $MovieGenre, $MovieDescription, $CreatorName, $LikeCount, $IsApproved, $CoverIMG, $MovieTrailer, $UserAccountID)  {
     
         //craeting my add car function that will actually add to my db
     
@@ -116,7 +116,7 @@
     
         $results = "Not addded";        //this will display if code doesnt work
     
-        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, CoverIMG = :CoverIMG, BannerIMG = :BannerIMG, MovieTrailer = :MovieTrailer, UserAccountID = :UserAccountID");     //craeting my sql statement that will add data into the db
+        $stmt = $db->prepare("INSERT INTO movietable SET MovieTitle = :MovieTitle, DatePosted = :DatePosted, MovieGenre = :MovieGenre, MovieDescription = :MovieDescription, CreatorName = :CreatorName, LikeCount = :LikeCount, IsApproved = :IsApproved, CoverIMG = :CoverIMG, MovieTrailer = :MovieTrailer, UserAccountID = :UserAccountID");     //craeting my sql statement that will add data into the db
     
         $binds = array(
             ":MovieTitle" => $MovieTitle,
@@ -128,7 +128,6 @@
             ":LikeCount" => $LikeCount,
             ":IsApproved" => $IsApproved,
             ":CoverIMG" => $CoverIMG,
-            ":BannerIMG" => $BannerIMG,
             ":MovieTrailer" => $MovieTrailer,
             ":UserAccountID" => $UserAccountID,
         );
@@ -147,7 +146,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, BannerIMG, LikeCount, IsApproved, MovieTrailer, UserAccountID FROM movietable ORDER BY DatePosted DESC"); 
+        $stmt = $db->prepare("SELECT MovieID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, LikeCount, IsApproved, MovieTrailer, UserAccountID FROM movietable ORDER BY DatePosted DESC"); 
 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
@@ -189,7 +188,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,BannerIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 8"); 
+        $stmt = $db->prepare("SELECT MovieID,MovieTitle, DatePosted, MovieGenre, MovieDescription,CreatorName,CoverIMG,LikeCount,IsApproved,UserAccountID FROM movietable ORDER BY LikeCount DESC LIMIT 8"); 
 
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -223,7 +222,7 @@
         //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
         $results = 0;
 
-        $stmt = $db->prepare("SELECT CAST(AVG(Rating) AS DECIMAL(10,2)) FROM reviewtable WHERE MovieID = :movieID"); 
+        $stmt = $db->prepare("SELECT CAST(AVG(Rating) AS DECIMAL(10,1)) FROM reviewtable WHERE MovieID = :movieID"); 
         
         $binds = array(
             ":movieID" => $id,     
@@ -480,7 +479,7 @@
        
        $result = [];        //creating empty array
        
-       $stmt = $db->prepare("SELECT movieID, UserAccountID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, BannerIMG, LikeCount, IsApproved, movieTrailer FROM movieTable WHERE movieID=:movieID");
+       $stmt = $db->prepare("SELECT movieID, UserAccountID, MovieTitle, DatePosted, MovieGenre, MovieDescription, CreatorName, CoverIMG, LikeCount, IsApproved, movieTrailer FROM movieTable WHERE movieID=:movieID");
     
        $stmt->bindValue(':movieID', $id);
       

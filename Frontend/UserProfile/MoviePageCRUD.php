@@ -57,6 +57,200 @@
         $movieGenre = filter_input(INPUT_POST, 'movieGenre');
         $movieTrailer = filter_input(INPUT_POST, 'movieTrailer');
     }
+
+
+
+    $error = 0;
+    $error2 = 0;
+    $error3 = 0;
+
+    $statusMsg = '';
+    $fixMsg = '';
+
+    if(isset($_POST['submitBtn'])){
+        // File upload path
+        $targetDir = "../../uploads/";
+
+        $fileName = basename($_FILES["file"]["name"]);
+
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+
+        if(empty($fileName))
+        {
+            $fixMsg .= '<br>Please select a file to upload for your cover image!';
+
+            $error3 = 1;  
+        }
+        else{
+            $error3 = 0;
+        }
+
+        if(strlen($movieTitle) <= 2)
+        {
+            $fixMsg .= "<br>Please make the title at least 5 characters!";
+            $error = 1;
+        }
+        else{
+            $error = 0;
+        }
+        
+        if(strlen($movieDescripton) <= 15)
+        {
+            $fixMsg .= "<br>Please make the Description at least 15 characters!";
+            $error2 = 1;
+        }
+        else{
+            $error2 = 0;
+        }
+
+        if($error == 0 && $error2 == 0 && $error3 == 0)
+        {
+            if(!empty($_FILES["file"]["name"])){
+                
+                // Allow certain file formats
+                $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
+                
+                if(in_array($fileType, $allowTypes)){
+                    
+                    // Upload file to server
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                        $likeCount = 0;
+                        $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
+                        
+                        $returnedAcnt = getUser($_SESSION['user']);
+
+                        if(count($returnedAcnt)){
+
+                            foreach($returnedAcnt as $creator){
+                                //getting the user information from the table and storing into session variables to display on pages
+                                $creatorName = $creator['Username'];
+                            }
+                        }
+                
+                        $isApproved = 0;
+                        
+                        $statusMsg = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $movieTrailer, $_SESSION['user']);         //adds the movie
+
+                        header('Location: ../UserProfile/profilePage.php');
+                    }
+                    else
+                    {
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                    }
+                }
+                else
+                {
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                }
+            }
+            else
+            {
+                $statusMsg = 'Please select a file to upload.';
+            }       
+        }
+        else
+        {
+            $fixMsg .= '<br>please fix errors';
+        }
+    }
+
+
+
+    if(isset($_POST['editBtn'])){ //this is for submiting 
+        // File upload path
+        $targetDir = "../../uploads/";
+
+        $fileName = basename($_FILES["file"]["name"]);
+
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+
+       
+
+        if(empty($fileName))
+        {
+            $fixMsg .= '<br>Please select a file to upload for your cover image!';
+
+            $error3 = 1;  
+        }
+        else{
+            $error3 = 0;
+        }
+
+        if(strlen($movieTitle) <= 2)
+        {
+            $fixMsg .= "<br>Please make the title at least 5 characters!";
+            $error = 1;
+        }
+        else{
+            $error = 0;
+        }
+        
+        if(strlen($movieDescripton) <= 15)
+        {
+            $fixMsg .= "<br>Please make the Description at least 15 characters!";
+            $error2 = 1;
+        }
+        else{
+            $error2 = 0;
+        }
+
+        if($error == 0 && $error2 == 0 && $error3 == 0)
+        {
+            if(!empty($_FILES["file"]["name"])){
+                
+                // Allow certain file formats
+                $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
+                
+                if(in_array($fileType, $allowTypes)){
+                    
+                    // Upload file to server
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+                        $returnedAcnt = getUser($_SESSION['user']);
+
+                        if(count($returnedAcnt)){
+
+                            foreach($returnedAcnt as $creator){
+                                //getting the user information from the table and storing into session variables to display on pages
+                                $creatorName = $creator['Username'];
+                            }
+                        }
+                
+                        $isApproved = 0;
+                        
+                        $statusMsg = editMovie($movieTitle, $movieGenre, $movieDescripton, $isApproved, $fileName, $movieTrailer, $_SESSION['user'], $movieID);         //adds the movie
+
+                        header('Location: ../UserProfile/profilePage.php');
+                    }
+                    else
+                    {
+                        $statusMsg = "Sorry, there was an error uploading your file.";
+                    }
+                }
+                else
+                {
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                }
+            }
+            else
+            {
+                $statusMsg = 'Please select a file to upload.';
+            }       
+        }
+        else
+        {
+            $fixMsg .= '<br>please fix errors';
+        }
+    }
+
+
+
+    if(isset($_POST['deleteBtn'])){
+        deleteMovie($_SESSION['user'], $movieID);
+
+        header('Location: ../UserProfile/profilePage.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -168,210 +362,9 @@
 
 
                     <?php
-                        if(isset($_POST['submitBtn'])){     //this is for submiting 
-                            $error = 0;
-                            $error2 = 0;
-                            $error3 = 0;
-
-                            $statusMsg = '';
-
-                            // File upload path
-                            $targetDir = "../../uploads/";
-
-                            $fileName = basename($_FILES["file"]["name"]);
-
-                            $targetFilePath = $targetDir . $fileName;
-                            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
-                            if(empty($fileName))
-                            {
-                                echo '<br>Please select a file to upload for your cover image!';
-
-                                $error3 = 1;  
-                            }
-                            else{
-                                $error3 = 0;
-                            }
-
-                            if(strlen($movieTitle) <= 2)
-                            {
-                                echo"<br>Please make the title at least 5 characters!";
-                                $error = 1;
-                            }
-                            else{
-                                $error = 0;
-                            }
-                            
-                            if(strlen($movieDescripton) <= 15)
-                            {
-                                echo"<br>Please make the Description at least 15 characters!";
-                                $error2 = 1;
-                            }
-                            else{
-                                $error2 = 0;
-                            }
-
-                            if($error == 0 && $error2 == 0 && $error3 == 0)
-                            {
-                                if(!empty($_FILES["file"]["name"])){
-                                    
-                                    // Allow certain file formats
-                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
-                                    
-                                    if(in_array($fileType, $allowTypes)){
-                                        
-                                        // Upload file to server
-                                        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                            $likeCount = 0;
-                                            $DatePosted = date('Y-m-d H:i:s');      //making the date the current date
-                                            
-                                            $returnedAcnt = getUser($_SESSION['user']);
-
-                                            if(count($returnedAcnt)){
-
-                                                foreach($returnedAcnt as $creator){
-                                                    //getting the user information from the table and storing into session variables to display on pages
-                                                    $creatorName = $creator['Username'];
-                                                }
-                                            }
-                                    
-                                            $isApproved = 0;
-                                            
-                                            $statusMsg = addMovie($movieTitle, $DatePosted, $movieGenre, $movieDescripton, $creatorName, $likeCount, $isApproved, $fileName, $fileName2, $movieTrailer, $_SESSION['user']);         //adds the movie
-
-                                            header('Location: ../UserProfile/profilePage.php');
-                                        }
-                                        else
-                                        {
-                                            $statusMsg = "Sorry, there was an error uploading your file.";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-                                    }
-                                }
-                                else
-                                {
-                                    $statusMsg = 'Please select a file to upload.';
-                                }       
-                            }
-                            else
-                            {
-                                echo '<br>please fix errors';
-                            }
-
-                            // Display status message
-                            echo $statusMsg;
-                        }
-
-
-
-                        if(isset($_POST['editBtn'])){ //this is for submiting 
-                            $error = 0;
-                            $error2 = 0;
-                            $error3 = 0;
-
-                            $statusMsg = '';
-
-                            // File upload path
-                            $targetDir = "../../uploads/";
-
-                            $fileName = basename($_FILES["file"]["name"]);
-
-                            $targetFilePath = $targetDir . $fileName;
-                            $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
-                           
-
-                            if(empty($fileName))
-                            {
-                                echo '<br>Please select a file to upload for your cover image!';
-
-                                $error3 = 1;  
-                            }
-                            else{
-                                $error3 = 0;
-                            }
-
-                            if(strlen($movieTitle) <= 2)
-                            {
-                                echo"<br>Please make the title at least 5 characters!";
-                                $error = 1;
-                            }
-                            else{
-                                $error = 0;
-                            }
-                            
-                            if(strlen($movieDescripton) <= 15)
-                            {
-                                echo"<br>Please make the Description at least 15 characters!";
-                                $error2 = 1;
-                            }
-                            else{
-                                $error2 = 0;
-                            }
-
-                            if($error == 0 && $error2 == 0 && $error3 == 0)
-                            {
-                                if(!empty($_FILES["file"]["name"])){
-                                    
-                                    // Allow certain file formats
-                                    $allowTypes = array('jpg','png','jpeg','gif','pdf');        //all of this is for my uploading images
-                                    
-                                    if(in_array($fileType, $allowTypes)){
-                                        
-                                        // Upload file to server
-                                        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                                            $returnedAcnt = getUser($_SESSION['user']);
-
-                                            if(count($returnedAcnt)){
-
-                                                foreach($returnedAcnt as $creator){
-                                                    //getting the user information from the table and storing into session variables to display on pages
-                                                    $creatorName = $creator['Username'];
-                                                }
-                                            }
-                                    
-                                            $isApproved = 0;
-                                            
-                                            $statusMsg = editMovie($movieTitle, $movieGenre, $movieDescripton, $isApproved, $fileName, $movieTrailer, $_SESSION['user'], $movieID);         //adds the movie
-
-
-
-
-
-
-                                        }
-                                        else
-                                        {
-                                            $statusMsg = "Sorry, there was an error uploading your file.";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-                                    }
-                                }
-                                else
-                                {
-                                    $statusMsg = 'Please select a file to upload.';
-                                }       
-                            }
-                            else
-                            {
-                                echo '<br>please fix errors';
-                            }
-
-                            // Display status message
-                            echo $statusMsg;
-                        }
-
-
-
-                        if(isset($_POST['deleteBtn'])){
-                            
-                        }
+                        // Display status message and fix errors
+                        echo $fixMsg;
+                        echo $statusMsg;
                     ?> 
                 </div>
             </div>
