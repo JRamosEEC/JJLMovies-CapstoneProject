@@ -50,8 +50,6 @@
         $btnString = "Create";
     }
 
-
-
     if(isset($_POST['editBtn']) || isset($_POST['submitBtn']))
     { 
         $movieTitle = filter_input(INPUT_POST, 'movieTitle');       //creating my inital vars
@@ -112,7 +110,7 @@
 
                             <div class="form-group">
                                 <label  for="exampleFormControlInput1">Movie Title</label>
-                                <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php echo $movieTitle; ?>">
+                                <input name="movieTitle" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" value="<?php if($btnString != 'Create' || isset($_POST['submitBtn'])){echo $movieTitle;} ?>">
                             </div>
 
                             <label class="form-label" for="customFile">Upload Movie Image</label>
@@ -120,17 +118,17 @@
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Description</label>
-                                <textarea style='height:100px; width:100%; word-wrap: break-word;' name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $movieDescripton; ?></textarea>
+                                <textarea style='height:100px; width:100%; word-wrap: break-word;' name='movieDescripton' class="form-control" id="exampleFormControlTextarea1" rows="3"><?php if($btnString != 'Create' || isset($_POST['submitBtn'])){echo $movieDescripton;} ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Movie Trailer</label>
-                                <textarea name='movieTrailer' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Enter In A YouTube Link!"><?php echo $movieTrailer; ?></textarea>
+                                <textarea name='movieTrailer' class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Enter In A YouTube Link!"><?php if($btnString != 'Create' || isset($_POST['submitBtn'])){echo $movieTrailer;} ?></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Genre Select</label>
-                                <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php echo $movieGenre; ?>">
+                                <select name='movieGenre' class="form-control" id="exampleFormControlSelect1" value="<?php if($btnString != 'Create' || isset($_POST['submitBtn'])){echo $movieGenre;} ?>">
                                 <!--Movie options-->
                                     <option>Action</option>
                                     <option>Adventure</option>
@@ -168,10 +166,10 @@
                             // File upload path
                             $targetDir = "../../uploads/";
 
+                            $fileName = basename($_FILES["file"]["name"]);
+
                             $targetFilePath = $targetDir . $fileName;
                             $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
-                            $fileName = basename($_FILES["file"]["name"]);
 
                             if(empty($fileName))
                             {
