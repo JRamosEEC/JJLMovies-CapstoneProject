@@ -1,11 +1,13 @@
 <?php
     session_start(); 
 
+    
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
     $id=$_GET['id'] ?? -1;
     $movieDetails=getOneMovie($id);
     $movieID=$id;
-
+    $getAvgReview=getMovieRating($id);
     foreach($movieDetails as $r){
         $userID=$r['UserAccountID'];//getting the userAccount id from the accounts table
     }
@@ -16,8 +18,8 @@
     if(isPostRequest() && filter_input(INPUT_POST, 'txtReview') != ""){
         $userAccountID=$userID;//adding user id to the review tables 
         $ReviewDescription= filter_input(INPUT_POST, 'txtReview');;
-        $ReviewLikes= filter_input(INPUT_POST, 'rating');        
-        addReview($userAccountID,$movieID,$ReviewDescription,$ReviewLikes);
+        $Rating= filter_input(INPUT_POST, 'rating');        
+        addReview($userAccountID,$movieID,$ReviewDescription,$Rating);
 
         header("Location: moviePage.php?id=" . $id);
     };      //adds value to function when the page posts
@@ -53,14 +55,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
     <script>
-        $('#btnReview').click(function () {
-            if ($('#txtReview').is(':visible')) {
-                $('#txtReview').Hide();
-            }
-            else {
-                $('#txtReview').show();
-            }
-        });
+        function showForm(){
+            document.getElementById(reviewForm).style.display = "none";
+            return false;
+        }
     </script>
 
     <div class="wrapper">
@@ -82,7 +80,7 @@
                 <?php foreach($movieDetails as $row) :?>
                     <div class="row">
                         <div class="col-xl-4">
-                            <img src=<?php echo $row['CoverIMG'];?> id="trendImg" width=275px height="390px"; >
+                            <img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg" width=275px height="390px"; >
                         </div>
                         
                         <div class="col-xl-8">  
@@ -94,12 +92,14 @@
                                 <div class="col">  
                                         Creator: <?php echo $row['CreatorName'];?>
                                 </div>
-
+                <?php endforeach ?>
+                
                                 <div class="col">  
-                                        Rating: <?php echo $row['LikeCount'];?>
+                                        Rating: <?php echo  $getAvgReview;?>
                                 </div>
                             </div>
-
+                
+                <?php foreach($movieDetails as $row) :?>
                             <div class="row" id="itemContainer">
                                     <h2 style="width:100%">Description</h2>
 
@@ -112,15 +112,15 @@
 
                 <div id="itemContainer">
                     <div class="col-6">
-                            <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview">
+                            <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview" onClick="return showForm()">
                     </div>
-                    <form action="moviePage.php?id=<?php echo $id;?>" method="post" class="row" >
+                    <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row">
 
                         <div class="col-12">
                                 <textarea id="txtReview" type="text" rows="6" cols="60" style="width:100%;" name="txtReview"></textarea>
                         </div>
 
-                        <fieldset id="txtRates" name="txtRates" class="rating col-auto" >
+                        <fieldset id="txtRates" name="txtRates" class="rating col-auto">
                             <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
                             <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
                             <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
@@ -147,7 +147,7 @@
                             </div>
 
                             <div id="detail" class="col pl-4 pr- pt-3">
-                                <p><?php echo $rev['ReviewLikes'];?>/5</p>
+                                <p><?php echo $rev['Rating'];?>/5</p>
                             </div>
                         </div>
                     <?php endforeach; ?> 

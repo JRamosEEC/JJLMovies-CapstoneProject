@@ -6,37 +6,40 @@
     $searchResults = searchMovie($searchTxt);
 
     $resultHtmlStr = "";
+?>
 
-    foreach ($searchResults as $row):
+<?php
+    foreach ($searchResults as $row)
     {
-        $resultHtmlStr += '
-        <div id="searchItem" class="row no-margin no-pad">
-            <div class="col-sm">
-                <div class="row">
-                    <div id="searchComponentMovieImg" class="col-auto no-pad">
-                        <img src="$row[CoverIMG]" width=75px;>
-                    </div>
+        $resultHtmlStr .= '<a href="/Frontend/MoviePage/moviePage.php?id=' . $row["MovieID"] . '">';
+        $resultHtmlStr .= '<div id="searchItem" class="row no-margin no-pad">';
+        $resultHtmlStr .= '<div class="col-sm">';
+        $resultHtmlStr .= '<div class="row">';
+        $resultHtmlStr .= '<div id="searchComponentMovieImg" class="col-auto no-pad">';
+        $resultHtmlStr .= '<img src="../../uploads/' . $row["CoverIMG"] . '" width=75px;>';
+        $resultHtmlStr .= '</div>';
 
-                    <div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">
-                        <div id="searchComponentDetails" class="row">
-                            <div style="font-size: 20px;"><?php echo $row["MovieTitle"];?></div>
-                        </div>
+        $resultHtmlStr .= '<div id="searchComponentMovieDetailsContainer" class="col-auto ml-4">';
+        $resultHtmlStr .= '<div id="searchComponentDetails" class="row">';
+        $resultHtmlStr .= '<div style="font-size: 20px;">' . $row["MovieTitle"] . '</div>';
+        $resultHtmlStr .= '</div>';
                     
-                        <div id="searchComponentDetails" class="row">
-                            <strong>Creator :</strong><div> &nbsp;<?php echo $row["CreatorName"]?></div>
-                        </div>
+        $resultHtmlStr .= '<div id="searchComponentDetails" class="row">';
+        $resultHtmlStr .= '<div> &nbsp;' . $row["CreatorName"] . '</div>';
+        $resultHtmlStr .= '</div>';
 
-                        <div id="searchComponentDetails" class="row">
-                            <strong>Rating :</strong><div> &nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        $resultHtmlStr .= '<div id="searchComponentDetails" class="row">';
+        $resultHtmlStr .= '<div> &nbsp;</div>';
+        $resultHtmlStr .= '</div>';
+        $resultHtmlStr .= '</div>';
+        $resultHtmlStr .= '</div>';
+        $resultHtmlStr .= '</div>';
+        $resultHtmlStr .= '</div>';
 
-        <div id="spacerLine" class="row no-margin" style="margin-top: 10px !important; margin-bottom: 5px !important;"></div>
-        ';
+        $resultHtmlStr .= '<div id="spacerLine" class="row no-margin" style="margin-top: 10px !important; margin-bottom: 5px !important;"></div>';
+        $resultHtmlStr .= '</a>';
     }
 
     echo $resultHtmlStr;
 ?>
+

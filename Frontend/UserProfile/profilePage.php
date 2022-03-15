@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    if($_SESSION["loggedIn"] == false) {
+        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+    }
+
     require (__DIR__ . "/../../Backend/dbQuery.php");
 
     $userData = getUser($_SESSION['user']);
@@ -12,9 +16,9 @@
         $Username = $user['Username'];
         $fName = $user['FirstName'];
         $lName = $user['LastName'];
-        $profileImg = $user['ProfileImg'];
-        
+        $profileImg = $user['ProfileImg']; 
     }
+
     $id = ($_SESSION['user']);
     $movies=getUserMovie($id);
 ?>
@@ -75,8 +79,7 @@
                                     <?php echo $fName ?>
                                     <?php echo $lName ?>
                                 </div>
-
-                                <div id="profileFollowers" class="col-12 d-flex justify-content-center">
+                                <!---<div id="profileFollowers" class="col-12 d-flex justify-content-center">
                                     <div class="row" style="width: 100%;">
                                         <div class="col-6">
                                             <div class="row d-flex justify-content-center">Followers</div>
@@ -90,47 +93,66 @@
                                             <div class="row d-flex justify-content-center"><?php echo $userFollowing ?></div>
                                         </div>
                                     </div>
+                                </div>-->                       
+                                <div id="profileAddMovie" class="col-12 d-flex justify-content-center align-items-end">
+                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?action=add" class="btn btn-primary">Create Movie</a>
                                 </div>
-                                <br>
-                                <div id="profileaddMovie" class="col-12 d-flex justify-content-center">
-                                    <a href="/Frontend/UserProfile/MoviePageCRUD.php?id=<?php echo ($_SESSION['user']) ?>" class="btn btn-primary">Create Movie</a>
-                                    
-                                </div>
-                                <br>
-                                <div id="profileLogout" class="col-12 d-flex justify-content-center">
+                                
+                                <div id="profileLogout" class="col-12 d-flex justify-content-center align-items-center">
                                     <a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-7" id="itemContainer">
+                    <div class="col-xl-8 profileMovieContainer" id="itemContainer">
                         <div class="row">
+                            
                             <?php foreach($movies as $row) :?>
-                                <div id="moveItem" class="col">
-                                    <div class="col d-flex justify-content-center">
-                                        <img src=<?php echo $row['CoverIMG'];?> id="trendImg"; width="200px">
+                                <div id="movieItem" class="col-auto">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg"; width=200px; height=300px;></a>
                                     </div>
                                     
-                                    <div class="col-flex justify-content-center" id="movieitemContainer">  
-                                        <div class="row">  
-                                            <div class="col justify-content-center" style="font-size:13px;">  
-                                                <?php echo $row['MovieTitle'];?>
+                                    <div class="col-12 d-flex justify-content-center">  
+                                        <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
+                                            <div id="movieitemContainer" class="row">  
+                                                <div class="col centerV">  
+                                                    <div><?php echo $row['MovieTitle'];?></div>
+                                                </div>
+
+                                                <div class="col-auto justify-content-center" id="itemContainer" style="padding:4px; margin:5px;">  
+                                                    <div><?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";}?></div>
+                                                </div>
                                             </div>
+                                        </a>
+                                    </div>
 
-                                            <div class="col-flex justify-content-center"  id="itemContainer" style="font-size:13px; padding:5px;">  
-                                                <?php echo $row['LikeCount'];?>
-                                            </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="row" style="width: 200px;">
+                                            <a class="col-auto no-pad" href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>" style="width: 80%; padding-right: 5px;">
+                                                <div id="movieitemContainer" class="col-auto d-flex justify-content-center editBtn" style="width: 100% !important; height: 36px; margin: 0px; margin-bottom: 25px; font-size: 16px;">  
+                                                    <div class="centerV">  
+                                                        <div>Edit</div>
+                                                    </div>
+                                                </div>
+                                            </a>
 
-                                            <div class="col" style="font-size:13px;">  
-                                            
-                                                <a href="movieEDIT.php?action=update&movieID=<?= $row['MovieID'] ?>">Edit</a>
-
+                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 25px;">  
+                                                <div class="col-auto d-flex justify-content-center align-items-center">  
+                                                    <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>                
-                                </div>             
+                                    </div>
+                                </div>   
+
                             <?php endforeach ?>
+
+                            <a id="PrevPage" class="btn btn-primary"><</a>
+
+                            <a id="NextPage" class="btn btn-primary">></a>
+                        
                         </div>  
                     </div>
                 </div>
@@ -140,3 +162,15 @@
 </div> 
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('#PrevPage').on('click', function () {
+            
+        });
+
+        $('#NextPage').on('click', function () {
+            
+        });
+    });
+</script>

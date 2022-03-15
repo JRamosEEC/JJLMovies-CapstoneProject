@@ -2,7 +2,7 @@
     session_start(); 
 
     require (__DIR__ . "/../../Backend/dbQuery.php");
-    $movies = getMovies();
+    $movies = getMovies();    
 ?>
 
 <!DOCTYPE html>
@@ -51,40 +51,58 @@
 
             <!-- Page Content -->
             <div id="content">    
-                <div id="pageContainer">
-                    <?php foreach ($movies as $row): ?>
-                        <div id="feedItem" class="row no-margin no-pad">
-                            <div class="col-sm">
-                                <div class="row">
-                                    <div id="feedComponentMovieImg" class="col-auto no-pad">
-                                    <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> width=200px;></a>
-                                         <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                                    </div>
 
-                                    <div id="feedComponentMovieDetailsContainer" class="col-auto ml-4">
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Creator :</strong><div> &nbsp;<?php echo $row['CreatorName']?></div>
-                                        </div>
-
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Movie :</strong><div> &nbsp;<?php echo $row['MovieTitle'];?></div>
-                                        </div>
-
-                                        <div id="feedComponentDetails" class="row">
-                                            <strong>Rating :</strong><div> &nbsp;</div>
-                                        </div>
-                                    </div>
+                <?php foreach ($movies as $row): ?>
+                    <div id="feedItem" class="row no-margin">
+                        <div class="col-sm-auto">
+                            <div class="row">
+                                <div id="feedComponentMovieImg" class="col-auto no-pad">
+                                <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' width=150px; height=225px;></a>
+                                        <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="detail" class="col-sm no-pad p-3">
-                                <h2><strong>Description</strong></h2>
+                        <div id="detail" class="col-sm-auto p-3">
+
+                            <div id="feedComponentMovieDetailsContainer" class="row">
+                                <div id="feedComponentDetails" class="col-6">
+                                    <div id="feedTitle"><b><?php echo $row['MovieTitle'];?></b></div>    
+                                </div>
+
+                                <div style="color:yellow" class='col-6 d-flex justify-content-end'>
+                                    <?php
+
+                                        if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID'])  . "/5";}else{echo "N/A";};
+
+                                    ?>
+                                </div>
+                            
+                            
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div style="color:yellow;" id="feedDescription">&nbsp;Creator : <?php echo $row['CreatorName']?></div>
+                                </div>
+
                                 <br>
-                                <p><?php echo $row['MovieDescription'];?></p>
+
+                                <div id="feedDescription" class="col-12"><?php if(strlen($row['MovieDescription']) <= 295){ echo $row['MovieDescription']; } else{ echo substr($row['MovieDescription'], 0, 295) . "..."; }?></div>
+
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                         
+
+
+
+                                <div id="feedComponentDetails" class="col-12">
+                                    <div id="feedDescription">Date Posted: <?php echo substr($row['DatePosted'], 0, 10)?></div>
+                                </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>           
-                </div>
+                    </div>
+                <?php endforeach; ?>    
+
             </div>
         </div>
     </div>

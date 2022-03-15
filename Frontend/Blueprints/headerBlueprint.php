@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" href="../CSS/pageHeader.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/18ddcc2bb6.js" crossorigin="anonymous"></script>
@@ -15,7 +17,6 @@
 
     <div id="headerSearchContainer" class="center headerBtn col-auto">
         <input id="headerSearch" name="headerSearch" type="text" placeholder="Search">
-        <button type="submit" name="submit" href="/Frontend/MoviePage/moviePage.php" method="post"><i class="fa fa-search"></i></button>
 
         <div id="headerSearchBox">
             
@@ -94,15 +95,24 @@
         });
 
         $('#headerSearch').on('focusin', function () {
+
+            $('#headerSearchContainer').addClass('active');
+            $('#logoContainer').addClass('active');
+
             if($('#headerSearch').val().length > 0)
             {
                 $('#headerSearchBox').addClass('active');
+                
                 ajaxFunction();
             }
         });
 
-        $('#headerSearch').on('focusout', function () {
+        /*$('#headerSearch').on('focusout', function () {
+            
             $('#headerSearchBox').removeClass('active');
-        });
+
+            $('#headerSearchContainer').removeClass('active');
+            $('#logoContainer').removeClass('active');
+        });*/
     });
 </script>

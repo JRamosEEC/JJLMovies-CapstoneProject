@@ -41,26 +41,28 @@
             <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
             
             <!-- Page Content -->
-            <div id="content">   
-                <div class="row no-margin no-pad" id="pageContainer">
+            <div class="row no-margin no-pad" id="content">   
+                
                 
                     <?php foreach($trend as $row) :?>
-                        <div class="col-xl-3" id="trends">
-                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src=<?php echo $row['CoverIMG']; ?> id="trendImg" width=275px height="390px"; ></a>
+                        <div class="col-sm-3" id="trends">
+                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width="240px" height="360px"; ></a>
+
                             <div id="trendInfo" class="row">
 
-                                <div class="col-8">  
+                                <div class="col-9">  
                                     <?php echo $row['MovieTitle'];?>
                                 </div>
-
-                                <div class="col-4" style="text-align:center;">  
-                                    <?php echo $row['LikeCount']; ?>
+                                
+                                <div class="col-3" id="likecount" style="text-align:center;">
+                                    <?php if(getMovieRating($row['MovieID']) != ""){ echo getMovieRating($row['MovieID']);}else{echo "N/A";}?>
                                 </div>
+
                             </div>  
                             <!--- it's be width x height in html not length but for now to avoid stretching images let them size themselvs --->
-                    </div>
+                        </div>
                     <?php endforeach ?>
-                </div>
+                
             </div>
         </div> 
     </div>  

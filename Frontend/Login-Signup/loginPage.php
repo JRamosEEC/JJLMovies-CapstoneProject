@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+
+    $_SESSION["loggedIn"] = false;
+
     require (__DIR__ . "/../../Backend/dbQuery.php"); 
 
     $loginFailed = "";
@@ -20,11 +23,13 @@
             }
 
             $_SESSION['user'] = $user_ID;
+
+            $_SESSION["loggedIn"] = true;
         
             header('Location: ../MoviePage/homePage.php');   
         }
         else{
-            $loginFailed = 'Sorry, Login failed'; 
+            $loginFailed = 'Sorry, Login failed'; //does not allow user to enter the other pages until logged in 
         }
     }
 ?>
@@ -64,6 +69,7 @@
             <?php include(__DIR__ . "/../Blueprints/navStaticBlueprint.php")?>
 
             <!-- Page Content -->
+            <!--Made sure the login is exactly how the figma looks-->
             <div id="content">
                 <div id="formContainer" class="row center no-margin no-padL">
                     <h1 class="col-xl-12 center">Login</h1>
@@ -82,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!--Make sure input type is password for extra security-->
                             <div>
                                 <div class="row">
                                     <div class="col-12 center">Password</div>
@@ -110,6 +116,7 @@
                 </div>
 
                 <?php 
+                //Made sure user is aware that they have entered invalid login information 
                     if($loginFailed != ""){
                         echo "<div class='row center'><h2 style='color:red;font-size:20px; margin-top: 20px;'>Please enter in a valid username and password.</h2></div>"; 
                     }

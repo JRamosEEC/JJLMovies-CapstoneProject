@@ -187,13 +187,19 @@ h2{
     font-weight: bold;
 }
 
+#profileAddMovie{
+    height: 187px;
+}
+
 #profileLogout{
-    margin-bottom: 20px;
+    height: 187px;
 }
 
 #content {
     width: 100%;
     min-height: 104px;
+
+    padding-top: 25px;
 
     /*Margin left must have 55px more to compensate the static nav bar the margin will gets removed when screen shrinks and nav disappears*/
     margin-left: 130px;
@@ -222,10 +228,55 @@ h2{
     margin: 10px;
     padding: 20px;
 }
+
+.profileMovieContainer{
+    height: 834px;
+
+    overflow: hidden;
+}
+
+#PrevPage{
+    position: absolute;
+
+    width: 30px !important;
+    height: 75px !important;
+
+    line-height: 70px !important;
+
+    padding: 0;
+
+    left: 0px;
+    top: 376px;
+}
+
+#NextPage{
+    position: absolute;
+
+    width: 30px !important;
+    height: 75px !important;
+
+    line-height: 70px !important;
+
+    padding: 0;
+
+    right: 0px;
+    top: 376px;
+}
+
+#movieItem{
+    width: 25%;
+}
+
 #movieitemContainer{
     background: #373B69;
-    width: auto;
-    margin: 10px;
+    margin: 5px;
+
+    width: 200px;
+
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+
 }
 
 #feedItem{
@@ -233,9 +284,21 @@ h2{
     font-size: 18px;
     background: rgba(0, 0, 0, 0.35);
 
+    margin-left: 100px;
+    margin-right: 100px;
     margin-bottom: 20px;
 
     padding: 10px !important;
+}
+
+#feedTitle{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#feedDescription{
+    font-size: 14px;
 }
 
 #formContainer{
@@ -248,16 +311,20 @@ h2{
 }
 
 #detail{
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    width: calc(100% - 150px);
 }
 
 #trends{
     border-style: solid;
     border-color:#373B69;
+    border-width:auto 6px;
     border-style: solid;
-    padding:10px;
-    border-bottom:30px;
+    margin-right:auto 5px;
+}
+#likecount{
+    background-color: #2C2D43;
+    padding-right:5px;
+    
 }
 
 #trendInfo{
@@ -297,6 +364,11 @@ h2{
         /*Remove Margin on smaller screen sizes to expand content*/
         margin-left: 0px;
         margin-right: 0px;
+    }
+
+    #feedItem{
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 
