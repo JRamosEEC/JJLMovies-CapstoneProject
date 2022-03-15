@@ -146,8 +146,20 @@
                                 </select>
                             </div>
 
-                            <div class="row">
-                                <button name='<?php if($btnString == "Update"){echo "editBtn";}else{echo "submitBtn";}?>' type="submit" class="btn btn-primary"><?php echo $btnString?></buton>
+                            <div class="row p-4">
+                                <div class="col-6">
+                                    <button name='<?php if($btnString == "Update"){echo "editBtn";}else{echo "submitBtn";}?>' type="submit" class="btn btn-primary"><?php echo $btnString?></buton>
+                                </div>
+
+                                <?php 
+                                    if($btnString == "Update")
+                                    {
+                                        echo "
+                                        <div class='col-6 d-flex justify-content-end'>
+                                            <button name='deleteBtn' type='submit' class='btn btn-primary'>Delete</buton>
+                                        </div>";
+                                    }
+                                ?>
                             </div>
                         </form>
                     </div>
@@ -253,6 +265,8 @@
                             echo $statusMsg;
                         }
 
+
+
                         if(isset($_POST['editBtn'])){ //this is for submiting 
                             $error = 0;
                             $error2 = 0;
@@ -351,6 +365,12 @@
 
                             // Display status message
                             echo $statusMsg;
+                        }
+
+
+
+                        if(isset($_POST['deleteBtn'])){
+                            
                         }
                     ?> 
                 </div>

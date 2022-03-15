@@ -256,14 +256,15 @@
     }
 
     //delete movie function 
-    function deleteMovie ($id) {
+    function deleteMovie ($UserAccountID, $MovieID) {
         global $db;
         
         $results = "Data was not deleted";
     
-        $stmt = $db->prepare("DELETE FROM `movietable` WHERE `UserAccountID` = :id");
+        $stmt = $db->prepare("DELETE FROM movietable WHERE UserAccountID = :UserAccountID AND MovieID = :MovieID");
         
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':UserAccountID', $UserAccountID);
+        $stmt->bindValue(':MovieID', $MovieID);
             
         if ($stmt->execute() && $stmt->rowCount() > 0) {
             $results = 'Data Deleted';
