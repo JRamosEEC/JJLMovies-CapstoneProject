@@ -260,8 +260,6 @@
 
                     <div id="spacer" class="col-3"></div>
 
-
-
                     <?php
                     //from up top 
 
