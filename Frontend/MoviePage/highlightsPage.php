@@ -46,7 +46,7 @@
                 
                     <?php foreach($trend as $row) :?>
                         <div class="col-sm-3" id="trends">
-                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width="265px" height="385px"; ></a>
+                            <a href="moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG']; ?>' id="trendImg" width="240px" height="360px"; ></a>
 
                             <div id="trendInfo" class="row">
 
