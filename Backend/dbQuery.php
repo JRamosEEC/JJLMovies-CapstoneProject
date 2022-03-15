@@ -475,23 +475,84 @@
         return ($results);
     }
 
-    function followUser($followingAccountID, $followingUsername, $followerAccountID, $followerUsername){
+    function isFollowing($userAccountID, $profileAccountID){
         global $db;
         
         //Declare as default as statement to set result only runs if row count is greater than 0 this avoids the need for an else statement
-        $results = 0;
+        $results = false;
 
-        $stmt = $db->prepare("INSERT INTO userfollowers SET FollowerAccountID = :followerAccountID, UserAccountID = :followingAccountID, Username = :followerUsername"); 
+        $stmt = $db->prepare("SELECT * FROM userfollowing WHERE FollowingAccountID = :profileAccountID AND UserAccountID = :userAccountID"); 
+        
+        $binds = array(
+            ":profileAccountID" => $profileAccountID,
+            ":userAccountID" => $userAccountID,
+        );
+
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+            $results = true;      
+        }
+        
+        return ($results);
+    }
+
+    //There are two tables to following the other user's followers table and you user's your following table they use the same data but have a primary key that's different to make them distinct we must call both of them and fill both tables at the same time with the same data
+    function followUser($followingAccountID, $followingUsername, $followerAccountID, $followerUsername){
+        global $db;
+        
+        $results = '';
+
+        $stmt = $db->prepare("INSERT INTO userfollowers SET FollowerAccountID = :followerAccountID, UserAccountID = :followingAccountID, Username = :followingUsername"); 
         
         $binds = array(
             ":followerAccountID" => $followerAccountID,
             ":followingAccountID" => $followingAccountID,
-            ":followerUsername" => $followingUsername,   
+            ":followingUsername" => $followingUsername,   
         );
 
+        //After the first statement is successful then run the second statement using the same data and a proper call both will always be succesful
         if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
-            $results = 'Success';
-                 
+
+            $stmt = $db->prepare("INSERT INTO userfollowing SET FollowingAccountID = :followingAccountID, UserAccountID = :followerAccountID, Username = :followerUsername"); 
+        
+            $binds = array(
+                ":followingAccountID" => $followingAccountID,
+                ":followerAccountID" => $followerAccountID,
+                ":followerUsername" => $followerUsername,   
+            );
+
+            if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+                $results = 'Success';
+            }
+        }
+        
+        return ($results);
+    }
+
+    function unfollowUser($followingAccountID, $followerAccountID){
+        global $db;
+        
+        $results = '';
+
+        $stmt = $db->prepare("DELETE FROM userfollowers WHERE FollowerAccountID = :followerAccountID AND UserAccountID = :followingAccountID"); 
+        
+        $binds = array(
+            ":followerAccountID" => $followerAccountID,
+            ":followingAccountID" => $followingAccountID,   
+        );
+
+        //After the first statement is successful then run the second statement using the same data and a proper call both will always be succesful
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+
+            $stmt = $db->prepare("DELETE FROM userfollowing WHERE FollowingAccountID = :followingAccountID AND UserAccountID = :followerAccountID"); 
+        
+            $binds = array(
+                ":followingAccountID" => $followingAccountID,
+                ":followerAccountID" => $followerAccountID,
+            );
+
+            if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+                $results = 'Success';
+            }
         }
         
         return ($results);

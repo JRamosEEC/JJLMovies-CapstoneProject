@@ -127,7 +127,8 @@
                                 
                                 <div id="profileLogout" class="col-12 d-flex justify-content-center align-items-center">
                                     <?php if($profileType == 'Personal'){ echo '<a href="/Frontend/Login-Signup/logoutPage.php" class="btn btn-primary">Log Out</a>';}
-                                        else{echo '<a id="followBtn" class="btn btn-primary">Follow User</a>';} ?>
+                                        else if (isFollowing($_SESSION["user"], $_SESSION["profileID"])){echo '<a id="unfollowBtn" class="btn btn-primary">Unfollow User</a>';}
+                                        else {echo '<a id="followBtn" class="btn btn-primary">Follow User</a>';} ?>
                                 </div>
                             </div>
                         </div>
@@ -221,9 +222,13 @@
         ajaxRequest.onreadystatechange = function() {
         
             if(ajaxRequest.readyState == 4) {
-                var ajaxDisplay = document.getElementById('followBtn');
+                var ajaxDisplay = document.getElementById('profileLogout');
                 
                 ajaxDisplay.innerHTML = ajaxRequest.responseText;
+
+                $('#unfollowBtn').on('click', function () {
+                    submitUnfollow();
+                });
             }
         }
 
@@ -232,6 +237,49 @@
     }
 
 
+
+    function submitUnfollow() {
+        var ajaxRequest;  // The variable that makes Ajax possible!
+        
+        try {        
+            // Opera 8.0+, Firefox, Safari
+            ajaxRequest = new XMLHttpRequest();
+        } catch (e) {
+            
+            // Internet Explorer Browsers
+            try {
+                ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                
+                try {
+                    ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    // Something went wrong
+                    alert("Your browser broke!");
+                    return false;
+                }
+            }
+        }
+        
+        // Create a function that will receive data
+        // sent from the server and will update
+        // div section in the same page.
+        ajaxRequest.onreadystatechange = function() {
+        
+            if(ajaxRequest.readyState == 4) {
+                var ajaxDisplay = document.getElementById('profileLogout');
+                
+                ajaxDisplay.innerHTML = ajaxRequest.responseText;
+
+                $('#followBtn').on('click', function () {
+                    submitFollow();
+                });
+            }
+        }
+
+        ajaxRequest.open("GET", "/Frontend/Blueprints/unfollowUser.php", true);
+        ajaxRequest.send(null); 
+    }
 
     $(document).ready(function () {
 
@@ -247,6 +295,9 @@
 
         $('#followBtn').on('click', function () {
             submitFollow();
+        });
+        $('#unfollowBtn').on('click', function () {
+            submitUnfollow();
         });
     });
 </script>

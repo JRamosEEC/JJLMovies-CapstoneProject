@@ -6,6 +6,6 @@
 
     if($searchResults == 'Success')
     {
-        echo 'Unfollow User';
+        echo '<a id="unfollowBtn" class="btn btn-primary">Unfollow User</a>';
     }
 ?>
