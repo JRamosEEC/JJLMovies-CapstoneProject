@@ -3,7 +3,7 @@
 html, body {
     margin:10px; 
     height:100vh; 
-    background-image: linear-gradient(white, black ); 
+    background-image: linear-gradient(black, black); 
    
     
 }
@@ -48,21 +48,21 @@ html, body {
 #left{ 
     grid-area: left;
     padding:5px;
-    background-color: peachpuff;
+    background-color: whitesmoke;
      
 }
 
 #right{
     grid-area: right;
     padding:5px;
-    background-color: palegoldenrod;
+    background-color: whitesmoke;
     
 }
 
 
 #footer{
     grid-area: footer; 
-    background-color: #373B69;
+    background-color: whitesmoke;
     color:white; 
     padding:5px; 
 }
