@@ -18,7 +18,7 @@
     $reviews = getReviews($id);
     //$userdetails=getUser($userID);
 
-    if(isPostRequest() && filter_input(INPUT_POST, 'txtReview') != ""){
+    if(isPostRequest() && filter_input(INPUT_POST, 'txtReview') != "" && filter_input(INPUT_POST,'txtRates') != ""){
         $userAccountID=$userID;//adding user id to the review tables 
         $ReviewDescription= filter_input(INPUT_POST, 'txtReview');;
         $Rating= filter_input(INPUT_POST, 'rating');        
