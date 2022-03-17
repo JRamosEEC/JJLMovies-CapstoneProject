@@ -85,14 +85,16 @@
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
 
         <div id="shareDisplay" class="row" style="display: none;">
-            <div id="spacerCol" class="col-5"></div>
+            <div id="spacerCol" class="col-3"></div>
 
-            <div class="col-2" style="background-color: rgba(24, 26, 43, 0.99); margin-top: 30vh; margin-bottom: 30vh;">
-                <div class="col-12 d-flex justify-content-center" style="margin-top: 20%;">Share this link:</div>
-                <div id="shareDisplayText" class="col-12 d-flex justify-content-center" style="margin-top: 10%;">test link</div>
+            <div class="col-auto" style="background-color: rgba(24, 26, 43, 0.99); margin-top: 30vh; margin-bottom: 30vh;">
+                <div class="col-12 d-flex justify-content-center" style="margin-top: 5%;">Share this link:</div>
+                <div id="shareDisplayText" class="col-12 d-flex justify-content-center" style="margin-top: 10%; word-wrap: break-word;">test link</div>
+                
+                <div class="col-12 d-flex justify-content-end" style="margin-top: 25px;">
+                    <a id="closeBtn" class="btn btn-primary">Close</a>
+                </div>
             </div>
-
-            <div id="spacerCol" class="col-5"></div>
         </div>
 
         <div id="bodyContainer">
@@ -185,7 +187,7 @@
 
                                             <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">
                                                 <div class="col-auto d-flex justify-content-center align-items-center">  
-                                                    <a id="shareBtn" name="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
+                                                    <a id="shareBtn" name="https://jjlmovies-capstone.herokuapp.com/Frontend/MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
                                                         <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
                                                     </a>
                                                 </div>
@@ -340,10 +342,18 @@
 
 
         jQuery("[id=shareBtn]").on('click', function () {
-            jQuery("[id=shareBtn]").hide();
-
-            $("#shareDisplayText").html(jQuery("[id=shareBtn]").attr('name'));
+            $("#shareDisplayText").html($(this).attr('name'));
             $("#shareDisplay").show();
+        });
+
+
+
+        $('#shareDisplay').on('click', function () {
+            $("#shareDisplay").hide();
+        });
+
+        $('#closeButton').on('click', function () {
+            $("#shareDisplay").hide();
         });
     });
 </script>
