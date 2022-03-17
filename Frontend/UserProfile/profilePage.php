@@ -293,31 +293,27 @@
         console.log(movieCount);
 
         $('#PrevPage').on('click', function () {
-            if((movieHiddenTracker - 6) >= 0)
+            if((movieHiddenTracker - 4) >= 0)
             {
                 $(".movieItem" + String(movieHiddenTracker - 1)).show();
                 $(".movieItem" + String(movieHiddenTracker - 2)).show();
                 $(".movieItem" + String(movieHiddenTracker - 3)).show();
                 $(".movieItem" + String(movieHiddenTracker - 4)).show();
-                $(".movieItem" + String(movieHiddenTracker - 5)).show();
-                $(".movieItem" + String(movieHiddenTracker - 6)).show();
                 
-                movieHiddenTracker -= 6;
+                movieHiddenTracker -= 4;
             }
         });
 
         $('#NextPage').on('click', function () {
 
-            if((movieHiddenTracker + 6) <= movieCount)
+            if((movieHiddenTracker + 4) <= movieCount)
             {
                 $(".movieItem" + String(movieHiddenTracker)).hide();
                 $(".movieItem" + String(movieHiddenTracker + 1)).hide();
                 $(".movieItem" + String(movieHiddenTracker + 2)).hide();
                 $(".movieItem" + String(movieHiddenTracker + 3)).hide();
-                $(".movieItem" + String(movieHiddenTracker + 4)).hide();
-                $(".movieItem" + String(movieHiddenTracker + 5)).hide();
                 
-                movieHiddenTracker += 6;
+                movieHiddenTracker += 4;
             }
         });
 
