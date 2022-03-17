@@ -9,6 +9,8 @@
 
     $profileType = 'Personal';
 
+    $rowCount = 0;
+
 
     if ($userID != NULL)
     {
@@ -139,7 +141,9 @@
                         <div class="row">
                             
                             <?php foreach($movies as $row) :?>
-                                <div id="movieItem" class="col-6 col-xl-4">
+                                <?php $rowCount += 1; ?>
+
+                                <div id="movieItem" class="col-6 col-xl-4 movieItem<?php echo $rowCount; ?>">
                                     <div class="col-12 d-flex justify-content-center">
                                         <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg"; width=200px; height=300px;></a>
                                     </div>
@@ -168,7 +172,7 @@
                                                 </div>
                                             </a>
 
-                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 25px;">  
+                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">  
                                                 <div class="col-auto d-flex justify-content-center align-items-center">  
                                                     <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
                                                 </div>
@@ -283,13 +287,38 @@
     }
 
     $(document).ready(function () {
+        var movieCount = jQuery("[id=movieItem]").length; 
+        var movieHiddenTracker = 1;
+
+        console.log(movieCount);
 
         $('#PrevPage').on('click', function () {
-            
+            if((movieHiddenTracker - 6) >= 0)
+            {
+                $(".movieItem" + String(movieHiddenTracker - 1)).show();
+                $(".movieItem" + String(movieHiddenTracker - 2)).show();
+                $(".movieItem" + String(movieHiddenTracker - 3)).show();
+                $(".movieItem" + String(movieHiddenTracker - 4)).show();
+                $(".movieItem" + String(movieHiddenTracker - 5)).show();
+                $(".movieItem" + String(movieHiddenTracker - 6)).show();
+                
+                movieHiddenTracker -= 6;
+            }
         });
 
         $('#NextPage').on('click', function () {
-            
+
+            if((movieHiddenTracker + 6) <= movieCount)
+            {
+                $(".movieItem" + String(movieHiddenTracker)).hide();
+                $(".movieItem" + String(movieHiddenTracker + 1)).hide();
+                $(".movieItem" + String(movieHiddenTracker + 2)).hide();
+                $(".movieItem" + String(movieHiddenTracker + 3)).hide();
+                $(".movieItem" + String(movieHiddenTracker + 4)).hide();
+                $(".movieItem" + String(movieHiddenTracker + 5)).hide();
+                
+                movieHiddenTracker += 6;
+            }
         });
 
 
