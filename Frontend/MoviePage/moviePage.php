@@ -100,7 +100,7 @@
                                 </div>
 
                                 <div class="col">
-                                    <a href="<?php echo "/Frontend/UserProfile/profilePage.php?username=" . $username; ?>"><div>Creator: <?php echo $row['CreatorName'];?></div></a>
+                                    <a href="<?php echo "/Frontend/UserProfile/profilePage.php?username=" . $username; ?>"><div>Creator: <?php echo $username;?></div></a>
                                 </div>
                 <?php endforeach ?>
                 

@@ -53,6 +53,17 @@
             <div id="content">    
 
                 <?php foreach ($movies as $row): ?>
+                    <?php 
+                        $userID=$row['UserAccountID'];//getting the userAccount id from the accounts table
+                    
+                    
+                        $userData = getUser($userID);
+                    
+                        foreach($userData as $user){
+                            $username = $user['Username'];
+                        }
+                    ?>
+
                     <div id="feedItem" class="row no-margin">
                         <div class="col-sm-auto">
                             <div class="row">
@@ -80,7 +91,7 @@
                             
                             
                                 <div id="feedComponentDetails" class="col-12">
-                                    <div style="color:yellow;" id="feedDescription">&nbsp;Creator : <?php echo $row['CreatorName']?></div>
+                                    <div style="color:yellow;" id="feedDescription">&nbsp;Creator : <?php echo $username; ?></div>
                                 </div>
 
                                 <br>
