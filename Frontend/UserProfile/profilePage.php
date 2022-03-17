@@ -12,7 +12,7 @@
     $rowCount = 0;
 
 
-    if ($userID != NULL)
+    if ($userID != NULL && $userID != $_SESSION['user'])
     {
         $userData = getUser($userID);
         $userFollowers = getFollowerCount($userID);
@@ -83,6 +83,17 @@
         <!-- Sidebar -->
         <?php include(__DIR__ . "/../Blueprints/navDynamicBlueprint.php")?>
         <?php include(__DIR__ . "/../Blueprints/headerBlueprint.php")?>
+
+        <div id="shareDisplay" class="row" style="display: none;">
+            <div id="spacerCol" class="col-5"></div>
+
+            <div class="col-2" style="background-color: rgba(24, 26, 43, 0.99); margin-top: 30vh; margin-bottom: 30vh;">
+                <div class="col-12 d-flex justify-content-center" style="margin-top: 20%;">Share this link:</div>
+                <div id="shareDisplayText" class="col-12 d-flex justify-content-center" style="margin-top: 10%;">test link</div>
+            </div>
+
+            <div id="spacerCol" class="col-5"></div>
+        </div>
 
         <div id="bodyContainer">
             <!-- Static Sidebar -->
@@ -172,9 +183,11 @@
                                                 </div>
                                             </a>
 
-                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">  
+                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">
                                                 <div class="col-auto d-flex justify-content-center align-items-center">  
-                                                    <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
+                                                    <a id="shareBtn" name="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
+                                                        <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -290,7 +303,6 @@
         var movieCount = jQuery("[id=movieItem]").length; 
         var movieHiddenTracker = 1;
 
-        console.log(movieCount);
 
         $('#PrevPage').on('click', function () {
             if((movieHiddenTracker - 4) >= 0)
@@ -324,6 +336,14 @@
         });
         $('#unfollowBtn').on('click', function () {
             submitUnfollow();
+        });
+
+
+        jQuery("[id=shareBtn]").on('click', function () {
+            jQuery("[id=shareBtn]").hide();
+
+            $("#shareDisplayText").html(jQuery("[id=shareBtn]").attr('name'));
+            $("#shareDisplay").show();
         });
     });
 </script>

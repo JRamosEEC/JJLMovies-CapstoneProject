@@ -1,37 +1,6 @@
 <?php
     include (__DIR__ . "/dbConnection.php");
 
-
-
-    // \/ \/ \/ Login/Signup \/ \/ \/
-    //---------------------------------------------------------------
-    //---------------------------------------------------------------
-    
-    /*LANCE - CREATING ADD ADMIN SO WE CAN ADD OURSELVES//
-        function adminInsert($userName, $password, $email){
-
-            global $db;
-
-            $results = "Not addded"; //this will display if code doesnt work
-
-            $stmt = $db->prepare("INSERT INTO adminaccounts SET UserName = :UserName, Password = :Password, Email = :Email");     //craeting my sql statement that will add data into the db
-
-            $binds = array(
-                ":UserName" => $UserName,
-
-                ":Password" => $Password,
-
-                ":Email" => $Email,
-                //binding my information of array to my vars
-            );
-
-
-            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-                $results = "Person Added";     //if command works print out cars added
-            }
-         }
-    --LANCE - CREATING ADD USERS NOT DONE*/
-
     function signUp($Username, $Password, $FirstName, $LastName, $Email){
 
         global $db;
@@ -57,20 +26,6 @@
             $results = "Person Added";     //if command works print out person added
             //$results = "Person Added";     //if command works print out  added
         }
-    }
-
-    //--LANCE - CREATING CHECK LOGIN FOR ADMINS
-
-    function validateAdminLogin ($userName, $password) {
-        global $db;
-        $stmt = $db->prepare("SELECT * FROM adminaccounts WHERE Username =:username AND Password = :password");
-        
-        $stmt->bindValue(':username', $userName);
-        $stmt->bindValue(':password', hash('sha256', $password. 'secret stuff'));
-            
-        $stmt->execute ();
-           
-        return( $stmt->rowCount() > 0);  
     }
 
     function validateLogin ($username, $password) {

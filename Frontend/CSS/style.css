@@ -240,6 +240,24 @@ h2 {
     font-weight: bold;
 }
 
+#shareDisplay{
+    position: fixed;
+
+    z-index: 95;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    /*Add an extra 20 for browser scrollbar and remove on mobile*/
+    width: 100vw;
+    height: calc(100vh - 85px);
+
+    opacity: 100%;
+
+    transition: all 0.3s;
+    transition: opacity 0.15s;
+}
+
 #feedItem {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
