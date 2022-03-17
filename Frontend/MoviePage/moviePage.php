@@ -15,6 +15,13 @@
         $userID=$r['UserAccountID'];//getting the userAccount id from the accounts table
     }
 
+
+    $userData = getUser($userID);
+
+    foreach($userData as $user){
+        $username = $user['Username'];
+    }
+
     $reviews = getReviews($id);
     //$userdetails=getUser($userID);
 
@@ -92,8 +99,8 @@
                                         Title: <?php echo $row['MovieTitle'];?>
                                 </div>
 
-                                <div class="col">  
-                                        Creator: <?php echo $row['CreatorName'];?>
+                                <div class="col">
+                                    <a href="<?php echo "/Frontend/UserProfile/profilePage.php?username=" . $username; ?>"><div>Creator: <?php echo $row['CreatorName'];?></div></a>
                                 </div>
                 <?php endforeach ?>
                 
@@ -114,9 +121,10 @@
                 <?php endforeach ?>
 
                 <div id="itemContainer">
-                    <div class="col-6">
+                    <!---<div class="col-6">
                             <input id="btnReview" class="btn btn-primary" type="submit" value="Write A Review" name="btnReview" onClick="return showForm()">
-                    </div>
+                    </div>--->
+
                     <form id="reviewForm"  action="moviePage.php?id=<?php echo $id;?>" method="post" class="row">
 
                         <div class="col-12">

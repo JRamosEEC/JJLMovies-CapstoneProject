@@ -139,7 +139,7 @@
                         <div class="row">
                             
                             <?php foreach($movies as $row) :?>
-                                <div id="movieItem" class="col-auto">
+                                <div id="movieItem" class="col-6 col-xl-4">
                                     <div class="col-12 d-flex justify-content-center">
                                         <a href="../MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>"><img src='../../uploads/<?php echo $row['CoverIMG'];?>' id="trendImg"; width=200px; height=300px;></a>
                                     </div>
