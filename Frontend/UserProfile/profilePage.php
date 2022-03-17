@@ -11,6 +11,9 @@
 
     $rowCount = 0;
 
+    if($_SESSION["loggedIn"] == false) {
+        header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
+    }
 
     if ($userID != NULL && $userID != $_SESSION['user'])
     {
@@ -22,10 +25,6 @@
     }
     else
     {
-        if($_SESSION["loggedIn"] == false) {
-            header('Location: /Frontend/Login-Signup/loginPage.php');    //simple and easy way for my session vars hope this is alright
-        }
-
         $userID = $_SESSION['user'];
         $profileType = 'Personal';
     }
