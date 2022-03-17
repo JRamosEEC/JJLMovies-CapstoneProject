@@ -175,25 +175,33 @@
                                         </a>
                                     </div>
 
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <div class="row" style="width: 200px;">
-                                            <a class="col-auto no-pad" href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>" style="width: 80%; padding-right: 5px;">
-                                                <div id="movieitemContainer" class="col-auto d-flex justify-content-center editBtn" style="width: 100% !important; height: 36px; margin: 0px; margin-bottom: 25px; font-size: 16px;">  
-                                                    <div class="centerV">  
-                                                        <div>Edit</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                    <?php if($profileType == "Personal") : ?>
 
-                                            <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">
-                                                <div class="col-auto d-flex justify-content-center align-items-center">  
-                                                    <a id="shareBtn" name="https://jjlmovies-capstone.herokuapp.com/Frontend/MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
-                                                        <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
-                                                    </a>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <div class="row" style="width: 200px;">
+                                                <a class="col-auto no-pad" href="MoviePageCRUD.php?action=edit&id=<?php echo $row['MovieID'];?>" style="width: 80%; padding-right: 5px;">
+                                                    <div id="movieitemContainer" class="col-auto d-flex justify-content-center editBtn" style="width: 100% !important; height: 36px; margin: 0px; margin-bottom: 25px; font-size: 16px;">  
+                                                        <div class="centerV">  
+                                                            <div>Edit</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                                <div id="movieitemContainer" class="col-auto d-flex justify-content-center shareBtn" style="width: 20%; height: 36px; margin: 0px; margin-bottom: 26px;">
+                                                    <div class="col-auto d-flex justify-content-center align-items-center">  
+                                                        <a id="shareBtn" name="https://jjlmovies-capstone.herokuapp.com/Frontend/MoviePage/moviePage.php?id=<?php echo $row['MovieID'];?>">
+                                                            <img src='../../images/share.png' id="shareImg"; width=25px; height=25px;>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                    <?php else : ?>
+
+                                        <div id="spacerDiv" style="margin-bottom: 75px;"></div>
+
+                                    <?php endif; ?>
                                 </div>   
 
                             <?php endforeach ?>
